@@ -15,6 +15,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import { ListItemText } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -41,25 +42,26 @@ export default function Navigation() {
 		<>
 			<AppBar
 				position="static"
-				color={scrolled ? 'secondary' : 'transparent'}
+				color={!scrolled ? 'secondary' : 'transparent'}
 				style={{ boxShadow: 'none' }}
 			>
 				<Toolbar>
-					<IconButton
-						edge="start"
-						className={classes.menuButton}
-						color="inherit"
-						aria-label="menu"
-						onClick={() => setDrawer(true)}
+					<Drawer />
+					<Typography
+						variant="h6"
+						className={classes.title}
+						style={{ flexGrow: '1' }}
 					>
-						<MenuIcon />
-					</IconButton>
-					<Typography variant="h6" className={classes.title}>
 						Prakarsh 2021
 					</Typography>
-
-					{!auth && (
-						<div>
+					<div id="desktop-nav">
+						<Button size="large">HOME</Button>
+						<Button size="large">EVENTS</Button>
+						<Button size="large">ABOUT</Button>
+						<Button size="large">TEAM</Button>
+					</div>
+					{auth ? (
+						<>
 							<IconButton
 								aria-label="account of current user"
 								aria-controls="menu-appbar"
@@ -87,10 +89,33 @@ export default function Navigation() {
 								<MenuItem>Profile</MenuItem>
 								<MenuItem>My account</MenuItem>
 							</Menu>
-						</div>
+						</>
+					) : (
+						<>
+							<Button variant="outlined" color="primary">
+								Login
+							</Button>
+						</>
 					)}
 				</Toolbar>
 			</AppBar>
+		</>
+	);
+}
+
+const Drawer = () => {
+	// const classes = useStyles();
+	const { drawer, setDrawer } = useContext(Context);
+	return (
+		<div id="mobile-nav">
+			<IconButton
+				edge="start"
+				color="inherit"
+				aria-label="menu"
+				onClick={() => setDrawer(true)}
+			>
+				<MenuIcon />
+			</IconButton>
 			<SwipeableDrawer
 				anchor="left"
 				open={drawer}
@@ -119,6 +144,6 @@ export default function Navigation() {
 					))}
 				</List>
 			</SwipeableDrawer>
-		</>
+		</div>
 	);
-}
+};
