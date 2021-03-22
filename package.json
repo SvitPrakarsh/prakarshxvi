@@ -1,0 +1,22 @@
+{
+  "name": "prakarsh-2021",
+  "version": "1.0.0",
+  "main": "index.js",
+  "public": false,
+  "scripts": {
+    "dev": "next dev",
+    "dev-lan": "next dev -H 0.0.0.0 -p 5000",
+    "build": "next build",
+    "start": "next start"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "axios": "^0.21.1",
+    "formik": "^2.2.6",
+    "next": "^10.0.9",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass": "^1.32.8"
+  }
+}
