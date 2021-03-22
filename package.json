@@ -12,7 +12,9 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
+    "fontsource-poppins": "^4.0.0",
     "formik": "^2.2.6",
     "next": "^10.0.9",
     "react": "^17.0.1",
