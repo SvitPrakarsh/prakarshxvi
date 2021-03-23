@@ -1,19 +1,15 @@
-import { amber, blue, blueGrey, grey, yellow } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const innerTheme = createMuiTheme({
-	palette:
-		{
-			primary: { main: '#FF0050',  },
-			secondary: { main: '#24ECE7', },
-			text: {
-				// primary: '#fafafa',
-			},
-
-	typography: {
-		body2: {
-			color: grey[400],
+export const theme = createMuiTheme({
+	pallete: {
+		primary: {
+			main: '#0593EA',
 		},
+		secondary: {
+			main: '#E81123',
+		},
+	},
+	typography: {
 		fontFamily: [
 			'"Poppins"',
 			'-apple-system',
@@ -27,32 +23,39 @@ const innerTheme = createMuiTheme({
 			'"Segoe UI Symbol"',
 		].join(','),
 		fontSize: 12,
-	}}}
-);
-
-innerTheme.props = {
-	MuiButton: {
-		disableElevation: true,
-		borderRadius: '25px',
-		borderWidth: '2px',
-		variant: 'dense'
 	},
-	MuiInput: {
-		color: 'secondary',
+	shape: {
+		borderRadius: 15,
 	},
-	MuiInputLabel: {
-		color: 'secondary',
+	spacing: 10,
+	// Override Styling (CSS Properties)
+	overrides: {
+		MuiButton: {
+			root: {
+				textTransform: 'none',
+				borderWidth: '2px',
+				borderRadius: '25px',
+			},
+			fullWidth: {
+				maxWidth: '300px',
+			},
+		},
 	},
-	MuiTextField: {
-		variant: 'outlined',
-		size: 'small',
-		color: 'secondary',
-		margin: 'dense',
+	// Defaults Mui Props
+	props: {
+		MuiButton: {
+			disableElevation: true,
+		},
+		MuiTextField: {
+			variant: 'outlined',
+			size: 'small',
+			margin: 'dense',
+		},
+		MuiFormControl: {
+			size: 'small',
+			margin: 'dense',
+		},
+		// MuiPaper
+		// MuiCard
 	},
-	MuiFormControl:{
-		size: 'small',
-		margin:"dense"
-	}
-};
-
-export default innerTheme;
+});
