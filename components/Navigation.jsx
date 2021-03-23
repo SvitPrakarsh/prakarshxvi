@@ -1,4 +1,4 @@
-import {Container, makeStyles} from '@material-ui/core';
+import { Container, makeStyles } from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import { useContext, useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ import { ListItemText } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import {HomeOutlined} from "@material-ui/icons";
+import { HomeOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -43,20 +43,23 @@ const useStyles = makeStyles((theme) => ({
 export default function Navigation() {
 	const classes = useStyles();
 	const [scrolled, setScrolled] = useState(0);
-	const { drawer, setDrawer, auth } = useContext(Context);
+	const { drawer, setDrawer, auth, setAuth } = useContext(Context);
 
 	// useEffect(()=>{let scrolled = },[])
 	return (
-			<AppBar
-				position="static"
-				color={!scrolled ? 'white' : 'transparent'}
-				style={{ boxShadow: 'none' }}
-				className={classes.appBar}
-			>
-		{/*<nav>*/}
-				<Container maxWidth={'xl'}>
-
-				<Toolbar >
+		<AppBar
+			position="static"
+			color={!scrolled ? 'primary' : 'transparent'}
+			style={{ boxShadow: 'none' }}
+			className={classes.appBar}
+		>
+			{/*<nav>*/}
+			<Container maxWidth={'xl'}>
+				<Toolbar
+					style={{
+						minHeight: '54px',
+					}}
+				>
 					<Drawer />
 					<Typography
 						variant="h6"
@@ -66,10 +69,10 @@ export default function Navigation() {
 						Prakarsh 2021
 					</Typography>
 					<div id="desktop-nav">
-						<Button size="small">Home</Button>
-						<Button size="small">Events</Button>
-						<Button size="small">About</Button>
-						<Button size="small">Team</Button>
+						<Button>Home</Button>
+						<Button>Events</Button>
+						<Button>About</Button>
+						<Button>Team</Button>
 					</div>
 					{auth ? (
 						<>
@@ -103,15 +106,20 @@ export default function Navigation() {
 						</>
 					) : (
 						<>
-							<Button variant="outlined" size='medium' color="secondary">
+							<Button
+								variant="contained"
+								size="large"
+								color="secondary"
+								onClick={() => setAuth(!auth)}
+							>
 								Login
 							</Button>
 						</>
 					)}
 				</Toolbar>
-		</Container>
-{/*</nav>*/}
-</AppBar>
+			</Container>
+			{/*</nav>*/}
+		</AppBar>
 	);
 }
 
@@ -136,17 +144,17 @@ const Drawer = () => {
 				className={classes.drawer}
 			>
 				<List style={{ width: 200 }}>
-						<ListItem button>
-							<ListItemIcon>
-								<HomeOutlined />
-							</ListItemIcon>
-							<ListItemText primary='Home' />
-						</ListItem>
 					<ListItem button>
 						<ListItemIcon>
 							<HomeOutlined />
 						</ListItemIcon>
-						<ListItemText primary='Events' />
+						<ListItemText primary="Home" />
+					</ListItem>
+					<ListItem button>
+						<ListItemIcon>
+							<HomeOutlined />
+						</ListItemIcon>
+						<ListItemText primary="Events" />
 					</ListItem>
 				</List>
 				<Divider />

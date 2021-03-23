@@ -1,14 +1,15 @@
+import { useMemo } from 'react';
 import 'fontsource-poppins';
-import '../styles/global.scss';
 import Axios from 'axios';
-import Layout from '../helpers/Layout';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline, useMediaQuery } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import { theme } from '../helpers/theme';
+import '../styles/global.scss';
+// import Layout from '../helpers/Layout';
 import { Provider } from '../Context';
 import Navigation from '../components/Navigation';
 import Register from '../components/Register';
-import { useMemo } from 'react';
-import { theme } from '../helpers/theme';
 
 const App = ({ Component, pageProps }) => {
 	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -24,16 +25,16 @@ const App = ({ Component, pageProps }) => {
 
 	return (
 		<Provider>
-			<ThemeProvider theme={outerTheme}>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<Navigation />
-					<Register />
-					{/* <Layout> */}
-					<Component {...pageProps} />
-					{/* </Layout> */}
-				</ThemeProvider>
+			{/* <ThemeProvider theme={outerTheme}> */}
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				{/* <Layout> */}
+				<Navigation />
+				<Register />
+				<Component {...pageProps} />
+				{/* </Layout> */}
 			</ThemeProvider>
+			{/* </ThemeProvider> */}
 		</Provider>
 	);
 };

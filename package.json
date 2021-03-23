@@ -1,7 +1,7 @@
 {
   "name": "prakarsh-2021",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./pages/index.js",
   "public": false,
   "scripts": {
     "dev": "next dev",

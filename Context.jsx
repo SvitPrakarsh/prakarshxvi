@@ -7,7 +7,7 @@ export default Context;
 // Provider
 export const Provider = (props) => {
 	const [drawer, setDrawer] = useState(false);
-	const [auth, setAuth] = useState(null);
+	const [auth, setAuth] = useState(false);
 	const [cart, setCart] = useState({});
 
 	return (

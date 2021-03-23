@@ -2,6 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 export const theme = createMuiTheme({
 	pallete: {
+		type: 'dark',
 		primary: {
 			main: '#0593EA',
 		},
@@ -23,9 +24,30 @@ export const theme = createMuiTheme({
 			'"Segoe UI Symbol"',
 		].join(','),
 		fontSize: 12,
+		h1: {
+			fontWeight: 600,
+			letterSpacing: 1.4,
+		},
+		h2: {
+			fontWeight: 600,
+			letterSpacing: 1.4,
+		},
+		h3: {
+			fontWeight: 600,
+			letterSpacing: 1.4,
+		},
+		h4: {
+			fontWeight: 600,
+		},
+		h5: {
+			fontWeight: 600,
+		},
+		h6: {
+			fontWeight: 600,
+		},
 	},
 	shape: {
-		borderRadius: 15,
+		borderRadius: 10,
 	},
 	spacing: 10,
 	// Override Styling (CSS Properties)
@@ -34,7 +56,8 @@ export const theme = createMuiTheme({
 			root: {
 				textTransform: 'none',
 				borderWidth: '2px',
-				borderRadius: '25px',
+				// borderRadius: '25px',
+				fontSize: 12,
 			},
 			fullWidth: {
 				maxWidth: '300px',
@@ -45,6 +68,7 @@ export const theme = createMuiTheme({
 	props: {
 		MuiButton: {
 			disableElevation: true,
+			size: 'small',
 		},
 		MuiTextField: {
 			variant: 'outlined',
