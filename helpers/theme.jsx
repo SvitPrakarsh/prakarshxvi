@@ -1,17 +1,18 @@
 import { amber, blue, blueGrey, grey, yellow } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
-	palette: {
-		primary: { main: amber['A200'], contrastText: grey[900] },
-		secondary: { main: blue[900], contrastText: 'white' },
-		text: {
-			primary: grey[900],
-		},
-	},
+const innerTheme = createMuiTheme({
+	palette:
+		{
+			primary: { main: '#FF0050',  },
+			secondary: { main: '#24ECE7', },
+			text: {
+				// primary: '#fafafa',
+			},
+
 	typography: {
-		body1: {
-			color: blueGrey[800],
+		body2: {
+			color: grey[400],
 		},
 		fontFamily: [
 			'"Poppins"',
@@ -26,12 +27,15 @@ const theme = createMuiTheme({
 			'"Segoe UI Symbol"',
 		].join(','),
 		fontSize: 12,
-	},
-});
+	}}}
+);
 
-theme.props = {
+innerTheme.props = {
 	MuiButton: {
 		disableElevation: true,
+		borderRadius: '25px',
+		borderWidth: '2px',
+		variant: 'dense'
 	},
 	MuiInput: {
 		color: 'secondary',
@@ -45,6 +49,10 @@ theme.props = {
 		color: 'secondary',
 		margin: 'dense',
 	},
+	MuiFormControl:{
+		size: 'small',
+		margin:"dense"
+	}
 };
 
-export default theme;
+export default innerTheme;

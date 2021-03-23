@@ -1,3 +1,5 @@
+import {Container} from "@material-ui/core";
+
 export default function Home() {
-	return <>Hello</>;
+	return <Container maxWidth={"xl"}>Hello</Container>;
 }

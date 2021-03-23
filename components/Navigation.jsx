@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import {Container, makeStyles} from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import { useContext, useEffect, useState } from 'react';
@@ -16,6 +16,7 @@ import { ListItemText } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import { Button } from '@material-ui/core';
+import {HomeOutlined} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -30,6 +31,13 @@ const useStyles = makeStyles((theme) => ({
 	list: {
 		width: 300,
 	},
+	appBar: {
+		zIndex: theme.zIndex.drawer + 1,
+	},
+	drawer: {
+		width: 240,
+		flexShrink: 0,
+	},
 }));
 
 export default function Navigation() {
@@ -39,13 +47,16 @@ export default function Navigation() {
 
 	// useEffect(()=>{let scrolled = },[])
 	return (
-		<>
 			<AppBar
 				position="static"
-				color={!scrolled ? 'secondary' : 'transparent'}
+				color={!scrolled ? 'white' : 'transparent'}
 				style={{ boxShadow: 'none' }}
+				className={classes.appBar}
 			>
-				<Toolbar>
+		{/*<nav>*/}
+				<Container maxWidth={'xl'}>
+
+				<Toolbar >
 					<Drawer />
 					<Typography
 						variant="h6"
@@ -55,10 +66,10 @@ export default function Navigation() {
 						Prakarsh 2021
 					</Typography>
 					<div id="desktop-nav">
-						<Button size="large">HOME</Button>
-						<Button size="large">EVENTS</Button>
-						<Button size="large">ABOUT</Button>
-						<Button size="large">TEAM</Button>
+						<Button size="small">Home</Button>
+						<Button size="small">Events</Button>
+						<Button size="small">About</Button>
+						<Button size="small">Team</Button>
 					</div>
 					{auth ? (
 						<>
@@ -92,19 +103,20 @@ export default function Navigation() {
 						</>
 					) : (
 						<>
-							<Button variant="outlined" color="primary">
+							<Button variant="outlined" size='medium' color="secondary">
 								Login
 							</Button>
 						</>
 					)}
 				</Toolbar>
-			</AppBar>
-		</>
+		</Container>
+{/*</nav>*/}
+</AppBar>
 	);
 }
 
 const Drawer = () => {
-	// const classes = useStyles();
+	const classes = useStyles();
 	const { drawer, setDrawer } = useContext(Context);
 	return (
 		<div id="mobile-nav">
@@ -121,16 +133,21 @@ const Drawer = () => {
 				open={drawer}
 				onClose={() => setDrawer(false)}
 				onOpen={() => setDrawer(true)}
+				className={classes.drawer}
 			>
 				<List style={{ width: 200 }}>
-					{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-						<ListItem button key={text}>
+						<ListItem button>
 							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+								<HomeOutlined />
 							</ListItemIcon>
-							<ListItemText primary={text} />
+							<ListItemText primary='Home' />
 						</ListItem>
-					))}
+					<ListItem button>
+						<ListItemIcon>
+							<HomeOutlined />
+						</ListItemIcon>
+						<ListItemText primary='Events' />
+					</ListItem>
 				</List>
 				<Divider />
 				<List>
