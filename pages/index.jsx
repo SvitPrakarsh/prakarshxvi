@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 import { getSession, signIn, signOut, providers } from 'next-auth/client';
+import Sponsers from '../components/Sponsers';
 
 export default function Home() {
 	const classes = useStyles();
@@ -78,9 +79,12 @@ export default function Home() {
 							SPONSORS
 						</Typography>
 						<Divider />
+						
 					</div>
+					<Sponsers style={{ padding: '30px 20px' }}/>
 				</Container>
 			</Paper>
+			
 		</>
 	);
 	// </Container>
