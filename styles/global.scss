@@ -1,5 +1,20 @@
 @import './override';
 
+@font-face {
+	font-family: "Tungsten";
+	src: url("/fonts/Tungsten-Bold.ttf");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Valorant";
+	src: url("/fonts/Valorant.ttf");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
 * {
 	font-size: 14px;
 	line-height: 1;
@@ -8,15 +23,27 @@ small {
 	opacity: 0.6;
 	font-size: 10px;
 }
-nav {
-	position: sticky;
-	top: 0;
-	right: 0;
-	margin: 10px;
-	width: fit-content;
-	border-radius: 15px;
-	background: #fafafa;
-	height: 60px;
+//nav {
+//	position: sticky;
+//	top: 0;
+//	right: 0;
+//	margin: 10px;
+//	width: fit-content;
+//	border-radius: 15px;
+//	background: #fafafa;
+//	height: 60px;
+//}
+#hero{
+	height: 75vh;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	#hero-main{
+		font: 400 75px 'Valorant',sans-serif;
+		color: $primary;
+		text-align: center;
+	}
 }
 
 #mobile-nav {
@@ -29,5 +56,10 @@ nav {
 	}
 	#mobile-nav {
 		display: block;
+	}
+}
+@media only screen and (max-width: 540px) {
+	#hero-main{
+	font-size: 30px;
 	}
 }

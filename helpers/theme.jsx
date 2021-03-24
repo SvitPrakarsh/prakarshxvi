@@ -1,8 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import {useMediaQuery} from "@material-ui/core";
+
+// const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
 
 export const theme = createMuiTheme({
-	pallete: {
-		type: 'dark',
+	palette: {
+		type:'dark',
 		primary: {
 			main: '#0593EA',
 		},
@@ -12,7 +15,7 @@ export const theme = createMuiTheme({
 	},
 	typography: {
 		fontFamily: [
-			'"Poppins"',
+			'"Rubik"',
 			'-apple-system',
 			'BlinkMacSystemFont',
 			'"Segoe UI"',
@@ -27,6 +30,9 @@ export const theme = createMuiTheme({
 		h1: {
 			fontWeight: 600,
 			letterSpacing: 1.4,
+			'@media (min-width:540px)': {
+				fontSize: 35,
+			},
 		},
 		h2: {
 			fontWeight: 600,
@@ -47,27 +53,28 @@ export const theme = createMuiTheme({
 		},
 	},
 	shape: {
-		borderRadius: 10,
+		borderRadius: 2,
 	},
 	spacing: 10,
 	// Override Styling (CSS Properties)
 	overrides: {
 		MuiButton: {
 			root: {
-				textTransform: 'none',
+				// textTransform: 'none',
 				borderWidth: '2px',
 				// borderRadius: '25px',
 				fontSize: 12,
+				// fontWeight:500,
 			},
 			fullWidth: {
-				maxWidth: '300px',
+				maxWidth: '400px',
 			},
 		},
 	},
 	// Defaults Mui Props
 	props: {
 		MuiButton: {
-			disableElevation: true,
+			// disableElevation: true,
 			size: 'small',
 		},
 		MuiTextField: {

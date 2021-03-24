@@ -26,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(2),
 	},
 	title: {
+		fontFamily: "'Valorant',sans-serif",
+		fontSize: 24,
 		flexGrow: 1,
+		alignSelf: 'center',
 	},
 	list: {
 		width: 300,
@@ -49,7 +52,7 @@ export default function Navigation() {
 	return (
 		<AppBar
 			position="static"
-			color={!scrolled ? 'primary' : 'transparent'}
+			color='black'
 			style={{ boxShadow: 'none' }}
 			className={classes.appBar}
 		>
@@ -62,11 +65,10 @@ export default function Navigation() {
 				>
 					<Drawer />
 					<Typography
-						variant="h6"
 						className={classes.title}
 						style={{ flexGrow: '1' }}
 					>
-						Prakarsh 2021
+						P
 					</Typography>
 					<div id="desktop-nav">
 						<Button>Home</Button>
