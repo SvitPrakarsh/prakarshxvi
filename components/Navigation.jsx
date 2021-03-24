@@ -130,7 +130,7 @@ const Navigation = ({ props }) => {
 								// onClick={() => setDrawer(!drawer)}
 								color="inherit"
 							>
-								<Avatar alt="Remy Sharp" src={``} style={{width:'15px', height:'15px'}} />
+								<Avatar alt="Remy Sharp" src={``} style={{width:'25px', height:'25px'}} />
 							</IconButton>
 							<Menu
 								id="menu-appbar"
