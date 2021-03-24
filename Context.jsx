@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import useAuth from './helpers/useAuth'
 
 // Context
 const Context = createContext();
@@ -8,7 +9,8 @@ export default Context;
 export const Provider = (props) => {
 	const [drawer, setDrawer] = useState(false);
 	const [auth, setAuth] = useState(false);
-	const [cart, setCart] = useState({});
+	const [session, setSession] = useState(null);
+	const [user, setUser] = useState(null);
 
 	return (
 		<Context.Provider
@@ -17,8 +19,10 @@ export const Provider = (props) => {
 				setDrawer,
 				auth,
 				setAuth,
-				cart,
-				setCart,
+				user,
+				setUser,
+				session, 
+				setSession
 			}}
 		>
 			{props.children}

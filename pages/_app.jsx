@@ -11,6 +11,8 @@ import { Provider } from '../Context';
 import Navigation from '../components/Navigation';
 import Register from '../components/Register';
 
+Axios.defaults.baseURL = "https://prakarshxvi-api.herokuapp.com"
+
 const App = ({ Component, pageProps }) => {
 	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 	const outerTheme = useMemo(

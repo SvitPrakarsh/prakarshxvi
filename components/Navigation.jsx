@@ -17,6 +17,9 @@ import { Divider } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { HomeOutlined } from '@material-ui/icons';
+import { getSession, signIn, signOut, providers } from "next-auth/client";
+import axios from 'axios';
+const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -40,12 +43,42 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Navigation() {
+
+const Navigation = ({ props }) => {
 	const classes = useStyles();
 	const [scrolled, setScrolled] = useState(0);
-	const { drawer, setDrawer, auth, setAuth } = useContext(Context);
+	const { drawer, setDrawer, auth, setAuth, session, setSession, user, setUser } = useContext(Context);
 
-	// useEffect(()=>{let scrolled = },[])
+	useEffect(() => {
+		getSession().then((s) => {
+			setSession(s);
+			if (s) {
+				axios({
+					method: 'post',
+					url: `${baseUrl}/participants`,
+					data: {
+						'email': s.user.email
+					},
+					headers: {
+						'Authorization': "Bearer " + s.jwt
+					}
+				}).then((u) => {
+					if (u.data.length > 0) {
+						setUser(u.data);
+					}
+					else {
+						setAuth(true);
+					}
+				}).catch((e)=>{
+					console.log(e);
+				});
+			}
+		});
+	}, []);
+
+
+	console.log("*********************");
+	console.log(user)
 	return (
 		<AppBar
 			position="static"
@@ -74,7 +107,7 @@ export default function Navigation() {
 						<Button>About</Button>
 						<Button>Team</Button>
 					</div>
-					{auth ? (
+					{user ? (
 						<>
 							<IconButton
 								aria-label="account of current user"
@@ -97,8 +130,8 @@ export default function Navigation() {
 									vertical: 'top',
 									horizontal: 'right',
 								}}
-								// open={drawer}
-								// onClose={() => setDrawer(false)}
+							// open={drawer}
+							// onClose={() => setDrawer(false)}
 							>
 								<MenuItem>Profile</MenuItem>
 								<MenuItem>My account</MenuItem>
@@ -110,7 +143,15 @@ export default function Navigation() {
 								variant="contained"
 								size="large"
 								color="secondary"
-								onClick={() => setAuth(!auth)}
+								onClick={(e) => {
+									e.preventDefault();
+									if (session) {
+										setAuth(true)
+									}
+									else {
+										signIn('google');
+									}
+								}}
 							>
 								Login
 							</Button>
@@ -172,3 +213,5 @@ const Drawer = () => {
 		</div>
 	);
 };
+
+export default Navigation;
