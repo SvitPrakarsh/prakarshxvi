@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { useContext, useState } from 'react';
 import Context from '../Context';
+import { signOut } from "next-auth/client";
 
 const useStyles = makeStyles((theme) => ({
 	dialogPaper: {
@@ -21,15 +22,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
 	const classes = useStyles();
-	const { auth, setAuth } = useContext(Context);
+	const { auth, setAuth, session, setUser, setSession } = useContext(Context);
 	const [submitting, setSubmitting] = useState(true);
 
+	registerUser()=>{
+
+	}
+
+	console.log(session)
 	return (
 		<>
 			<Dialog
 				maxWidth="xs"
-				open={auth}
-				onClose={() => setAuth(false)}
+				open={session !== null && auth}
+				onClose={() => {
+					signOut({redirect:false});
+					setSession(null);
+					setAuth(false);
+				}}
 				onBackdropClick={() => setAuth(false)}
 				// aria-labelledby="max-width-dialog-title"
 				classes={{
@@ -70,7 +80,7 @@ export default function Register() {
 							<TextField label="Phone No." variant="outlined" fullWidth />
 						</Grid>
 					</Grid>
-					<TextField label="Email" variant="outlined" fullWidth />
+					<TextField label={session ? session.user.email : "Email"} variant="outlined" fullWidth disabled />
 					<small>
 						*The above data cannot be changed once submitted. All spam entries
 						will be disqualified.
@@ -82,6 +92,7 @@ export default function Register() {
 							variant="contained"
 							color="primary"
 							size="large"
+							type="submit"
 							fullWidth
 							style={{ margin: '0 auto' }}
 						>
