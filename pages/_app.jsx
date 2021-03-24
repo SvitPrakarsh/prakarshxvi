@@ -1,7 +1,4 @@
-import {useMemo} from 'react';
-import '@fontsource/raleway';
 import '@fontsource/rubik';
-import Axios from 'axios';
 import {CssBaseline, useMediaQuery} from '@material-ui/core';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 

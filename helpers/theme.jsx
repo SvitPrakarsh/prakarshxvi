@@ -39,7 +39,7 @@ export const theme = createMuiTheme({
 			letterSpacing: 1.4,
 		},
 		h3: {
-			fontWeight: 600,
+			// fontWeight: 600,
 			letterSpacing: 1.4,
 		},
 		h4: {
@@ -51,6 +51,10 @@ export const theme = createMuiTheme({
 		h6: {
 			fontWeight: 600,
 		},
+		body1:{
+			fontSize:14,
+			lineHeight: 2,
+		}
 	},
 	shape: {
 		borderRadius: 2,
@@ -69,6 +73,10 @@ export const theme = createMuiTheme({
 			fullWidth: {
 				maxWidth: '400px',
 			},
+			text:{
+				fontSize: '12px',
+				fontWeight: 600,
+			}
 		},
 	},
 	// Defaults Mui Props
@@ -86,6 +94,10 @@ export const theme = createMuiTheme({
 			size: 'small',
 			margin: 'dense',
 		},
+		MuiPaper:{
+			component: 'div',
+			square: true,
+		}
 		// MuiPaper
 		// MuiCard
 	},

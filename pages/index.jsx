@@ -1,5 +1,6 @@
-import {Container, Grid, makeStyles, Paper, Toolbar, Typography} from "@material-ui/core";
+import {Card, Container, Divider, Grid, makeStyles, Paper, Toolbar, Typography} from "@material-ui/core";
 import Image from "next/image"
+import EventCategories from "../components/Events";
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc:{
@@ -12,8 +13,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
 	const classes = useStyles();
 
-	return (<Container maxWidth={"xl"}>
-			<div id='hero'>
+	return (
+		// <Container maxWidth={"xl"}>
+			<><div id='hero'>
 
 				<Typography
 					id='hero-main'
@@ -31,6 +33,32 @@ export default function Home() {
 	An Impulse to Soar.
 				</Typography>
 			</div>
-
-	</Container>);
+<Paper style={{padding: '30px 20px'}}>
+	<Container maxWidth='lg'>
+		<Grid container spacing={5}>
+			<Grid item sm>
+				<div style={{borderRadius:'10px', backgroundColor: '#fafafa', width:'100%', height:'100%'}}/>
+			</Grid>
+			<Grid item sm>
+				<Typography variant='h3'>
+				What is Prakarsh?
+				</Typography>
+				<Typography variant='body1'>
+					PRAKARSH, a National Level Technical Symposium to bring together the best brains in the country and give them a chance to showcase their skills and talents. This will give a platform for the students to interact and compete with each other. There are non-technical events too to incorporate fun activities alongside the technical fervour.
+				</Typography>
+			</Grid>
+		</Grid>
+	</Container>
+</Paper>
+				<EventCategories/>
+				<Paper style={{padding: '30px 20px'}}>
+					<Container>
+						<div style={{maxWidth:'36vw', margin: '0 auto 50px'}}>
+							<Typography variant='h3' align='center' gutterBottom style={{fontFamily:'"Valorant",sans-serif',}}>SPONSORS</Typography>
+							<Divider />
+						</div>
+					</Container>
+				</Paper>
+			</>)
+	// </Container>
 }

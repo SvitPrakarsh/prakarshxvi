@@ -1,4 +1,4 @@
-import { Container, makeStyles } from '@material-ui/core';
+import {Avatar, Container, makeStyles} from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import { useContext, useEffect, useState } from 'react';
@@ -51,7 +51,7 @@ export default function Navigation() {
 	// useEffect(()=>{let scrolled = },[])
 	return (
 		<AppBar
-			position="static"
+			position="sticky"
 			color='black'
 			style={{ boxShadow: 'none' }}
 			className={classes.appBar}
@@ -64,16 +64,28 @@ export default function Navigation() {
 					}}
 				>
 					<Drawer />
-					<Typography
+					{/*<Typography
 						className={classes.title}
-						style={{ flexGrow: '1' }}
+						style={{}}
 					>
-						P
-					</Typography>
+						
+					</Typography>*/}
+
+					<div 							style={{flexGrow:1}}
+					>
+						<IconButton
+							aria-label="account of current user"
+							aria-controls="menu-appbar"
+							aria-haspopup="true"
+							// onClick={() => setDrawer(!drawer)}
+							color="inherit"
+						>
+						<img src="/prakarsh2021-logo.png" alt="" style={{height:36, width:36,  }}/>
+						</IconButton>
+						</div>
 					<div id="desktop-nav">
 						<Button>Home</Button>
 						<Button>Events</Button>
-						<Button>About</Button>
 						<Button>Team</Button>
 					</div>
 					{auth ? (
@@ -85,7 +97,7 @@ export default function Navigation() {
 								// onClick={() => setDrawer(!drawer)}
 								color="inherit"
 							>
-								<AccountCircle />
+								<Avatar alt="Remy Sharp" src={``} style={{width:'15px', height:'15px'}} />
 							</IconButton>
 							<Menu
 								id="menu-appbar"

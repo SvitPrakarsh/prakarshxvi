@@ -10,6 +10,7 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <link rel="shortcut icon" href="/prakarsh2021-logo.png" type="image/png"/>
                     <link
                         rel="preload"
                         href="/fonts/Tungsten-Bold.ttf"
