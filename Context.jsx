@@ -11,6 +11,7 @@ export const Provider = (props) => {
 	const [auth, setAuth] = useState(false);
 	const [session, setSession] = useState(null);
 	const [user, setUser] = useState(null);
+	const [error, setError] = useState(null);
 
 	return (
 		<Context.Provider
@@ -22,7 +23,9 @@ export const Provider = (props) => {
 				user,
 				setUser,
 				session, 
-				setSession
+				setSession,
+				error,
+				setError
 			}}
 		>
 			{props.children}

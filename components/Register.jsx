@@ -25,9 +25,26 @@ export default function Register() {
 	const { auth, setAuth, session, setUser, setSession } = useContext(Context);
 	const [submitting, setSubmitting] = useState(true);
 
-	registerUser()=>{
+  const register = (values, { setSubmitting }) => {
+    let full_name = `${values.firstName} ${values.middleName} ${values.lastName}`;
+    let body = { ...values, full_name, user_id: session.user.id };
+    Axios.post("/participants/register", body, {
+      headers: {
+        Authorization: "Bearer " + session.jwt,
+      },
+    })
+      .then((r) => {
+        setUser(r.data);
+      })
+      .catch((e) => {
+        setError(e)
+      })
+      .finally(() => {
+        setSubmitting(false);
+        setAuth(false);
+      });
+  };
 
-	}
 
 	console.log(session)
 	return (
@@ -105,4 +122,5 @@ export default function Register() {
 			</Dialog>
 		</>
 	);
-}
+
+	}

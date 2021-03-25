@@ -1,15 +1,16 @@
 import {
-	Card,
 	Container,
 	Divider,
 	Grid,
 	makeStyles,
 	Paper,
-	Toolbar,
 	Typography,
+	Snackbar
 } from '@material-ui/core';
-import Image from 'next/image';
 import EventCategories from '../components/Events';
+import { useContext, useEffect, useState, useRef } from 'react';
+import Context from '../Context';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc: {
@@ -17,13 +18,14 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: 18,
 	},
 }));
-import { getSession, signIn, signOut, providers } from 'next-auth/client';
+
 
 export default function Home() {
 	const classes = useStyles();
+	const { error, setError } = useContext(Context);
+
 
 	return (
-		// <Container maxWidth={"xl"}>
 		<>
 			<div id="hero">
 				<Typography id="hero-main" variant="h1" className={classes.heroMain}>
@@ -81,6 +83,14 @@ export default function Home() {
 					</div>
 				</Container>
 			</Paper>
+			<Snackbar
+				autoHideDuration={6000}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+				open={error}
+				onClose={() => { setError(null) }}
+			>
+				<MuiAlert elevation={6} variant="filled" severity="error">{error}</MuiAlert>
+			</Snackbar>
 		</>
 	);
 	// </Container>
