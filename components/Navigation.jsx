@@ -1,4 +1,4 @@
-import { Avatar, Container, makeStyles } from '@material-ui/core';
+import { Avatar, Container, makeStyles, CircularProgress } from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import { useContext, useEffect, useState, useRef } from 'react';
@@ -19,39 +19,39 @@ import { Button } from '@material-ui/core';
 import { HomeOutlined } from '@material-ui/icons';
 import { getSession, signIn, signOut, providers } from 'next-auth/client';
 import axios from 'axios';
-import {useRouter} from "next/router";
+
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		flexGrow: 1,
-	},
-	menuButton: {
-		marginRight: theme.spacing(2),
-	},
-	title: {
-		fontFamily: "'Valorant',sans-serif",
-		fontSize: 24,
-		flexGrow: 1,
-		alignSelf: 'center',
-	},
-	list: {
-		width: 300,
-	},
-	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
-		transition: 0.3,
-	},
-	drawer: {
-		width: 240,
-		flexShrink: 0,
-	},
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    fontFamily: "'Valorant',sans-serif",
+    fontSize: 24,
+    flexGrow: 1,
+    alignSelf: 'center',
+  },
+  list: {
+    width: 300,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: 0.3,
+  },
+  drawer: {
+    width: 240,
+    flexShrink: 0,
+  },
 }));
 
 const Navigation = ({ props }) => {
   const classes = useStyles();
-  const [scrolled, setScrolled] = useState(0);
   const [menu, setMenu] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { setAuth, session, setSession, user, setUser, error, setError } = useContext(Context);
   const anchorEl = useRef(null)
 
@@ -59,25 +59,6 @@ const Navigation = ({ props }) => {
     getSession().then((s) => {
       setSession(s);
       if (s) {
-        axios({
-          method: 'post',
-          url: `${baseUrl}/participants`,
-          data: {
-            'email': s.user.email
-          },
-          headers: {
-            'Authorization': "Bearer " + s.jwt
-          }
-        }).then((u) => {
-          if (u.data.length > 0) {
-            setUser(u.data[0]);
-          }
-          else {
-            setAuth(true);
-          }
-        }).catch((e) => {
-          console.log(e);
-        });
       }
     });
   }, []);
@@ -128,7 +109,7 @@ const Navigation = ({ props }) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={()=>setError("Error my ass")}
+                onClick={() => setError("Error my ass")}
                 // onClick={()=>{setMenu(true)}}
                 color="inherit"
               >
@@ -151,7 +132,7 @@ const Navigation = ({ props }) => {
                 onClose={() => setMenu(false)}
               >
                 {/* <MenuItem>Profile</MenuItem> */}
-                <MenuItem onClick={()=>{
+                <MenuItem onClick={() => {
                   signOut()
                   setUser(null)
                   setSession(null)
@@ -160,14 +141,36 @@ const Navigation = ({ props }) => {
             </>
           ) : (
             <>
-              <Button
+              {loading ? (<CircularProgress />) : <Button
                 variant="contained"
                 size="large"
                 color="secondary"
                 onClick={(e) => {
                   e.preventDefault();
                   if (session) {
-                    setAuth(true)
+                    setLoading(true)
+                    axios({
+                      method: 'post',
+                      url: `${baseUrl}/participants`,
+                      data: {
+                        'email': session.user.email
+                      },
+                      headers: {
+                        'Authorization': "Bearer " + session.jwt
+                      }
+                    }).then((u) => {
+                      if (u.data.length > 0) {
+                        setUser(u.data[0]);
+                      }
+                      else {
+                        setAuth(true);
+                      }
+                    }).catch((e) => {
+                      console.log(e);
+                      setError("Error!!!")
+                    }).finally(() => {
+                      setLoading(false)
+                    });
                   }
                   else {
                     signIn('google');
@@ -175,7 +178,7 @@ const Navigation = ({ props }) => {
                 }}
               >
                 Login
-							</Button>
+							</Button>}
             </>
           )}
         </Toolbar>

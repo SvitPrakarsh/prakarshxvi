@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
 	const classes = useStyles();
-	const { auth, setAuth, session, setUser, setSession } = useContext(Context);
+	const { auth, setAuth, session, setUser, setSession, error, setError } = useContext(Context);
 	// const [submitting, setSubmitting] = useState(true);
 
 	const initialValues = {
@@ -68,7 +68,7 @@ export default function Register() {
         setUser(r.data);
       })
       .catch((e) => {
-        setError(e)
+        setError(e.toString())
       })
       .finally(() => {
         setSubmitting(false);
