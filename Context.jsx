@@ -38,7 +38,7 @@ export const Provider = (props) => {
 				session,
 				setSession,
 				cart,
-				setCart
+				setCart,
 				error,
 				setError
 			}}
