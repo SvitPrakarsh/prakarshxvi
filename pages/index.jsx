@@ -5,9 +5,12 @@ import {
 	makeStyles,
 	Paper,
 	Typography,
+	Snackbar
 } from '@material-ui/core';
-import Image from 'next/image';
 import EventCategories from '../components/Events';
+import { useContext, useEffect, useState, useRef } from 'react';
+import Context from '../Context';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc: {
@@ -24,9 +27,10 @@ import {Head} from "next/document";
 
 export default function Home() {
 	const classes = useStyles();
+	const { error, setError } = useContext(Context);
+
 
 	return (
-		// <Container maxWidth={"xl"}>
 		<>
 			<div id="hero">
 				<Background />
@@ -91,6 +95,14 @@ export default function Home() {
 					<Sponsers style={{ padding: '30px 20px' }} />
 				</Container>
 			</Paper>
+			<Snackbar
+				autoHideDuration={6000}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+				open={error}
+				onClose={() => { setError(null) }}
+			>
+				<MuiAlert elevation={6} variant="filled" severity="error">{error}</MuiAlert>
+			</Snackbar>
 		</>
 	);
 	// </Container>

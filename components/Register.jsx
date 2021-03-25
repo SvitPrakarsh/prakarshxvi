@@ -29,24 +29,6 @@ export default function Register() {
 	const { auth, setAuth, session, setUser, setSession } = useContext(Context);
 	// const [submitting, setSubmitting] = useState(true);
 
-	const register = (values, { setSubmitting }) => {
-		let full_name = `${values.firstName} ${values.middleName} ${values.lastName}`;
-		let body = { ...values, full_name, user_id: session.user.id };
-		Axios.post('/participants/register', body, {
-			headers: {
-				Authorization: 'Bearer ' + session.jwt,
-			},
-		})
-			.then((r) => {
-				setUser(body);
-			})
-			.catch((e) => console.log(e))
-			.finally(() => {
-				setSubmitting(false);
-				setAuth(false);
-			});
-	};
-
 	const initialValues = {
 		firstName: '',
 		middleName: '',
@@ -73,6 +55,27 @@ export default function Register() {
 			)
 			.required('Phone Number is Required'),
 	});
+
+  const register = (values, { setSubmitting }) => {
+    let full_name = `${values.firstName} ${values.middleName} ${values.lastName}`;
+    let body = { ...values, full_name, user_id: session.user.id };
+    Axios.post("/participants/register", body, {
+      headers: {
+        Authorization: "Bearer " + session.jwt,
+      },
+    })
+      .then((r) => {
+        setUser(r.data);
+      })
+      .catch((e) => {
+        setError(e)
+      })
+      .finally(() => {
+        setSubmitting(false);
+        setAuth(false);
+      });
+  };
+
 
 	// console.log(session);
 	return (
@@ -250,4 +253,5 @@ export default function Register() {
 			</Dialog>
 		</>
 	);
-}
+
+	}
