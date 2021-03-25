@@ -9,8 +9,12 @@ export const theme = createMuiTheme({
 		primary: {
 			main: '#0593EA',
 		},
+		background:{
+			default:'#0b0812',
+			paper: '#110b18',
+		},
 		secondary: {
-			main: '#E81123',
+			main: '#FF4655',
 		},
 	},
 	typography: {
@@ -39,16 +43,15 @@ export const theme = createMuiTheme({
 			letterSpacing: 1.4,
 		},
 		h3: {
-			// fontWeight: 600,
-			letterSpacing: 1.4,
+			fontFamily:'"Tungsten", sans-serif',
+			fontWeight: 400,
+			textTransform: 'uppercase',
+			letterSpacing: 2,
 		},
 		h4: {
 			fontWeight: 600,
 		},
 		h5: {
-			fontWeight: 600,
-		},
-		h6: {
 			fontWeight: 600,
 		},
 		body1:{
@@ -65,17 +68,21 @@ export const theme = createMuiTheme({
 		MuiButton: {
 			root: {
 				// textTransform: 'none',
-				borderWidth: '2px',
+				// borderWidth: '2px',
 				// borderRadius: '25px',
 				fontSize: 12,
-				// fontWeight:500,
+				fontWeight:500,
+				margin: '0 10px',
 			},
 			fullWidth: {
 				maxWidth: '400px',
 			},
 			text:{
 				fontSize: '12px',
-				fontWeight: 600,
+				// fontWeight: 500,
+			},
+			outlined:{
+				borderWidth: '100px',
 			}
 		},
 	},

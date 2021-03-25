@@ -1,15 +1,22 @@
 @import './override';
 
 @font-face {
-	font-family: "Tungsten";
-	src: url("/fonts/Tungsten-Bold.ttf");
+	font-family: 'Tungsten';
+	src: url('/fonts/Tungsten-Bold.ttf');
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
 }
 @font-face {
-	font-family: "Valorant";
-	src: url("/fonts/Valorant.ttf");
+	font-family: 'Valorant';
+	src: url('/fonts/Valorant.ttf');
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Operator Mono';
+	src: url('/fonts/OperatorMono.otf');
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
@@ -18,16 +25,41 @@
 * {
 	font-size: 14px;
 	line-height: 1;
+	scroll-behavior: smooth;
+}
+//html, body {
+//	background: hsl(258, 37%, 25%) !important;
+//}
+
+.background{
+	position: fixed;
+	z-index: -10;
+	opacity: .8;
+	overflow: hidden;
+	canvas{
+		width: 100%;
+	}
+	&::before{
+		z-index: -8;
+		background: #fafafa;
+		opacity: 0.6;
+		width: 100vw;
+		height: 100vh;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+}
 }
 small {
 	opacity: 0.6;
 	font-size: 10px;
 }
 
-header.MuiPaper-root{
+header.MuiPaper-root {
 	padding: 0;
 }
-form i{
+form i {
 	font-style: normal;
 	color: #e81123;
 	font-size: 10px;
@@ -42,16 +74,34 @@ form i{
 //	background: #fafafa;
 //	height: 60px;
 //}
-#hero{
+#hero {
 	height: calc(100vh - 54px);
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
-	align-items: center;
-	#hero-main{
-		font: 400 75px 'Valorant',sans-serif;
-		color: $primary;
+	align-items: flex-end;
+	width: fit-content;
+	margin: auto;
+	#hero-main {
+		font: 400 120px 'Valorant', sans-serif;
+		color: #ffffff;
 		text-align: center;
+	}
+	#hero-desc{
+		font: 400 24px "Operator Mono",monospace;
+		color: $secondary;
+
+	}
+	#hero-bg {
+		margin: 0;
+		padding: 0;
+		font: 400 750px 'Tungsten';
+		position: absolute;
+		top: 100px;
+		right: -500px;
+		color: #fafafa;
+		letter-spacing: 50px;
+		opacity: 0.5;
 	}
 }
 
@@ -59,7 +109,30 @@ form i{
 	display: none;
 }
 
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
 @media only screen and (max-width: 860px) {
+	#hero-main {
+		font-size: 42px;
+	}
 	#desktop-nav {
 		display: none;
 	}
@@ -68,7 +141,7 @@ form i{
 	}
 }
 @media only screen and (max-width: 540px) {
-	#hero-main{
-	font-size: 30px;
+	#hero-main {
+		font-size: 32px;
 	}
 }

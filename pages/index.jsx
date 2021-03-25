@@ -1,11 +1,9 @@
 import {
-	Card,
 	Container,
 	Divider,
 	Grid,
 	makeStyles,
 	Paper,
-	Toolbar,
 	Typography,
 } from '@material-ui/core';
 import Image from 'next/image';
@@ -13,12 +11,16 @@ import EventCategories from '../components/Events';
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc: {
-		fontFamily: 'Rubik',
-		fontSize: 18,
+		fontFamily: '"Operator Mono", monospace',
+		fontSize: 24,
+		color: '#FF4655',
+		fontWeight: 400,
+		textAlign: 'left'
 	},
 }));
-import { getSession, signIn, signOut, providers } from 'next-auth/client';
 import Sponsers from '../components/Sponsers';
+import Background from "../components/Background";
+import {Head} from "next/document";
 
 export default function Home() {
 	const classes = useStyles();
@@ -27,33 +29,36 @@ export default function Home() {
 		// <Container maxWidth={"xl"}>
 		<>
 			<div id="hero">
+				<Background />
 				<Typography id="hero-main" variant="h1" className={classes.heroMain}>
 					PRAKARSH XVI
 				</Typography>
-
 				<Typography
 					component="div"
-					variant="caption"
-					className={classes.heroDesc}
+					variant="h5"
+					id='hero-desc'
 				>
-					An Impulse to Soar.
+					[ an impulse to soar ]
 				</Typography>
 			</div>
-			<Paper style={{ padding: '30px 20px' }}>
+			<Paper style={{ padding: '40px' }}>
 				<Container maxWidth="lg">
-					<Grid container spacing={5}>
+					<Grid container spacing={5} alignItems='center'>
 						<Grid item sm>
 							<div
 								style={{
 									borderRadius: '10px',
-									backgroundColor: '#fafafa',
 									width: '100%',
 									height: '100%',
+									overflow:'hidden'
 								}}
-							/>
+							><img src='/College_Image.png' alt='' height='auto' width='600px' style={{objectFit: 'contain'}}/></div>
 						</Grid>
 						<Grid item sm>
-							<Typography variant="h3">What is Prakarsh?</Typography>
+							<div style={{ maxWidth: '36vw', margin: '0 0 25px' }}>
+								<Typography variant="h3" gutterBottom>What is Prakarsh?</Typography>
+								<Divider style={{width: '50%', backgroundColor:'#FF4655' }}/>
+							</div>
 							<Typography variant="body1">
 								PRAKARSH, a National Level Technical Symposium to bring together
 								the best brains in the country and give them a chance to
@@ -66,7 +71,10 @@ export default function Home() {
 					</Grid>
 				</Container>
 			</Paper>
+			<div id='events'>
 			<EventCategories />
+
+			</div>
 			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
 					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
@@ -79,12 +87,10 @@ export default function Home() {
 							SPONSORS
 						</Typography>
 						<Divider />
-						
 					</div>
-					<Sponsers style={{ padding: '30px 20px' }}/>
+					<Sponsers style={{ padding: '30px 20px' }} />
 				</Container>
 			</Paper>
-			
 		</>
 	);
 	// </Container>

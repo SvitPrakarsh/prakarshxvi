@@ -1,0 +1,176 @@
+[
+	{
+		"name": "Lorem Ipsum",
+		"category": "Cyber Intrusion",
+		"image": "/prakarsh2021-logo.png",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": "200"
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 2",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 3",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 4",
+						"sectionContent": ""
+					}
+				]
+			},
+			{
+				"sectionHeader": "Time",
+				"sectionContent": ""
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "",
+				"number": ""
+			},
+			{
+				"name": "",
+				"number": ""
+			}
+		]
+	},
+	{
+		"name": "Lorem Ips",
+		"category": "Cyber Intrusion",
+		"image": "/prakarsh2021-logo.png",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": "200"
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 2",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 3",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 4",
+						"sectionContent": ""
+					}
+				]
+			},
+			{
+				"sectionHeader": "Time",
+				"sectionContent": ""
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "",
+				"number": ""
+			},
+			{
+				"name": "",
+				"number": ""
+			}
+		]
+	},
+	{
+		"name": "Lorem Ipsu",
+		"category": "Dexter's Lab",
+		"image": "/prakarsh2021-logo.png",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": "200"
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "Hello"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 2",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 3",
+						"sectionContent": ""
+					},
+					{
+						"sectionHeader": "Round 4",
+						"sectionContent": ""
+					}
+				]
+			},
+			{
+				"sectionHeader": "Time",
+				"sectionContent": ""
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "",
+				"number": ""
+			},
+			{
+				"name": "",
+				"number": ""
+			}
+		]
+	}
+]

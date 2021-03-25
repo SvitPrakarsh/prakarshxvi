@@ -22,12 +22,21 @@ class MyDocument extends Document {
                         href="/fonts/Valorant.ttf"
                         as="font"
                         crossOrigin=""
+                    /> <link
+                        rel="preload"
+                        href="/fonts/OperatorMono.otf"
+                        as="font"
+                        crossOrigin=""
                     />
+
+
                     {/*<title>Prakarsh 2020 - SVIT, Vasad</title>*/}
                 </Head>
                 <body>
                 <Main />
                 <NextScript />
+                <script
+                    src="/noise.min.js" />
                 </body>
             </Html>
         )

@@ -1,5 +1,5 @@
 $primary: #0593ea;
-$secondary: #e81123;
+$secondary: #FF4655;
 
 //.MuiToolbar-root {
 //  font-weight: 600;
@@ -8,3 +8,6 @@ $secondary: #e81123;
 //        font-size: 12px;
 //      }  }
 //}
+.MuiDialog-container .MuiPaper-root{
+ border-radius: 10px;
+}
