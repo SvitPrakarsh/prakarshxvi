@@ -30,16 +30,14 @@ export default function Home() {
 		<>
 			<div id="hero">
 				<Background />
-				<Typography id="hero-main" variant="h1" className={classes.heroMain}>
+				<h1 id="hero-main">
 					PRAKARSH XVI
-				</Typography>
-				<Typography
-					component="div"
-					variant="h5"
+				</h1>
+				<h5
 					id='hero-desc'
 				>
 					[ an impulse to soar ]
-				</Typography>
+				</h5>
 			</div>
 			<Paper style={{ padding: '40px' }}>
 				<Container maxWidth="lg">
