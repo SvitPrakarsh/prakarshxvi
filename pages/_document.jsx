@@ -10,6 +10,8 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                <script
+                    src="/noise.min.js" />
                     <link rel="shortcut icon" href="/prakarsh2021-logo.png" type="image/png"/>
                     <link
                         rel="preload"
@@ -35,8 +37,6 @@ class MyDocument extends Document {
                 <body>
                 <Main />
                 <NextScript />
-                <script
-                    src="/noise.min.js" />
                 </body>
             </Html>
         )

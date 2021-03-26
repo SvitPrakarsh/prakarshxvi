@@ -22,6 +22,7 @@ export const Provider = (props) => {
 		setCartR({...cart, event})
 		return {...cart, event}
 	}
+	const [error, setError] = useState(null);
 
 	return (
 		<Context.Provider
@@ -37,7 +38,9 @@ export const Provider = (props) => {
 				session,
 				setSession,
 				cart,
-				setCart
+				setCart,
+				error,
+				setError
 			}}
 		>
 			{props.children}
