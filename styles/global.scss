@@ -31,15 +31,15 @@
 //	background: hsl(258, 37%, 25%) !important;
 //}
 
-.background{
+.background {
 	position: fixed;
 	z-index: -10;
-	opacity: .8;
+	opacity: 0.8;
 	overflow: hidden;
-	canvas{
+	canvas {
 		width: 100%;
 	}
-	&::before{
+	&::before {
 		z-index: -8;
 		background: #fafafa;
 		opacity: 0.6;
@@ -49,7 +49,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-}
+	}
 }
 small {
 	opacity: 0.6;
@@ -64,16 +64,7 @@ form i {
 	color: #e81123;
 	font-size: 10px;
 }
-//nav {
-//	position: sticky;
-//	top: 0;
-//	right: 0;
-//	margin: 10px;
-//	width: fit-content;
-//	border-radius: 15px;
-//	background: #fafafa;
-//	height: 60px;
-//}
+
 #hero {
 	height: calc(100vh - 54px);
 	display: flex;
@@ -82,14 +73,35 @@ form i {
 	align-items: flex-end;
 	width: fit-content;
 	margin: auto;
+	#xvi {
+		z-index: -20;
+		position: absolute;
+		top: calc(50% + 54px);
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font: 400 400px 'Valorant', sans-serif;
+	}
 	#hero-main {
 		font: 400 120px 'Valorant', sans-serif;
 		color: #ffffff;
 		text-align: center;
 		margin: 0;
+		display: flex;
+		align-items: flex-start;
+		sup {
+			font: 900 16px 'Valorant', san-serif;
+			letter-spacing: 2px;
+			color: $secondary;
+		}
+		i {
+			font: 400 120px 'Valorant', sans-serif;
+
+			font-style: normal;
+			color: $secondary;
+		}
 	}
-	#hero-desc{
-		font: 400 24px "Operator Mono",monospace;
+	#hero-desc {
+		font: 700 24px 'Rubik', monospace;
 		color: $secondary;
 		margin: 0;
 	}
@@ -108,6 +120,58 @@ form i {
 
 #mobile-nav {
 	display: none;
+}
+
+// Events
+#event-card {
+	display: flex;
+	flex-flow: row nowrap;
+	position: relative;
+
+	// justify-items: center;
+	align-items: center;
+	background: #f07c41;
+	border-radius: 20px;
+	height: 250px;
+	width: 250px;
+	overflow: hidden;
+	#card-icon {
+		flex-basis: 100%;
+		height: 150px;
+		width: 100%;
+		// justify-self: center;
+		padding: 10px;
+		transition: all 0.3s ease-in-out;
+		img {
+			height: auto;
+			width: 100px;
+		}
+	}
+	#card-text {
+		flex-basis: 0%;
+		overflow: hidden;
+		height: 80%;
+		// left: 100px;
+		right: 0;
+		// background: #0f1923;
+		padding: 10px;
+
+		// font: 900 24px 'Rubik', sans-serif;
+		// opacity: 0.5;
+		// transform: rotateZ(-90deg);
+		// text-transform: uppercase;
+		opacity: 0.7;
+		transition: all 0.3s ease-in-out;
+	}
+	&:hover {
+		#card-icon {
+			flex-basis: 80%;
+		}
+		#card-text {
+			flex-basis: 20%;
+			// left: 0;
+		}
+	}
 }
 
 /* width */

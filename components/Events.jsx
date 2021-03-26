@@ -1,5 +1,5 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	Button,
 	Card,
@@ -20,16 +20,21 @@ const useStyles = makeStyles({
 	root: {
 		maxWidth: 345,
 	},
-	media: {
-		height: 180,
+	actionArea: {
+		width: 'fit-content',
 	},
 });
 
 export default function EventCategories() {
 	const classes = useStyles();
 	const router = useRouter();
+
+	// useEffect(()=>{
+	// 	onMou
+	// },[])
+
 	return (
-		<Container style={{ padding: '40px' }} maxWidth='md'>
+		<Container style={{ padding: '40px' }} maxWidth="md">
 			<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
 				<Typography
 					variant="h3"
@@ -39,25 +44,25 @@ export default function EventCategories() {
 				>
 					Events
 				</Typography>
-				<Divider style={{ backgroundColor:'#FF4655' }} />
+				<Divider style={{ backgroundColor: '#FF4655' }} />
 			</div>
-			<Grid container spacing={2} justify='center' alignItems='center'>
+			<Grid container spacing={2} justify="center" alignItems="center">
 				{categories.map((category, key) => {
 					return (
 						<Grid item sm md={4} lg={3} key={key}>
 							<Card className={classes.root}>
 								<CardActionArea
+									className={classes.actionArea}
 									onClick={() => {
 										console.log(encodeURI(category.name));
 										router.push(`/events/${encodeURI(category.name)}`);
 									}}
 								>
-									<CardMedia
+									{/* <CardMedia
 										className={classes.media}
 										image="/prakarsh2021-logo.png"
 										title=""
-										style = {{ height: 160, paddingTop: 0}}
-
+										style={{ height: 160, paddingTop: 0 }}
 									/>
 									<CardContent>
 										<Typography gutterBottom variant="h5" component="h2">
@@ -70,12 +75,24 @@ export default function EventCategories() {
 										>
 											{category.subtitle}
 										</Typography>
-									</CardContent>
+									</CardContent> */}
+									<div id="event-card">
+										<div id="card-icon">
+											<img src={category.iconUrl} alt="" />
+										</div>
+										<div id="card-text">
+											<img src={category.textUrl} alt="" />
+										</div>
+									</div>
 								</CardActionArea>
 							</Card>
 						</Grid>
 					);
 				})}
+				<div id="event-card">
+					<img src="/hex-icon.png" alt="" id="card-icon" />
+					<img id="card-text" src="/images/ancillary.svg" alt="" />
+				</div>
 			</Grid>
 		</Container>
 	);

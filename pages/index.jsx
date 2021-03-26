@@ -5,7 +5,8 @@ import {
 	makeStyles,
 	Paper,
 	Typography,
-	Snackbar
+	Snackbar,
+	Fade,
 } from '@material-ui/core';
 import EventCategories from '../components/Events';
 import { useContext, useEffect, useState, useRef } from 'react';
@@ -18,48 +19,57 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: 24,
 		color: '#FF4655',
 		fontWeight: 400,
-		textAlign: 'left'
+		textAlign: 'left',
 	},
 }));
 import Sponsers from '../components/Sponsers';
-import Background from "../components/Background";
-import {Head} from "next/document";
+import Background from '../components/Background';
+import { Head } from 'next/document';
 
 export default function Home() {
 	const classes = useStyles();
 	const { error, setError } = useContext(Context);
 
-
 	return (
 		<>
 			<div id="hero">
 				<Background />
-				<h1 id="hero-main">
-					PRAKARSH XVI
-				</h1>
-				<h5
-					id='hero-desc'
-				>
-					[ an impulse to soar ]
-				</h5>
+				<div id="xvi">XVI</div>
+				<Fade in timeout={{ enter: 5000 }}>
+					<h1 id="hero-main">
+						PRA<i>K</i>ARSH
+					</h1>
+				</Fade>
+
+				<h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
 			</div>
 			<Paper style={{ padding: '40px' }}>
 				<Container maxWidth="lg">
-					<Grid container spacing={5} alignItems='center'>
+					<Grid container spacing={5} alignItems="center">
 						<Grid item sm>
 							<div
 								style={{
 									borderRadius: '10px',
 									width: '100%',
 									height: '100%',
-									overflow:'hidden'
+									overflow: 'hidden',
 								}}
-							><img src='/College_Image.png' alt='' height='auto' width='600px' style={{objectFit: 'contain'}}/></div>
+							>
+								<img
+									src="/images/college-image.png"
+									alt=""
+									height="auto"
+									width="100%"
+									style={{ objectFit: 'contain' }}
+								/>
+							</div>
 						</Grid>
 						<Grid item sm>
 							<div style={{ maxWidth: '36vw', margin: '0 0 25px' }}>
-								<Typography variant="h3" gutterBottom>What is Prakarsh?</Typography>
-								<Divider style={{width: '50%', backgroundColor:'#FF4655' }}/>
+								<Typography variant="h3" gutterBottom>
+									What is Prakarsh?
+								</Typography>
+								<Divider style={{ width: '50%', backgroundColor: '#FF4655' }} />
 							</div>
 							<Typography variant="body1">
 								PRAKARSH, a National Level Technical Symposium to bring together
@@ -73,9 +83,8 @@ export default function Home() {
 					</Grid>
 				</Container>
 			</Paper>
-			<div id='events'>
-			<EventCategories />
-
+			<div id="events">
+				<EventCategories />
 			</div>
 			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
@@ -97,9 +106,13 @@ export default function Home() {
 				autoHideDuration={6000}
 				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
 				open={error}
-				onClose={() => { setError(null) }}
+				onClose={() => {
+					setError(null);
+				}}
 			>
-				<MuiAlert elevation={6} variant="filled" severity="error">{error}</MuiAlert>
+				<MuiAlert elevation={6} variant="filled" severity="error">
+					{error}
+				</MuiAlert>
 			</Snackbar>
 		</>
 	);
