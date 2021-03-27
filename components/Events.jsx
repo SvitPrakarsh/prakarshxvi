@@ -14,7 +14,6 @@ import {
 	Typography,
 } from '@material-ui/core';
 import categories from '../data/eventCategories.json';
-import { useRouter } from 'next/router';
 import EventCard from './EventCard';
 
 const useStyles = makeStyles({
@@ -28,37 +27,53 @@ const useStyles = makeStyles({
 
 export default function EventCategories() {
 	const classes = useStyles();
-	const router = useRouter();
+	const [nums, setNums] = useState([])
 
-	// useEffect(()=>{
-	// 	onMou
-	// },[])
+	function shuffleArray(array) {
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+	}
+
+	const generator = () => {
+		let nums = []
+		let starter = Math.random() * 7
+		nums.push(Math.floor(starter))
+
+		while (nums.length !== 7) {
+			nums.push(Math.floor((nums[nums.length - 1] + 36) % 255));
+		}
+		shuffleArray(nums)
+		console.log(nums)
+		setNums(nums)
+
+	}
+
+	useEffect(() => generator(), [])
 
 	return (
-		<Container style={{ padding: '40px' }} maxWidth="md">
-			<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
+		<Container style={{padding: '40px'}} maxWidth="lg">
+			<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
 				<Typography
 					variant="h3"
 					align="center"
 					gutterBottom
-					style={{ fontFamily: '"Valorant",sans-serif' }}
+					style={{fontFamily: '"Valorant",sans-serif'}}
 				>
 					Events
 				</Typography>
-				<Divider style={{ backgroundColor: '#FF4655' }} />
+				<Divider style={{backgroundColor: '#FF4655'}}/>
 			</div>
 			<Grid container spacing={2} justify="center" alignItems="center">
 				{categories.map((category, key) => {
+					console.log(nums[key])
 					return (
-						<Grid item sm md={4} lg={3} key={key}>
-							<EventCard category={category} />
+						<Grid item sm md={4} lg={3} key={key} justify='center' alignItems='center'>
+							<EventCard category={category} color={nums[key]}/>
 						</Grid>
 					);
 				})}
-				<div id="event-card">
-					<img src="/hex-icon.png" alt="" id="card-icon" />
-					<img id="card-text" src="/images/ancillary.svg" alt="" />
-				</div>
 			</Grid>
 		</Container>
 	);
@@ -95,3 +110,4 @@ const Animation = () => {
 		</AnimateSharedLayout>
 	);
 };
+

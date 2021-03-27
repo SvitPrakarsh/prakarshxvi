@@ -88,18 +88,19 @@ export default function Home() {
 			</div>
 			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
-					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
+					<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
 						<Typography
-							variant="h3"
+							variant="h4"
+							fontWeight={400}
 							align="center"
 							gutterBottom
-							style={{ fontFamily: '"Valorant",sans-serif' }}
+							style={{fontFamily: '"Valorant",sans-serif'}}
 						>
 							SPONSORS
 						</Typography>
-						<Divider />
+						<Divider/>
 					</div>
-					<Sponsers style={{ padding: '30px 20px' }} />
+					<Sponsers style={{padding: '30px 20px'}}/>
 				</Container>
 			</Paper>
 			<Snackbar

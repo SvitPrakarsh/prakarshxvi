@@ -33,8 +33,6 @@ const useStyles = makeStyles((theme) => ({
 	checkout: {
 		backgroundColor: theme.palette.background.paper,
 		color: '#fff',
-		textDecoration: 'underline',
-		textUnderlineOffset: '3px',
 	},
 }));
 
@@ -61,6 +59,7 @@ export default function Dashboard() {
 					variant="h4"
 					style={{
 						fontFamily: "'Valorant',sans-serif",
+						fontWeight: 400
 					}}
 				>
 					Dashboard

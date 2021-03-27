@@ -124,43 +124,58 @@ form i {
 
 // Events
 #event-card {
-	background-repeat: no-repeat;
+	display: flex;
 	background-blend-mode: soft-light;
-	background: #f07c41;
+	margin: auto;
+	padding: 10px;
 	border-radius: 20px;
 	height: 250px;
-	width: 100%;
+	width: 250px;
 	overflow: hidden;
 	vertical-align: middle;
+	text-align: center;
+	box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, .25);
+
 	#card-icon {
 		display: block;
-		// flex-basis: 100%;
-		// flex-basis: 150px;
 		margin: auto;
 		height: 150px;
 		width: auto;
-		padding: 10px;
 		transition: all 0.3s ease-in-out;
-	}
-	#card-text {
-		// flex-basis: 0%;
-		flex-basis: 20%;
 
-		overflow: hidden;
-		height: 80%;
-		right: 0;
-		padding: 10px;
-		opacity: 0.7;
-		transition: all 0.3s ease-in-out;
+		&::after {
+			display: block;
+			position: relative;
+			background: radial-gradient(#000, transparent);
+			height: 10px;
+			width: 100%;
+
+		}
 	}
-	// &:hover {
-	// 	#card-icon {
-	// 		flex-basis: 80%;
-	// 	}
-	// 	#card-text {
-	// 		flex-basis: 20%;
-	// 	}
-	// }
+
+	&:hover {
+		background-blend-mode: normal;
+		background-position: 100% center;
+		//position: fixed;
+		//top: 50%;
+		//left: 50%;
+		//transform: translate(50%, 50%) scale(2);
+		#card-icon {
+			transform: translateX(-5%) scale(.995);
+		}
+	}
+
+	//#card-text {
+	//	// flex-basis: 0%;
+	//	flex-basis: 20%;
+	//
+	//	overflow: hidden;
+	//	height: 80%;
+	//	right: 0;
+	//	padding: 10px;
+	//	opacity: 0.7;
+	//	transition: all 0.3s ease-in-out;
+	//}
 }
 
 /* width */
@@ -184,8 +199,22 @@ form i {
 }
 
 @media only screen and (max-width: 860px) {
+	#xvi {
+		font-size: 200px !important;
+	}
 	#hero-main {
-		font-size: 42px;
+		font-size: 80px !important;
+
+		sup {
+			font-size: 14px !important;
+		}
+
+		i {
+			font-size: 80px !important;
+		}
+	}
+	#hero-desc {
+		font-size: 20px !important;
 	}
 	#desktop-nav {
 		display: none;
@@ -195,7 +224,38 @@ form i {
 	}
 }
 @media only screen and (max-width: 540px) {
+	#xvi {
+		font-size: 200px !important;
+	}
 	#hero-main {
-		font-size: 32px;
+		font-size: 50px !important;
+
+		sup {
+			font-size: 14px !important;
+		}
+
+		i {
+			font-size: 50px !important;
+		}
+	}
+	#hero-desc {
+		font-size: 14px !important;
+	}
+	#event-card {
+		background-size: 75px;
+		height: 180px;
+		width: 180px;
+		background-blend-mode: normal;
+
+		#card-icon {
+			height: 100px;
+			transform: translateX(-10%);
+		}
+
+		&:hover {
+			#card-icon {
+				transform: translateX(-10%) scale(1);
+			}
+		}
 	}
 }
