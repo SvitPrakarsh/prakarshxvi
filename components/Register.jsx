@@ -241,7 +241,7 @@ export default function Register() {
 									disabled={formik.isSubmitting}
 								>
 									{formik.isSubmitting ? (
-										<CircularProgress color="secondary" />
+										<CircularProgress color="secondary" size={28} />
 									) : (
 										'Register'
 									)}
