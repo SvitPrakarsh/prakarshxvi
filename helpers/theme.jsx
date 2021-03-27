@@ -60,7 +60,7 @@ export const theme = createMuiTheme({
 		},
 	},
 	shape: {
-		borderRadius: 2,
+		borderRadius: 2.5,
 	},
 	spacing: 10,
 	// Override Styling (CSS Properties)
@@ -83,6 +83,11 @@ export const theme = createMuiTheme({
 			},
 			outlined: {
 				borderWidth: '100px',
+			},
+		},
+		MuiDivider: {
+			root: {
+				backgroundColor: '#FF4655',
 			},
 		},
 	},

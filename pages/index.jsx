@@ -11,7 +11,7 @@ import {
 import EventCategories from '../components/Events';
 import { useContext, useEffect, useState, useRef } from 'react';
 import Context from '../Context';
-import MuiAlert from '@material-ui/lab/Alert';
+// import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc: {
@@ -110,9 +110,9 @@ export default function Home() {
 					setError(null);
 				}}
 			>
-				<MuiAlert elevation={6} variant="filled" severity="error">
+				{/* <MuiAlert elevation={6} variant="filled" severity="error">
 					{error}
-				</MuiAlert>
+				</MuiAlert> */}
 			</Snackbar>
 		</>
 	);

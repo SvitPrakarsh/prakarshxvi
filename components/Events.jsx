@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import categories from '../data/eventCategories.json';
 import { useRouter } from 'next/router';
+import EventCard from './EventCard';
 
 const useStyles = makeStyles({
 	root: {
@@ -50,42 +51,7 @@ export default function EventCategories() {
 				{categories.map((category, key) => {
 					return (
 						<Grid item sm md={4} lg={3} key={key}>
-							<Card className={classes.root}>
-								<CardActionArea
-									className={classes.actionArea}
-									onClick={() => {
-										console.log(encodeURI(category.name));
-										router.push(`/events/${encodeURI(category.name)}`);
-									}}
-								>
-									{/* <CardMedia
-										className={classes.media}
-										image="/prakarsh2021-logo.png"
-										title=""
-										style={{ height: 160, paddingTop: 0 }}
-									/>
-									<CardContent>
-										<Typography gutterBottom variant="h5" component="h2">
-											{category.name}
-										</Typography>
-										<Typography
-											variant="body2"
-											color="textSecondary"
-											component="p"
-										>
-											{category.subtitle}
-										</Typography>
-									</CardContent> */}
-									<div id="event-card">
-										<div id="card-icon">
-											<img src={category.iconUrl} alt="" />
-										</div>
-										<div id="card-text">
-											<img src={category.textUrl} alt="" />
-										</div>
-									</div>
-								</CardActionArea>
-							</Card>
+							<EventCard category={category} />
 						</Grid>
 					);
 				})}
