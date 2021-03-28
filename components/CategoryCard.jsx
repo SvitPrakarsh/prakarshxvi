@@ -39,7 +39,7 @@ export default function CategoryCard({category, color}) {
 			onMouseLeave={() => set({xys:[0,0,1]})}
 			id="event-card"
 			style={{
-				transform: props.xys.to(trans),
+				transform: props.xys.interpolate(trans),
 				background: `hsla(${color}, 75%, 60%, 1) url(${category.textUrl}) no-repeat 98%`
 			}}
 			onClick={() => {
