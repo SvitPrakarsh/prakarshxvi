@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function EventCard({category, color}) {
+export default function CategoryCard({category, color}) {
 	const container = useRef(null);
 	const classes = useStyles();
 	const router = useRouter();
@@ -29,12 +29,9 @@ export default function EventCard({category, color}) {
 				console.log(encodeURI(category.name));
 				router.push(`/events/${encodeURI(category.name)}`);
 			}}
-			style={{background: `hsla(${color}, 72%, 64%, 1) url(${category.textUrl}) no-repeat 98%`}}
+			style={{background: `hsla(${color}, 75%, 60%, 1) url(${category.textUrl}) no-repeat 98%`}}
 		>
 			<img id="card-icon" src={category.iconUrl} alt=""/>
-			{/* <div
-										id="card-text"
-									/> */}
 		</div>
 	);
 }

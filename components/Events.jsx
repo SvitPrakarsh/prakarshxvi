@@ -14,7 +14,7 @@ import {
 	Typography,
 } from '@material-ui/core';
 import categories from '../data/eventCategories.json';
-import EventCard from './EventCard';
+import CategoryCard from './CategoryCard';
 
 const useStyles = makeStyles({
 	root: {
@@ -70,7 +70,7 @@ export default function EventCategories() {
 					console.log(nums[key])
 					return (
 						<Grid item sm md={4} lg={3} key={key} justify='center' alignItems='center'>
-							<EventCard category={category} color={nums[key]}/>
+							<CategoryCard category={category} color={nums[key]}/>
 						</Grid>
 					);
 				})}

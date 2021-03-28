@@ -74,7 +74,7 @@ export default function Events({ category, events }) {
 						{category}
 					</Typography>
 					<IconButton>
-						<img src="/prakarsh2021-logo.png" alt="" height="200" width="200" />
+						<img src="/.png" alt="" height="200" width="200"/>
 					</IconButton>
 				</Grid>
 				<div className={classes.content}>

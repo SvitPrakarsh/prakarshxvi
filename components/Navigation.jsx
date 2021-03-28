@@ -134,9 +134,9 @@ const Navigation = ({ props }) => {
 							>
 								<Avatar
 									ref={anchorEl}
-									alt="Remy Sharp"
+									alt=""
 									src={``}
-									style={{ width: '15px', height: '15px' }}
+									style={{width: '24px', height: '24px'}}
 								/>
 							</IconButton>
 							<Menu
@@ -155,7 +155,7 @@ const Navigation = ({ props }) => {
 								open={menu}
 								onClose={() => setMenu(false)}
 							>
-								{/* <MenuItem>Profile</MenuItem> */}
+								<MenuItem onClick={() => router.push('/dashboard')}>Dashboard</MenuItem>
 								<MenuItem
 									onClick={() => {
 										signOut();
