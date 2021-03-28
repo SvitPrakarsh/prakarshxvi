@@ -70,7 +70,7 @@ export default function EventCategories() {
 					console.log(nums[key])
 					return (
 						<Grid item sm md={4} lg={3} key={key} justify='center' alignItems='center'>
-							<CategoryCard category={category} color={nums[key]}/>
+							<CategoryCard category={category} color={nums[key]} key={key}/>
 						</Grid>
 					);
 				})}
