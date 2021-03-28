@@ -58,7 +58,7 @@ const Navigation = ({ props }) => {
 	const classes = useStyles();
 	const router = useRouter();
 	const [menu, setMenu] = useState(false);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const {
 		setAuth,
 		session,
@@ -74,7 +74,6 @@ const Navigation = ({ props }) => {
 		getSession().then((s) => {
 			setSession(s);
 			if (s) {
-				setLoading(true);
 				axios({
 					method: 'post',
 					url: `${baseUrl}/participants`,
@@ -94,11 +93,13 @@ const Navigation = ({ props }) => {
 					})
 					.catch((e) => {
 						console.log(e);
-						setError('Error!!!');
+						setError('Unable to reach server!');
 					})
 					.finally(() => {
 						setLoading(false);
 					});
+			} else{
+				setLoading(false)
 			}
 		});
 	}, []);
@@ -153,14 +154,16 @@ const Navigation = ({ props }) => {
 								aria-label="account of current user"
 								aria-controls="menu-appbar"
 								aria-haspopup="true"
-								onClick={() => setError('Error my ass')}
-								// onClick={()=>{setMenu(true)}}
+								// onClick={() => setError('Error my ass')}
+								onClick={()=>{
+									setMenu(true)
+								}}
 								color="inherit"
 							>
 								<Avatar
 									ref={anchorEl}
 									alt=""
-									src={``}
+									src={session.user.image}
 									style={{ width: '24px', height: '24px' }}
 								/>
 							</IconButton>
@@ -197,7 +200,7 @@ const Navigation = ({ props }) => {
 					) : (
 						<>
 							{loading ? (
-								<CircularProgress />
+								<CircularProgress size={28} />
 							) : (
 								<Button
 									variant="contained"

@@ -103,18 +103,7 @@ export default function Home() {
 					<Sponsers style={{padding: '30px 20px'}}/>
 				</Container>
 			</Paper>
-			<Snackbar
-				autoHideDuration={6000}
-				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-				open={error}
-				onClose={() => {
-					setError(null);
-				}}
-			>
-				{/* <MuiAlert elevation={6} variant="filled" severity="error">
-					{error}
-				</MuiAlert> */}
-			</Snackbar>
+
 		</>
 	);
 	// </Container>

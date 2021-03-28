@@ -14,18 +14,18 @@ const useStyles = makeStyles({
 
 
 export default function CategoryCard({category, color}) {
-	const container = useRef(null);
 	const classes = useStyles();
 	const router = useRouter();
 	const container = useRef(null)
 	const [props, set] = useSpring(() => ({ xys: [0, 0, 1] , config: config.default}));
+	// console.log(category.textUrl)	
 
 	const calc = (x, y) => {
 		const height = container.current.offsetHeight
 		const width = container.current.offsetWidth
 		const animX =(x-(width/2))/20
 		const animY = -(y-(height/2))/20
-		console.log([animY, animX, 1])
+		// console.log([animY, animX, 1])
 		return [animY, animX, 1]
 	}
 	const trans = (x, y, s) => `perspective(300px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
@@ -36,7 +36,6 @@ export default function CategoryCard({category, color}) {
 			ref={container}
 			onMouseMove={(e) => (set({xys: calc(e.nativeEvent.offsetX
 , e.nativeEvent.offsetY)}))}
-			// onMouseEnter={({clientX: x, clientY: y}) => (set({xys: calc(x, y)}))}
 			onMouseLeave={() => set({xys:[0,0,1]})}
 			id="event-card"
 			style={{

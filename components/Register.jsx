@@ -68,7 +68,7 @@ export default function Register() {
         setUser(r.data);
       })
       .catch((e) => {
-        setError(e.toString())
+        setError("Couldn't register please try again later!!")
       })
       .finally(() => {
         setSubmitting(false);
