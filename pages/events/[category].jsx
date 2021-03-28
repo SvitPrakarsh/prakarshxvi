@@ -47,9 +47,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Events({ category, events }) {
+export default function Events({category, icon, events}) {
 	const classes = useStyles();
-	const { event, setEvent } = useContext(Context);
+	const {event, setEvent} = useContext(Context);
 
 	useEffect(() => {
 		console.log(event);
@@ -57,25 +57,25 @@ export default function Events({ category, events }) {
 
 	return (
 		<>
-			<EventDialog />
+			<EventDialog/>
 			<Container>
 				<Grid
 					container
 					justify="space-between"
 					alignItems="center"
-					style={{ padding: 10 }}
+					style={{padding: 10}}
 				>
 					<Typography
-						variant="h2"
+						variant="h3"
 						style={{
 							fontFamily: "'Valorant',sans-serif",
 						}}
 					>
 						{category}
 					</Typography>
-					<IconButton>
-						<img src="/.png" alt="" height="200" width="200"/>
-					</IconButton>
+					{/*<IconButton disabled>*/}
+					<img id='category-icon' src={`/images/${icon}.png`} alt="" height="150px" width="auto"/>
+					{/*</IconButton>*/}
 				</Grid>
 				<div className={classes.content}>
 					<Grid container spacing={5}>
@@ -119,9 +119,15 @@ export const getServerSideProps = async ({ query }) => {
 	// console.log(category)
 	const filteredArray = groups[category];
 	// console.log(filteredArray)
+	let icon = category.toLowerCase()
+
+	icon = icon.replace(/ /g, '-')
+	icon = icon.replace(/'/g, '')
+	console.log(icon)
+
 	if (filteredArray)
 		return {
-			props: { category, events: filteredArray },
+			props: {category, icon, events: filteredArray},
 		};
-	return null;
+	return {};
 };
