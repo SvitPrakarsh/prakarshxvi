@@ -13,9 +13,9 @@ const useStyles = makeStyles({
 });
 
 
-
-
-export default function EventCard({category, color}) {
+export default function CategoryCard({category, color}) {
+	const container = useRef(null);
+	const classes = useStyles();
 	const router = useRouter();
 	const container = useRef(null)
 	const [props, set] = useSpring(() => ({ xys: [0, 0, 1] , config: config.default}));
@@ -41,7 +41,7 @@ export default function EventCard({category, color}) {
 			id="event-card"
 			style={{
 				transform: props.xys.to(trans),
-				background: `hsla(${color}, 72%, 64%, 1) url(${category.textUrl}) no-repeat 98%`
+				background: `hsla(${color}, 75%, 60%, 1) url(${category.textUrl}) no-repeat 98%`
 			}}
 			onClick={() => {
 				console.log(encodeURI(category.name));

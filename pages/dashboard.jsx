@@ -17,7 +17,8 @@ import {
 
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { cloneElement } from 'react';
+import {cloneElement} from 'react';
+import {Info} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -30,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		margin: theme.spacing(4, 0, 2),
 	},
-	checkout: {
-		backgroundColor: theme.palette.background.paper,
-		color: '#fff',
-	},
+	// checkout: {
+	// 	backgroundColor: theme.palette.background.paper,
+	// 	color: '#fff',
+	// },
 }));
 
 function generate(element) {
@@ -48,47 +49,103 @@ export default function Dashboard() {
 	const classes = useStyles();
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="lg" id='dashboard'>
+			<Typography
+				variant="h3"
+				align='center'
+				gutterBottom
+				style={{
+					marginTop: 20,
+					fontFamily: "'Valorant',sans-serif",
+					fontWeight: 400
+				}}
+			>
+				Dashboard
+			</Typography>
+
 			<Grid
 				container
 				justify="space-between"
 				alignItems="center"
-				style={{ padding: 10 }}
+				spacing={4}
 			>
-				<Typography
-					variant="h4"
-					style={{
-						fontFamily: "'Valorant',sans-serif",
-						fontWeight: 400
-					}}
+				<Grid item xs={12} md={8}
 				>
-					Dashboard
-				</Typography>
-				<Button variant="contained" className={classes.checkout} size="large">
-					Checkout
-				</Button>
+					<Grid
+						container
+						justify="space-between"
+						alignItems="center"
+						style={{padding: 10}}
+					>
+						<Typography variant="h5" gutterBottom>
+							Cart
+						</Typography>
+						<Button variant="outlined" className={classes.checkout} size="large">
+							Checkout&nbsp;<b>₹ 600</b>
+						</Button>
+					</Grid>
+					<Divider/>
+					<List>
+						{generate(
+							<ListItem>
+								<ListItemAvatar>
+									<Avatar src='/images/workshops.png' style={{backgroundColor: '#0593ea'}}>
+										{/*<FolderIcon/>*/}
+									</Avatar>
+								</ListItemAvatar>
+								<ListItemText
+									primary="Python Workshop"
+									secondary="Workshops"
+								/>
+								<ListItemSecondaryAction>
+									<IconButton edge="start" aria-label="delete">
+										<DeleteIcon/>
+									</IconButton>
+									<IconButton edge="start" aria-label="delete">
+										<Info/>
+									</IconButton>
+									<span>₹ 200</span>
+								</ListItemSecondaryAction>
+							</ListItem>
+						)}
+					</List>
+				</Grid>
+				<Grid item xs={12} md={4}>
+					<Grid
+						container
+						justify="space-between"
+						alignItems="center"
+						style={{padding: 10}}
+					>
+						<Typography variant="h5" gutterBottom>
+							My Events
+						</Typography>
+
+					</Grid>
+					<Divider/>
+					<List>
+						{generate(
+							<ListItem>
+								<ListItemAvatar>
+									<Avatar src='/images/workshops.png' style={{backgroundColor: '#0593ea'}}>
+										{/*<FolderIcon/>*/}
+									</Avatar>
+								</ListItemAvatar>
+								<ListItemText
+									primary="Python Workshop"
+									secondary="Workshops"
+								/>
+								<ListItemSecondaryAction>
+									<span>₹ 200</span>
+									<IconButton edge="end" aria-label="delete">
+										<Info/>
+									</IconButton>
+								</ListItemSecondaryAction>
+							</ListItem>
+						)}
+					</List>
+				</Grid>
 			</Grid>
-			<Divider />
-			<List>
-				{generate(
-					<ListItem>
-						<ListItemAvatar>
-							<Avatar>
-								<FolderIcon />
-							</Avatar>
-						</ListItemAvatar>
-						<ListItemText
-							primary="Single-line item"
-							secondary="Secondary text"
-						/>
-						<ListItemSecondaryAction>
-							<IconButton edge="end" aria-label="delete">
-								<DeleteIcon />
-							</IconButton>
-						</ListItemSecondaryAction>
-					</ListItem>
-				)}
-			</List>
 		</Container>
 	);
 }

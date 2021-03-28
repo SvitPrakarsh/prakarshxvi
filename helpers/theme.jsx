@@ -82,7 +82,7 @@ export const theme = createMuiTheme({
 				// fontWeight: 500,
 			},
 			outlined: {
-				borderWidth: '100px',
+				borderWidth: '2px',
 			},
 		},
 		MuiDivider: {
