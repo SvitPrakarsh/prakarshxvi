@@ -74,6 +74,31 @@ const Navigation = ({ props }) => {
 		getSession().then((s) => {
 			setSession(s);
 			if (s) {
+				setLoading(true);
+				axios({
+					method: 'post',
+					url: `${baseUrl}/participants`,
+					data: {
+						email: s.user.email,
+					},
+					headers: {
+						Authorization: 'Bearer ' + s.jwt,
+					},
+				})
+					.then((u) => {
+						if (u.data.length > 0) {
+							setUser(u.data[0]);
+						} else {
+							setAuth(true);
+						}
+					})
+					.catch((e) => {
+						console.log(e);
+						setError('Error!!!');
+					})
+					.finally(() => {
+						setLoading(false);
+					});
 			}
 		});
 	}, []);
@@ -136,7 +161,7 @@ const Navigation = ({ props }) => {
 									ref={anchorEl}
 									alt=""
 									src={``}
-									style={{width: '24px', height: '24px'}}
+									style={{ width: '24px', height: '24px' }}
 								/>
 							</IconButton>
 							<Menu
@@ -155,7 +180,9 @@ const Navigation = ({ props }) => {
 								open={menu}
 								onClose={() => setMenu(false)}
 							>
-								<MenuItem onClick={() => router.push('/dashboard')}>Dashboard</MenuItem>
+								<MenuItem onClick={() => router.push('/dashboard')}>
+									Dashboard
+								</MenuItem>
 								<MenuItem
 									onClick={() => {
 										signOut();
