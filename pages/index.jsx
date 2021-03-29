@@ -7,6 +7,7 @@ import {
 	Typography,
 	Snackbar,
 	Fade,
+	IconButton,
 } from '@material-ui/core';
 import EventCategories from '../components/Events';
 import { useContext, useEffect, useState, useRef } from 'react';
@@ -25,17 +26,33 @@ const useStyles = makeStyles((theme) => ({
 import Sponsers from '../components/Sponsers';
 import Background from '../components/Background';
 import { Head } from 'next/document';
+import { Email, Facebook, Instagram, Phone, YouTube } from '@material-ui/icons';
+import SplashScreen from '../components/SplashScreen';
 
 export default function Home() {
 	const classes = useStyles();
 	const { error, setError } = useContext(Context);
+	const [splash, setSplash] = useState(true);
+	const [splashGone, setSplashGone] = useState(false);
+
+	useEffect(() => {
+		document.body.style.overflow = 'hidden';
+		setSplash(true);
+		setTimeout(() => {
+			document.body.style.overflow = 'auto';
+			setSplash(false);
+			setSplashGone(true);
+		}, [3000]);
+	}, []);
 
 	return (
 		<>
+			{splash && <SplashScreen show={splash} />}
+
 			<div id="hero">
 				<Background />
 				<div id="xvi">XVI</div>
-				<Fade in timeout={{ enter: 5000 }}>
+				<Fade in={splashGone} timeout={{ enter: 5000 }}>
 					<h1 id="hero-main">
 						PRA<i>K</i>ARSH
 					</h1>
@@ -88,22 +105,44 @@ export default function Home() {
 			</div>
 			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
-					<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
+					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
 						<Typography
 							variant="h4"
 							fontWeight={400}
 							align="center"
 							gutterBottom
-							style={{fontFamily: '"Valorant",sans-serif'}}
+							style={{ fontFamily: '"Valorant",sans-serif' }}
 						>
 							SPONSORS
 						</Typography>
-						<Divider/>
+						<Divider />
 					</div>
-					<Sponsers style={{padding: '30px 20px'}}/>
+					<Sponsers />
+					<br />
+					<br />
+					<Divider style={{ backgroundColor: '#444' }} />
+					<footer>
+						<div id="copyright">All Rights Reserved © Prakarsh XVI</div>
+						<div>
+							<IconButton href="https://www.facebook.com/PrakarshTechFest">
+								<Facebook />
+							</IconButton>
+							<IconButton href="https://www.instagram.com/prakarsh2019/">
+								<Instagram />
+							</IconButton>
+							<IconButton href="https://www.youtube.com/channel/UCKMMGkIUwMUokSbjgzb9OUw">
+								<YouTube />
+							</IconButton>
+							<IconButton href="mailto:support@prakarsh.org">
+								<Email />
+							</IconButton>
+							<IconButton href="telto:+917600998231">
+								<Phone />
+							</IconButton>
+						</div>
+					</footer>
 				</Container>
 			</Paper>
-
 		</>
 	);
 	// </Container>

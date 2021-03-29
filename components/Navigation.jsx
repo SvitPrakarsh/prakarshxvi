@@ -3,6 +3,7 @@ import {
 	Container,
 	makeStyles,
 	CircularProgress,
+	CardMedia,
 } from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
@@ -21,10 +22,12 @@ import { ListItemText } from '@material-ui/core';
 import { Divider } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { HomeOutlined } from '@material-ui/icons';
+import { Event, Group, HomeOutlined } from '@material-ui/icons';
 import { getSession, signIn, signOut, providers } from 'next-auth/client';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import EventIcon from '@material-ui/icons/Event';
+import GroupIcon from '@material-ui/icons/Group';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -59,6 +62,7 @@ const Navigation = ({ props }) => {
 	const router = useRouter();
 	const [menu, setMenu] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [scrolled, setScrolled] = useState(false);
 	const {
 		setAuth,
 		session,
@@ -71,6 +75,15 @@ const Navigation = ({ props }) => {
 	const anchorEl = useRef(null);
 
 	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			let isTop = window.scrollY < 50;
+			if (isTop !== true) {
+				setScrolled(true);
+			} else {
+				setScrolled(false);
+			}
+		});
+
 		getSession().then((s) => {
 			setSession(s);
 			if (s) {
@@ -98,16 +111,19 @@ const Navigation = ({ props }) => {
 					.finally(() => {
 						setLoading(false);
 					});
-			} else{
-				setLoading(false)
+			} else {
+				setLoading(false);
 			}
+			return () => {
+				window.removeEventListener('scroll', window);
+			};
 		});
 	}, []);
 
 	return (
 		<AppBar
 			position="sticky"
-			color="black"
+			color={scrolled ? 'black' : 'transparent'}
 			style={{ boxShadow: 'none' }}
 			className={classes.appBar}
 		>
@@ -135,7 +151,7 @@ const Navigation = ({ props }) => {
 							color="inherit"
 						>
 							<img
-								src="/prakarsh2021-logo.png"
+								src="/prakarsh-logo.svg"
 								alt=""
 								style={{ height: 36, width: 36 }}
 							/>
@@ -155,8 +171,8 @@ const Navigation = ({ props }) => {
 								aria-controls="menu-appbar"
 								aria-haspopup="true"
 								// onClick={() => setError('Error my ass')}
-								onClick={()=>{
-									setMenu(true)
+								onClick={() => {
+									setMenu(true);
 								}}
 								color="inherit"
 							>
@@ -183,14 +199,20 @@ const Navigation = ({ props }) => {
 								open={menu}
 								onClose={() => setMenu(false)}
 							>
-								<MenuItem onClick={() => router.push('/dashboard')}>
+								<MenuItem
+									onClick={() => {
+										router.push('/dashboard');
+										setMenu(false);
+									}}
+								>
 									Dashboard
 								</MenuItem>
 								<MenuItem
 									onClick={() => {
-										signOut();
+										signOut({ redirect: false });
 										setUser(null);
 										setSession(null);
+										setMenu(false);
 									}}
 								>
 									Sign Out
@@ -271,36 +293,44 @@ const Drawer = () => {
 				onOpen={() => setDrawer(true)}
 				className={classes.drawer}
 			>
+				<CardMedia
+					// className={classes.media}
+					image="/prakarsh-logo.svg"
+					// title={event.name}
+					style={{ height: 200, paddingTop: 0 }}
+				/>
 				<List style={{ width: 200 }}>
-					<ListItem button onClick={() => router.push('/')}>
+					<Divider />
+					<ListItem
+						button
+						onClick={() => {
+							router.push('/');
+							setDrawer(false);
+						}}
+					>
 						<ListItemIcon>
 							<HomeOutlined />
 						</ListItemIcon>
 						<ListItemText primary="Home" />
 					</ListItem>
-					<ListItem button onClick={() => (window.location.href = '/#events')}>
+					<ListItem
+						button
+						onClick={() => {
+							window.location.href = '/#events';
+							setDrawer(false);
+						}}
+					>
 						<ListItemIcon>
-							<HomeOutlined />
+							<Event />
 						</ListItemIcon>
 						<ListItemText primary="Events" />
 					</ListItem>
 					<ListItem button onClick={() => router.push('/team')}>
 						<ListItemIcon>
-							<HomeOutlined />
+							<Group />
 						</ListItemIcon>
 						<ListItemText primary="Team" />
 					</ListItem>
-				</List>
-				<Divider />
-				<List>
-					{['All mail', 'Trash', 'Spam'].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>
-					))}
 				</List>
 			</SwipeableDrawer>
 		</div>

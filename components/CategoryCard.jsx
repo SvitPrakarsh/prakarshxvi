@@ -1,56 +1,52 @@
-import {makeStyles} from '@material-ui/core';
-import {useRef, useEffect} from 'react';
-import { animated, useSpring, config} from 'react-spring';
-import {useRouter} from "next/router";
+import { ButtonBase, makeStyles } from '@material-ui/core';
+import { useRef, useEffect } from 'react';
+import { animated, useSpring, config } from 'react-spring';
+import Link from 'next/link';
 
-const useStyles = makeStyles({
-	root: {
-		maxWidth: 345,
-	},
-	actionArea: {
-		width: 'fit-content',
-	},
-});
-
-
-export default function CategoryCard({category, color}) {
-	const classes = useStyles();
-	const router = useRouter();
-	const container = useRef(null)
-	const [props, set] = useSpring(() => ({ xys: [0, 0, 1] , config: config.default}));
-	// console.log(category.textUrl)	
+export default function CategoryCard({ category, color }) {
+	const container = useRef(null);
+	const [props, set] = useSpring(() => ({
+		xys: [0, 0, 1],
+		config: config.default,
+	}));
+	// console.log(category.textUrl)
 
 	const calc = (x, y) => {
-		const height = container.current.offsetHeight
-		const width = container.current.offsetWidth
-		const animX =(x-(width/2))/20
-		const animY = -(y-(height/2))/20
+		const height = container.current.offsetHeight;
+		const width = container.current.offsetWidth;
+		const animX = (x - width / 2) / 20;
+		const animY = -(y - height / 2) / 20;
 		// console.log([animY, animX, 1])
-		return [animY, animX, 1]
-	}
-	const trans = (x, y, s) => `perspective(300px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+		return [animY, animX, 1];
+	};
+	const trans = (x, y, s) =>
+		`perspective(300px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 	return (
-
-		<animated.div
-			ref={container}
-			onMouseMove={(e) => (set({xys: calc(e.nativeEvent.offsetX
-, e.nativeEvent.offsetY)}))}
-			onMouseLeave={() => set({xys:[0,0,1]})}
-			id="event-card"
-			style={{
-				transform: props.xys.interpolate(trans),
-				background: `hsla(${color}, 75%, 60%, 1) url(${category.textUrl}) no-repeat 98%`
-			}}
-			onClick={() => {
-				console.log(encodeURI(category.name));
-				router.push(`/events/${encodeURI(category.name)}`);
-			}}
-		>
-			<img
-				id="card-icon" src={category.iconUrl} alt=""/>
-		</animated.div>
-
+		<Link href={`/events/${encodeURI(category.name)}`}>
+			<ButtonBase
+				focusRipple
+				// disabled={}
+				style={{
+					borderRadius: '20px',
+				}}
+			>
+				<animated.div
+					ref={container}
+					onMouseMove={(e) =>
+						set({ xys: calc(e.nativeEvent.offsetX, e.nativeEvent.offsetY) })
+					}
+					onMouseLeave={() => set({ xys: [0, 0, 1] })}
+					id="event-card"
+					style={{
+						transform: props.xys.interpolate(trans),
+						background: `hsla(${color}, 75%, 60%, 1) url(${category.textUrl}) no-repeat 98%`,
+					}}
+				>
+					<img id="card-icon" src={category.iconUrl} alt="" />
+				</animated.div>
+			</ButtonBase>
+		</Link>
 	);
 }
 
@@ -64,7 +60,7 @@ export default function CategoryCard({category, color}) {
 								> */
 /* <CardMedia
 										className={classes.media}
-										image="/prakarsh2021-logo.png"
+										image="/prakarsh-logo.svg"
 										title=""
 										style={{ height: 160, paddingTop: 0 }}
 									/>

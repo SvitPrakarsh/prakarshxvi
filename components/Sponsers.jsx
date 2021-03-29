@@ -28,42 +28,42 @@ export default function Sponsers() {
 		>
 			<SwiperSlide>
 				<img
-					src="/prakarsh2021-logo.png"
+					src="/prakarsh-logo.svg"
 					alt=""
 					style={{ height: 100, width: 100 }}
 				/>
 			</SwiperSlide>
 			<SwiperSlide>
 				<img
-					src="/prakarsh2021-logo.png"
+					src="/prakarsh-logo.svg"
 					alt=""
 					style={{ height: 100, width: 100 }}
 				/>
 			</SwiperSlide>
 			<SwiperSlide>
 				<img
-					src="/prakarsh2021-logo.png"
+					src="/prakarsh-logo.svg"
 					alt=""
 					style={{ height: 100, width: 100 }}
 				/>
 			</SwiperSlide>
 			<SwiperSlide>
 				<img
-					src="/prakarsh2021-logo.png"
+					src="/prakarsh-logo.svg"
 					alt=""
 					style={{ height: 100, width: 100 }}
 				/>
 			</SwiperSlide>
 			<SwiperSlide>
 				<img
-					src="/prakarsh2021-logo.png"
+					src="/prakarsh-logo.svg"
 					alt=""
 					style={{ height: 100, width: 100 }}
 				/>
 			</SwiperSlide>
 			<SwiperSlide>
 				<img
-					src="/prakarsh2021-logo.png"
+					src="/prakarsh-logo.svg"
 					alt=""
 					style={{ height: 100, width: 100 }}
 				/>

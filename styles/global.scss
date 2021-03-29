@@ -30,13 +30,13 @@
 //html, body {
 //	background: hsl(258, 37%, 25%) !important;
 //}
-#snackbar-text{
+#snackbar-text {
 	color: #f1f1f1;
 }
 .background {
 	position: fixed;
 	z-index: -10;
-	opacity: 0.8;
+	opacity: 0.9;
 	overflow: hidden;
 	canvas {
 		width: 100%;
@@ -124,6 +124,25 @@ form i {
 	display: none;
 }
 
+.splash-screen {
+	z-index: 1202;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	background: transparentize($color: #0f1923, $amount: 0.5);
+	backdrop-filter: blur(15px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: all ease-in-out;
+	img {
+		height: 450px;
+		width: 450px;
+	}
+}
+
 // Events
 #event-card {
 	display: flex;
@@ -136,21 +155,19 @@ form i {
 	overflow: hidden;
 	vertical-align: middle;
 	text-align: center;
-	box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, .25);
+	box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.25);
 	#card-icon {
 		display: block;
 		margin: auto;
 		height: 150px;
 		width: auto;
 		transition: all 0.3s ease-in-out;
-
 		&::after {
 			display: block;
 			position: relative;
 			background: radial-gradient(#000, transparent);
 			height: 10px;
 			width: 100%;
-
 		}
 	}
 	&:hover {
@@ -161,7 +178,7 @@ form i {
 		//left: 50%;
 		//transform: translate(50%, 50%) scale(2);
 		#card-icon {
-			transform: translateX(-5%) scale(.995);
+			transform: translateX(-5%) scale(0.995);
 		}
 	}
 	//#card-text {
@@ -193,6 +210,17 @@ form i {
 	border-radius: 50%;
 }
 
+footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	#copyright {
+		color: #999;
+	}
+	.Mui-IconButton svg {
+		height: 20px;
+	}
+}
 
 @media only screen and (max-width: 860px) {
 	#xvi {
@@ -253,6 +281,12 @@ form i {
 			}
 		}
 	}
+	footer {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: center;
+	}
 }
 
 // ScrollBar
@@ -274,4 +308,13 @@ form i {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
