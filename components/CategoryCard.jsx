@@ -9,8 +9,6 @@ export default function CategoryCard({ category, color }) {
 		xys: [0, 0, 1],
 		config: config.default,
 	}));
-	// console.log(category.textUrl)
-
 	const calc = (x, y) => {
 		const height = container.current.offsetHeight;
 		const width = container.current.offsetWidth;
@@ -31,20 +29,19 @@ export default function CategoryCard({ category, color }) {
 					borderRadius: '20px',
 				}}
 			>
-				<animated.div
-					ref={container}
-					onMouseMove={(e) =>
-						set({ xys: calc(e.nativeEvent.offsetX, e.nativeEvent.offsetY) })
-					}
-					onMouseLeave={() => set({ xys: [0, 0, 1] })}
+				<div
+					// ref={container}
+					// onMouseMove={(e) =>
+					// 	set({xys: calc(e.nativeEvent.offsetX, e.nativeEvent.offsetY)})
+					// }
+					// onMouseLeave={() => set({xys: [0, 0, 1]})}
 					id="event-card"
 					style={{
-						transform: props.xys.interpolate(trans),
+						// transform: props.xys.interpolate(trans),
 						background: `hsla(${color}, 75%, 60%, 1) url(${category.textUrl}) no-repeat 98%`,
-					}}
-				>
-					<img id="card-icon" src={category.iconUrl} alt="" />
-				</animated.div>
+					}}>
+					<img id="card-icon" src={category.iconUrl} alt=""/>
+				</div>
 			</ButtonBase>
 		</Link>
 	);

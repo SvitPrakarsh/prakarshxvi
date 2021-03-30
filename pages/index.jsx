@@ -28,6 +28,7 @@ import Background from '../components/Background';
 import { Head } from 'next/document';
 import { Email, Facebook, Instagram, Phone, YouTube } from '@material-ui/icons';
 import SplashScreen from '../components/SplashScreen';
+import {Form} from "formik";
 
 export default function Home() {
 	const classes = useStyles();
@@ -44,15 +45,15 @@ export default function Home() {
 			setSplashGone(true);
 		}, [3000]);
 	}, []);
-
+	if (splash) return (<SplashScreen show={splash}/>)
 	return (
 		<>
-			{splash && <SplashScreen show={splash} />}
+
 
 			<div id="hero">
-				<Background />
+				<Background/>
 				<div id="xvi">XVI</div>
-				<Fade in={splashGone} timeout={{ enter: 5000 }}>
+				<Fade in={splashGone} timeout={{enter: 5000}}>
 					<h1 id="hero-main">
 						PRA<i>K</i>ARSH
 					</h1>
@@ -105,32 +106,33 @@ export default function Home() {
 			</div>
 			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
-					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
+					<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
 						<Typography
 							variant="h4"
 							fontWeight={400}
 							align="center"
 							gutterBottom
-							style={{ fontFamily: '"Valorant",sans-serif' }}
+							style={{fontFamily: '"Valorant",sans-serif'}}
 						>
 							SPONSORS
 						</Typography>
-						<Divider />
+						<Divider/>
 					</div>
-					<Sponsers />
-					\20b9 \20b9
-					<Divider style={{ backgroundColor: '#444' }} />
+					<Sponsers/>
+					<br/>
+					<br/>
+					<Divider style={{backgroundColor: '#444'}}/>
 					<footer>
 						<div id="copyright">All Rights Reserved © Prakarsh XVI</div>
 						<div>
 							<IconButton href="https://www.facebook.com/PrakarshTechFest">
-								<Facebook />
+								<Facebook/>
 							</IconButton>
 							<IconButton href="https://www.instagram.com/prakarsh2019/">
-								<Instagram />
+								<Instagram/>
 							</IconButton>
 							<IconButton href="https://www.youtube.com/channel/UCKMMGkIUwMUokSbjgzb9OUw">
-								<YouTube />
+								<YouTube/>
 							</IconButton>
 							<IconButton href="mailto:support@prakarsh.org">
 								<Email />

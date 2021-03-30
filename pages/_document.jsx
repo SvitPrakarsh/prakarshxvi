@@ -1,16 +1,21 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {Html, Head, Main, NextScript} from 'next/document';
+
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
 		const initialProps = await Document.getInitialProps(ctx);
-		return { ...initialProps };
+		return {...initialProps};
 	}
 
 	render() {
 		return (
 			<Html>
 				<Head>
-					<script src="/noise.min.js" />
+					<script src="/noise.min.js"/>
+					<link
+						rel="stylesheet"
+						href="https://unpkg.com/nprogress@0.2.0/nprogress.css"
+					/>
 					<link
 						rel="shortcut icon"
 						href="/prakarsh-logo.svg"

@@ -8,39 +8,41 @@ export default Context;
 // Provider
 export const Provider = (props) => {
 	const [drawer, setDrawer] = useState(false);
-	const [auth, setAuth] = useState(false);
-	const [session, setSession] = useState(null);
-	const [user, setUser] = useState(null);
 	const [event, setEvent] = useState(null);
+	// const [auth, setAuth] = useState(false);
+	// const [session, setSession] = useState(null);
+	// const [user, setUser] = useState(null);
+	// const [error, setError] = useState(null);
+
+	const auth = useAuth();
+
 	const [cart, setCartR] = useState(null);
-
-
 	const setCart = (event) => {
-		if(cart.includes(event)){
+		if (cart.includes(event)) {
 			return null;
 		}
 		setCartR({...cart, event})
 		return {...cart, event}
 	}
-	const [error, setError] = useState(null);
 
 	return (
 		<Context.Provider
 			value={{
 				drawer,
 				setDrawer,
-				auth,
-				setAuth,
 				event,
 				setEvent,
+				cart,
+				setCart,
+				/*auth,
+				setAuth,
 				user,
 				setUser,
 				session,
 				setSession,
-				cart,
-				setCart,
 				error,
-				setError
+				setError*/
+				...auth
 			}}
 		>
 			{props.children}

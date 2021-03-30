@@ -147,6 +147,8 @@ form i {
 #event-card {
 	display: flex;
 	background-blend-mode: soft-light;
+	background-repeat: no-repeat;
+	background-size: 98%;
 	margin: auto;
 	padding: 10px;
 	border-radius: 20px;
@@ -156,6 +158,7 @@ form i {
 	vertical-align: middle;
 	text-align: center;
 	box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.25);
+
 	#card-icon {
 		display: block;
 		margin: auto;

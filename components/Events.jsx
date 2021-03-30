@@ -46,7 +46,7 @@ export default function EventCategories() {
 		}
 		shuffleArray(nums);
 		// console.log(nums)
-		// setNums(nums)
+		setNums(nums)
 	};
 
 	useEffect(() => generator(), []);

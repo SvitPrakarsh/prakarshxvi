@@ -61,9 +61,11 @@ const Navigation = ({ props }) => {
 	const classes = useStyles();
 	const router = useRouter();
 	const [menu, setMenu] = useState(false);
-	const [loading, setLoading] = useState(true);
+	// const [loading, setLoading] = useState(true);
 	const [scrolled, setScrolled] = useState(false);
 	const {
+		loading,
+		setLoading,
 		setAuth,
 		session,
 		setSession,
@@ -83,49 +85,49 @@ const Navigation = ({ props }) => {
 				setScrolled(false);
 			}
 		});
-
-		getSession().then((s) => {
-			setSession(s);
-			if (s) {
-				// console.log(s.jwt);
-				axios({
-					method: 'post',
-					url: `${baseUrl}/participants`,
-					data: {
-						email: s.user.email,
-					},
-					headers: {
-						Authorization: 'Bearer ' + s.jwt,
-					},
-				})
-					.then((u) => {
-						if (u.data.length > 0) {
-							setUser(u.data[0]);
-						} else {
-							setAuth(true);
-						}
-					})
-					.catch((e) => {
-						console.log(e);
-						setError('Unable to reach server!');
-					})
-					.finally(() => {
-						setLoading(false);
-					});
-			} else {
-				setLoading(false);
-			}
-			return () => {
-				window.removeEventListener('scroll', window);
-			};
-		});
+		// getSession().then((s) => {
+		// 	setSession(s);
+		// 	if (s) {
+		// 		// console.log(s.jwt);
+		// 		axios({
+		// 			method: 'post',
+		// 			url: `${baseUrl}/participants`,
+		// 			data: {
+		// 				email: s.user.email,
+		// 			},
+		// 			headers: {
+		// 				Authorization: 'Bearer ' + s.jwt,
+		// 			},
+		// 		})
+		// 			.then((u) => {
+		// 				if (u.data.length > 0) {
+		// 					setUser(u.data[0]);
+		// 				} else {
+		// 					setAuth(true);
+		// 				}
+		// 			})
+		// 			.catch((e) => {
+		// 				console.log(e);
+		// 				setError('Unable to reach server!');
+		// 			})
+		// 			.finally(() => {
+		// 				setLoading(false);
+		// 			});
+		// 	} else {
+		// 		setLoading(false);
+		// 	}
+		//
+		// });
+		return () => {
+			window.removeEventListener('scroll', window);
+		};
 	}, []);
 
 	return (
 		<AppBar
 			position="sticky"
 			color={scrolled ? 'black' : 'transparent'}
-			style={{ boxShadow: 'none' }}
+			style={{boxShadow: 'none'}}
 			className={classes.appBar}
 		>
 			{/*<nav>*/}
@@ -135,7 +137,7 @@ const Navigation = ({ props }) => {
 						minHeight: '54px',
 					}}
 				>
-					<Drawer />
+					<Drawer/>
 					{/*<Typography
 						className={classes.title}
 						style={{}}
@@ -143,7 +145,7 @@ const Navigation = ({ props }) => {
 						
 					</Typography>*/}
 
-					<div style={{ flexGrow: 1 }}>
+					<div style={{flexGrow: 1}}>
 						<IconButton
 							aria-label="account of current user"
 							aria-controls="menu-appbar"
@@ -154,13 +156,25 @@ const Navigation = ({ props }) => {
 							<img
 								src="/prakarsh-logo.svg"
 								alt=""
-								style={{ height: 36, width: 36 }}
+								style={{height: 36, width: 36}}
 							/>
 						</IconButton>
 					</div>
 					<div id="desktop-nav">
 						<Button onClick={() => router.push('/')}>Home</Button>
-						<Button onClick={() => (window.location.href = '/#events')}>
+						<Button onClick={() => {
+							if (router.pathname !== '/') {
+								router.push('/').then(() =>
+									setTimeout(() => {
+										window.location.href = '/#events'
+
+									}, [500])
+								)
+							} else {
+								window.location.href = '/#events'
+							}
+
+						}}>
 							Events
 						</Button>
 						<Button onClick={() => router.push('/team')}>Team</Button>
@@ -276,7 +290,8 @@ const Navigation = ({ props }) => {
 
 const Drawer = () => {
 	const classes = useStyles();
-	const { drawer, setDrawer } = useContext(Context);
+	const router = useRouter();
+	const {drawer, setDrawer} = useContext(Context);
 	return (
 		<div id="mobile-nav">
 			<IconButton
@@ -285,7 +300,7 @@ const Drawer = () => {
 				aria-label="menu"
 				onClick={() => setDrawer(true)}
 			>
-				<MenuIcon />
+				<MenuIcon/>
 			</IconButton>
 			<SwipeableDrawer
 				anchor="left"
@@ -317,7 +332,14 @@ const Drawer = () => {
 					<ListItem
 						button
 						onClick={() => {
-							window.location.href = '/#events';
+							if (router.pathname !== '/') {
+								router.push('/').then(() =>
+									window.location.href = '/#events'
+								)
+							} else {
+								window.location.href = '/#events'
+
+							}
 							setDrawer(false);
 						}}
 					>

@@ -105,7 +105,7 @@ export default function Register() {
 				<Typography variant="body2">
 					Complete your registration before going ahead.
 				</Typography>
-				\20b9
+				<br/>
 				<Formik
 					initialValues={initialValues}
 					onSubmit={register}
@@ -235,7 +235,9 @@ export default function Register() {
 								*The above data cannot be changed once submitted. All spam
 								entries will be disqualified.
 							</small>
-							\20b9 \20b9
+							<br/>
+							<br/>
+
 							<Grid container spacing={1} justify="center">
 								<Button
 									variant="contained"
@@ -243,11 +245,11 @@ export default function Register() {
 									size="large"
 									type="submit"
 									fullWidth
-									style={{ margin: '0 auto' }}
+									style={{margin: '0 auto'}}
 									disabled={formik.isSubmitting}
 								>
 									{formik.isSubmitting ? (
-										<CircularProgress color="secondary" size={28} />
+										<CircularProgress color="secondary" size={28}/>
 									) : (
 										'Register'
 									)}
