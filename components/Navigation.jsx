@@ -87,6 +87,7 @@ const Navigation = ({ props }) => {
 		getSession().then((s) => {
 			setSession(s);
 			if (s) {
+				// console.log(s.jwt);
 				axios({
 					method: 'post',
 					url: `${baseUrl}/participants`,
@@ -222,7 +223,7 @@ const Navigation = ({ props }) => {
 					) : (
 						<>
 							{loading ? (
-								<CircularProgress size={28} />
+								<CircularProgress size={24} />
 							) : (
 								<Button
 									variant="contained"
