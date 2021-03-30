@@ -83,15 +83,15 @@ export default function EventDialog() {
 							if (key !== 2)
 								return (
 									<div key={key}>
-										<Typography variant="h5">{detail.sectionHeader}</Typography>
+										<Typography variant="h5" >{detail.sectionHeader}</Typography>
 										{key !== 4 ? (
-											<Typography variant="body2">
+											<Typography variant="body2" >
 												{detail.sectionContent}
 											</Typography>
 										) : (
 											detail.sectionContent.map((round, subKey) => (
 												<>
-													<Typography variant="h6">
+													<Typography variant="h6" >
 														{round.sectionHeader}
 													</Typography>
 													<Typography variant="body2">
