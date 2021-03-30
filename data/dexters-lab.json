@@ -1,0 +1,116 @@
+[
+   {
+      "eventName": "QuBits",
+      "category_name": "Dexter's Lab",
+      "details": [
+         {
+            "sectionHeader": "Introduction",
+            "sectionContent": "It is event in which participants will be described about Quantum processing and how engineering world is evolving through it."
+         },
+         {
+            "sectionHeader": "Abstract",
+            "sectionContent": "The event is an amalgamation of tech and fun with its logical game."
+         },
+         {
+            "sectionHeader": "Price",
+            "sectionContent": ""
+         },
+         {
+            "sectionHeader": "Participation",
+            "sectionContent": "Solo"
+         },
+         {
+            "sectionHeader": "Rounds",
+            "sectionContent": [
+               {
+                  "sectionHeader": "Round 1: TechnoGeek",
+                  "sectionContent": "This round comprises of images of E - gadgets and participants will be asked to distinguish between various given components of gadgets."
+               },
+               {
+                  "sectionHeader": "Round 2: Decipher the MusiNary ",
+                  "sectionContent": "In this round, participants will be given 8 sec long audio which would be comprised of a (beep & silence) sound. They will have to decipher it to proceed further."
+               },
+               {
+                  "sectionHeader": "Round 3: Quantum Supremacy",
+                  "sectionContent": "In final round, participants would be taught about basics of Quantum processing and it's electronics scope."
+               },
+               {
+                  "sectionHeader": "Round 4",
+                  "sectionContent": ""
+               }
+            ]
+         },
+         {
+            "sectionHeader": "Time",
+            "sectionContent": ""
+         }
+      ],
+      "contactDetails": [
+         {
+            "name": "Ayush Agarwal",
+            "number": "9824527198"
+         },
+         {
+            "name": "Dhwani Shah",
+            "number": "9913479555"
+         }
+      ]
+   },
+   {
+      "eventName": "MythWIZ",
+      "category_name": "Dexter's Lab",
+      "details": [
+         {
+            "sectionHeader": "Introduction",
+            "sectionContent": "MythWIZ is a one-day event consisting of 3 rounds which is about exploring and exposing all the myths that are present in Electrical World over the internet."
+         },
+         {
+            "sectionHeader": "Abstract",
+            "sectionContent": "In the gist, getting concepts cleared and testing basic knowledge surplused with learning the construction of an iot device!"
+         },
+         {
+            "sectionHeader": "Price",
+            "sectionContent": ""
+         },
+         {
+            "sectionHeader": "Participation",
+            "sectionContent": "Solo"
+         },
+         {
+            "sectionHeader": "Rounds",
+            "sectionContent": [
+               {
+                  "sectionHeader": "Round 1: PICTORIA",
+                  "sectionContent": "Pictoria is a short-listing round. Provided the picture, participants will have to guess the name of the electrical component. The basic knowledge of various components will be tested and based on the participant’s performance, the doors to the next round will be opened. "
+               },
+               {
+                  "sectionHeader": "Round 2: BUSTED",
+                  "sectionContent": "After getting shortlisted, participants get the chance to watch popular internet myths in the field of electrical getting busted . It will be an engineer’s pleasure to expose the (fake) viral videos circulating on the internet and misguiding people with wrong concepts.This round ends with a mini quiz regarding previously busted myths. The quiz will help the wizard in deciding the participant’s merit."
+               },
+               {
+                  "sectionHeader": "Round 3: WIZARD'S CIRCUIT",
+                  "sectionContent": "The wizard reveals his circuit in the last round. Participants will be demonstrated how to make a Wifi RGB LED Controller using NodeMCU which uses the concept of iot, the color of lights get controlled from the smartphone itself."
+               },
+               {
+                  "sectionHeader": "Round 4",
+                  "sectionContent": ""
+               }
+            ]
+         },
+         {
+            "sectionHeader": "Time",
+            "sectionContent": ""
+         }
+      ],
+      "contactDetails": [
+         {
+            "name": "Karan Mehta",
+            "number": "6355369795"
+         },
+         {
+            "name": "Purvi Malviya",
+            "number": "7096054688"
+         }
+      ]
+   }
+]

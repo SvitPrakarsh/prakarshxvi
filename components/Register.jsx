@@ -26,7 +26,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
 	const classes = useStyles();
-	const { auth, setAuth, session, setUser, setSession, error, setError } = useContext(Context);
+	const {
+		auth,
+		setAuth,
+		session,
+		setUser,
+		setSession,
+		error,
+		setError,
+	} = useContext(Context);
 	// const [submitting, setSubmitting] = useState(true);
 
 	const initialValues = {
@@ -56,26 +64,25 @@ export default function Register() {
 			.required('Phone Number is Required'),
 	});
 
-  const register = (values, { setSubmitting }) => {
-    let full_name = `${values.firstName} ${values.middleName} ${values.lastName}`;
-    let body = { ...values, full_name, user_id: session.user.id };
-    Axios.post("/participants/register", body, {
-      headers: {
-        Authorization: "Bearer " + session.jwt,
-      },
-    })
-      .then((r) => {
-        setUser(r.data);
-      })
-      .catch((e) => {
-        setError("Couldn't register please try again later!!")
-      })
-      .finally(() => {
-        setSubmitting(false);
-        setAuth(false);
-      });
-  };
-
+	const register = (values, { setSubmitting }) => {
+		let full_name = `${values.firstName} ${values.middleName} ${values.lastName}`;
+		let body = { ...values, full_name, user_id: session.user.id };
+		Axios.post('/participants/register', body, {
+			headers: {
+				Authorization: 'Bearer ' + session.jwt,
+			},
+		})
+			.then((r) => {
+				setUser(r.data);
+			})
+			.catch((e) => {
+				setError("Couldn't register please try again later!!");
+			})
+			.finally(() => {
+				setSubmitting(false);
+				setAuth(false);
+			});
+	};
 
 	// console.log(session);
 	return (
@@ -98,7 +105,7 @@ export default function Register() {
 				<Typography variant="body2">
 					Complete your registration before going ahead.
 				</Typography>
-				<br />
+				\20b9
 				<Formik
 					initialValues={initialValues}
 					onSubmit={register}
@@ -228,8 +235,7 @@ export default function Register() {
 								*The above data cannot be changed once submitted. All spam
 								entries will be disqualified.
 							</small>
-							<br />
-							<br />
+							\20b9 \20b9
 							<Grid container spacing={1} justify="center">
 								<Button
 									variant="contained"
@@ -253,5 +259,4 @@ export default function Register() {
 			</Dialog>
 		</>
 	);
-
-	}
+}

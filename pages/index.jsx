@@ -118,8 +118,7 @@ export default function Home() {
 						<Divider />
 					</div>
 					<Sponsers />
-					<br />
-					<br />
+					\20b9 \20b9
 					<Divider style={{ backgroundColor: '#444' }} />
 					<footer>
 						<div id="copyright">All Rights Reserved © Prakarsh XVI</div>

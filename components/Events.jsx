@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 export default function EventCategories() {
 	const classes = useStyles();
-	const [nums, setNums] = useState([])
+	const [nums, setNums] = useState([]);
 
 	function shuffleArray(array) {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -37,40 +37,47 @@ export default function EventCategories() {
 	}
 
 	const generator = () => {
-		let nums = []
-		let starter = Math.random() * 7
-		nums.push(Math.floor(starter))
+		let nums = [];
+		let starter = Math.random() * 7;
+		nums.push(Math.floor(starter));
 
 		while (nums.length !== 7) {
 			nums.push(Math.floor((nums[nums.length - 1] + 36) % 255));
 		}
-		shuffleArray(nums)
-		console.log(nums)
-		setNums(nums)
+		shuffleArray(nums);
+		// console.log(nums)
+		// setNums(nums)
+	};
 
-	}
-
-	useEffect(() => generator(), [])
+	useEffect(() => generator(), []);
 
 	return (
-		<Container style={{padding: '40px'}} maxWidth="lg">
-			<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
+		<Container style={{ padding: '40px' }} maxWidth="lg">
+			<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
 				<Typography
 					variant="h3"
 					align="center"
 					gutterBottom
-					style={{fontFamily: '"Valorant",sans-serif'}}
+					style={{ fontFamily: '"Valorant",sans-serif' }}
 				>
 					Events
 				</Typography>
-				<Divider style={{backgroundColor: '#FF4655'}}/>
+				<Divider style={{ backgroundColor: '#FF4655' }} />
 			</div>
 			<Grid container spacing={2} justify="center" alignItems="center">
 				{categories.map((category, key) => {
-					console.log(nums[key])
+					console.log(nums[key]);
 					return (
-						<Grid item sm md={4} lg={3} key={key} justify='center' alignItems='center'>
-							<CategoryCard category={category} color={nums[key]} key={key}/>
+						<Grid
+							item
+							sm
+							md={4}
+							lg={3}
+							key={key}
+							justify="center"
+							alignItems="center"
+						>
+							<CategoryCard category={category} color={nums[key]} key={key} />
 						</Grid>
 					);
 				})}
@@ -110,4 +117,3 @@ const Animation = () => {
 		</AnimateSharedLayout>
 	);
 };
-

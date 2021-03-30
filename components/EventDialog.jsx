@@ -95,7 +95,7 @@ export default function EventDialog() {
 														{round.sectionHeader}
 													</Typography>
 													<Typography variant="body2">
-														{round.sectionContent}
+														{round.sectionContent.toString()}
 													</Typography>
 												</>
 											))

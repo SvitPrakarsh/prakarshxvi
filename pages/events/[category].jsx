@@ -14,13 +14,20 @@ import {
 	Typography,
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
-import events from '../../data/events.json';
 import * as _ from 'lodash';
-import Image from 'next/image';
 import categories from '../../data/eventCategories.json';
 import { useContext, useEffect } from 'react';
 import Context from '../../Context';
 import EventDialog from '../../components/EventDialog';
+import allEvents from '../../data/events.json';
+
+const dashify = (str) => {
+	let dashedString = str.toLowerCase();
+	dashedString = dashedString.replace(/ /g, '-');
+	dashedString = dashedString.replace(/'/g, '');
+	console.log(dashedString);
+	return dashedString;
+};
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -47,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Events({ category, icon, events }) {
+export default function Events({ category, events }) {
 	const classes = useStyles();
 	const { event, setEvent } = useContext(Context);
 
@@ -76,7 +83,7 @@ export default function Events({ category, icon, events }) {
 					{/*<IconButton disabled>*/}
 					<img
 						id="category-icon"
-						src={`/images/${icon}.png`}
+						src={`/images/${category}.png`}
 						alt=""
 						height="150px"
 						width="auto"
@@ -92,19 +99,19 @@ export default function Events({ category, icon, events }) {
 										<CardMedia
 											className={classes.media}
 											image="/prakarsh-logo.svg"
-											title={event.name}
+											title={event.eventName}
 											style={{ height: 200, paddingTop: 0 }}
 										/>
 										<CardContent>
 											<Typography gutterBottom variant="h5" component="h2">
-												{event.name}
+												{event.eventName}
 											</Typography>
 											<Typography
 												variant="body2"
 												color="textSecondary"
 												component="p"
 											>
-												{event.category}
+												{event.category_name}
 											</Typography>
 										</CardContent>
 									</CardActionArea>
@@ -119,21 +126,11 @@ export default function Events({ category, icon, events }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
-	const category = query.category;
-	const groups = _.groupBy(events, 'category');
-	// console.log(groups)
-	// console.log(category)
-	const filteredArray = groups[category];
-	// console.log(filteredArray)
-	let icon = category.toLowerCase();
-
-	icon = icon.replace(/ /g, '-');
-	icon = icon.replace(/'/g, '');
-	console.log(icon);
-
-	if (filteredArray)
-		return {
-			props: { category, icon, events: filteredArray },
-		};
-	return {};
+	const category = dashify(query.category);
+	console.log('category:', category);
+	const events = allEvents[category];
+	console.log('events:', events);
+	return {
+		props: { category, events },
+	};
 };
