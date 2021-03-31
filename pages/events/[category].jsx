@@ -89,6 +89,7 @@ export default function Events({ category, events }) {
 									style={{
 										minWidth: 200,
 										maxWidth: 250,
+										margin: '0 auto'
 										borderRadius: '15px',
 									}}
 								>
