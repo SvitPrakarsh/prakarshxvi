@@ -1,5 +1,5 @@
 $primary: #0593ea;
-$secondary: #FF4655;
+$secondary: #ff4655;
 
 //.MuiToolbar-root {
 //  font-weight: 600;
@@ -9,9 +9,18 @@ $secondary: #FF4655;
 //      }  }
 //}
 .MuiDialog-container .MuiPaper-root {
- border-radius: 10px;
+	border-radius: 10px;
 }
 
 .MuiTypography-body1 {
- line-height: 1.5;
+	line-height: 1.5;
+}
+
+.MuiAccordion-root:before {
+	display: none;
+}
+
+.MuiAccordion-rounded:last-child {
+	border-radius: 10px !important;
+	border-color: #ff465699;
 }

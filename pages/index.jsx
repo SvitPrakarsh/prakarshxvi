@@ -7,12 +7,14 @@ import {
 	Typography,
 	Snackbar,
 	Fade,
-	IconButton,
+	IconButton, Accordion, AccordionSummary, AccordionDetails, TextField,
 } from '@material-ui/core';
 import EventCategories from '../components/Events';
-import { useContext, useEffect, useState, useRef } from 'react';
+import {useContext, useEffect, useState, useRef} from 'react';
 import Context from '../Context';
 // import MuiAlert from '@material-ui/lab/Alert';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc: {
@@ -28,7 +30,7 @@ import Background from '../components/Background';
 import { Head } from 'next/document';
 import { Email, Facebook, Instagram, Phone, YouTube } from '@material-ui/icons';
 import SplashScreen from '../components/SplashScreen';
-import {Form} from "formik";
+import {ErrorMessage, Form} from "formik";
 
 export default function Home() {
 	const classes = useStyles();
@@ -43,7 +45,7 @@ export default function Home() {
 			document.body.style.overflow = 'auto';
 			setSplash(false);
 			setSplashGone(true);
-		}, [3000]);
+		}, [10]);
 	}, []);
 	if (splash) return (<SplashScreen show={splash}/>)
 	return (
@@ -53,7 +55,7 @@ export default function Home() {
 			<div id="hero">
 				<Background/>
 				<div id="xvi">XVI</div>
-				<Fade in={splashGone} timeout={{enter: 5000}}>
+				<Fade in={splashGone} timeout={{enter: 3000}}>
 					<h1 id="hero-main">
 						PRA<i>K</i>ARSH
 					</h1>
@@ -61,7 +63,7 @@ export default function Home() {
 
 				<h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
 			</div>
-			<Paper style={{ padding: '40px' }}>
+			<Paper style={{padding: '40px'}}>
 				<Container maxWidth="lg">
 					<Grid container spacing={5} alignItems="center">
 						<Grid item sm>
@@ -102,9 +104,9 @@ export default function Home() {
 				</Container>
 			</Paper>
 			<div id="events">
-				<EventCategories />
+				<EventCategories/>
 			</div>
-			<Paper style={{ padding: '30px 20px' }}>
+			<Paper style={{padding: '30px 20px'}}>
 				<Container>
 					<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
 						<Typography
@@ -121,7 +123,64 @@ export default function Home() {
 					<Sponsers/>
 					<br/>
 					<br/>
+				</Container>
+			</Paper>
+			<Container>
+				<Grid container spacing={5} style={{padding: '40px 0'}}>
+					<Grid item sm>
+						<Typography variant="h3" align='center' gutterBottom>
+							FAQ
+						</Typography>
+						<Accordion>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon/>}
+								aria-controls="panel1a-content"
+								id="panel1a-header"
+							>
+								<Typography className={classes.heading}>Accordion 1</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<Typography>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus
+									ex, sit amet blandit leo lobortis eget.
+								</Typography>
+							</AccordionDetails>
+						</Accordion>
+						<Accordion>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon/>}
+								aria-controls="panel1a-content"
+								id="panel1a-header"
+							>
+								<Typography className={classes.heading}>Accordion 1</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<Typography>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus
+									ex, sit amet blandit leo lobortis eget.
+								</Typography>
+							</AccordionDetails>
+						</Accordion>
+					</Grid>
+					<Grid item sm>
+						<Typography variant="h3" align='center' gutterBottom>
+							Contact Us
+						</Typography>
+						<Paper style={{padding: '30px 20px', borderRadius: 10}}>
+							<TextField id="outlined-basic" label="Full Name" variant="outlined"/>
+							<TextField id="outlined-basic" label="Email" variant="outlined"/>
+							<TextField id="outlined-basic" multiline label="Message" variant="outlined"/>
+						</Paper>
+
+
+					</Grid>
+				</Grid>
+			</Container>
+			<Paper>
+				<Container maxWidth='lg'>
+					<br/>
 					<Divider style={{backgroundColor: '#444'}}/>
+
 					<footer>
 						<div id="copyright">All Rights Reserved © Prakarsh XVI</div>
 						<div>
@@ -135,10 +194,10 @@ export default function Home() {
 								<YouTube/>
 							</IconButton>
 							<IconButton href="mailto:support@prakarsh.org">
-								<Email />
+								<Email/>
 							</IconButton>
 							<IconButton href="telto:+917600998231">
-								<Phone />
+								<Phone/>
 							</IconButton>
 						</div>
 					</footer>

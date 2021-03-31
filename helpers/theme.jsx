@@ -90,6 +90,17 @@ export const theme = createMuiTheme({
 				backgroundColor: '#FF4655',
 			},
 		},
+
+		MuiAccordion: {
+			root: {
+				marginBottom: 15,
+				border: '#ff465699 solid 2px',
+			},
+			rounded: {
+				borderRadius: 10,
+			},
+			expanded: {}
+		}
 	},
 	// Defaults Mui Props
 	props: {
@@ -110,7 +121,9 @@ export const theme = createMuiTheme({
 			component: 'div',
 			square: true,
 		},
-		// MuiPaper
+		MuiAccordion: {
+			elevation: 5
+		}
 		// MuiCard
 	},
 });
