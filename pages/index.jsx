@@ -5,12 +5,14 @@ import {
 	makeStyles,
 	Paper,
 	Typography,
-	Snackbar
+	Snackbar,
+	Fade,
+	IconButton,
 } from '@material-ui/core';
 import EventCategories from '../components/Events';
 import { useContext, useEffect, useState, useRef } from 'react';
 import Context from '../Context';
-import MuiAlert from '@material-ui/lab/Alert';
+// import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
 	heroDesc: {
@@ -18,48 +20,74 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: 24,
 		color: '#FF4655',
 		fontWeight: 400,
-		textAlign: 'left'
+		textAlign: 'left',
 	},
 }));
 import Sponsers from '../components/Sponsers';
-import Background from "../components/Background";
-import {Head} from "next/document";
+import Background from '../components/Background';
+import { Head } from 'next/document';
+import { Email, Facebook, Instagram, Phone, YouTube } from '@material-ui/icons';
+import SplashScreen from '../components/SplashScreen';
+import {Form} from "formik";
 
 export default function Home() {
 	const classes = useStyles();
 	const { error, setError } = useContext(Context);
+	const [splash, setSplash] = useState(true);
+	const [splashGone, setSplashGone] = useState(false);
 
-
+	useEffect(() => {
+		document.body.style.overflow = 'hidden';
+		setSplash(true);
+		setTimeout(() => {
+			document.body.style.overflow = 'auto';
+			setSplash(false);
+			setSplashGone(true);
+		}, [3000]);
+	}, []);
+	if (splash) return (<SplashScreen show={splash}/>)
 	return (
 		<>
+
+
 			<div id="hero">
-				<Background />
-				<h1 id="hero-main">
-					PRAKARSH XVI
-				</h1>
-				<h5
-					id='hero-desc'
-				>
-					[ an impulse to soar ]
-				</h5>
+				<Background/>
+				<div id="xvi">XVI</div>
+				<Fade in={splashGone} timeout={{enter: 5000}}>
+					<h1 id="hero-main">
+						PRA<i>K</i>ARSH
+					</h1>
+				</Fade>
+
+				<h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
 			</div>
 			<Paper style={{ padding: '40px' }}>
 				<Container maxWidth="lg">
-					<Grid container spacing={5} alignItems='center'>
+					<Grid container spacing={5} alignItems="center">
 						<Grid item sm>
 							<div
 								style={{
 									borderRadius: '10px',
 									width: '100%',
 									height: '100%',
-									overflow:'hidden'
+									overflow: 'hidden',
 								}}
-							><img src='/College_Image.png' alt='' height='auto' width='600px' style={{objectFit: 'contain'}}/></div>
+							>
+								<img
+									src="/images/college-image.png"
+									alt=""
+									height="auto"
+									width="100%"
+									style={{ objectFit: 'contain' }}
+								/>
+							</div>
 						</Grid>
 						<Grid item sm>
 							<div style={{ maxWidth: '36vw', margin: '0 0 25px' }}>
-								<Typography variant="h3" gutterBottom>What is Prakarsh?</Typography>
-								<Divider style={{width: '50%', backgroundColor:'#FF4655' }}/>
+								<Typography variant="h3" gutterBottom>
+									What is Prakarsh?
+								</Typography>
+								<Divider style={{ width: '50%', backgroundColor: '#FF4655' }} />
 							</div>
 							<Typography variant="body1">
 								PRAKARSH, a National Level Technical Symposium to bring together
@@ -73,34 +101,49 @@ export default function Home() {
 					</Grid>
 				</Container>
 			</Paper>
-			<div id='events'>
-			<EventCategories />
-
+			<div id="events">
+				<EventCategories />
 			</div>
 			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
-					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
+					<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
 						<Typography
-							variant="h3"
+							variant="h4"
+							fontWeight={400}
 							align="center"
 							gutterBottom
-							style={{ fontFamily: '"Valorant",sans-serif' }}
+							style={{fontFamily: '"Valorant",sans-serif'}}
 						>
 							SPONSORS
 						</Typography>
-						<Divider />
+						<Divider/>
 					</div>
-					<Sponsers style={{ padding: '30px 20px' }} />
+					<Sponsers/>
+					<br/>
+					<br/>
+					<Divider style={{backgroundColor: '#444'}}/>
+					<footer>
+						<div id="copyright">All Rights Reserved © Prakarsh XVI</div>
+						<div>
+							<IconButton href="https://www.facebook.com/PrakarshTechFest">
+								<Facebook/>
+							</IconButton>
+							<IconButton href="https://www.instagram.com/prakarsh2019/">
+								<Instagram/>
+							</IconButton>
+							<IconButton href="https://www.youtube.com/channel/UCKMMGkIUwMUokSbjgzb9OUw">
+								<YouTube/>
+							</IconButton>
+							<IconButton href="mailto:support@prakarsh.org">
+								<Email />
+							</IconButton>
+							<IconButton href="telto:+917600998231">
+								<Phone />
+							</IconButton>
+						</div>
+					</footer>
 				</Container>
 			</Paper>
-			<Snackbar
-				autoHideDuration={6000}
-				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-				open={error}
-				onClose={() => { setError(null) }}
-			>
-				<MuiAlert elevation={6} variant="filled" severity="error">{error}</MuiAlert>
-			</Snackbar>
 		</>
 	);
 	// </Container>

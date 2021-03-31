@@ -1,17 +1,17 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import {useMediaQuery} from "@material-ui/core";
+import { useMediaQuery } from '@material-ui/core';
 
 // const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
 
 export const theme = createMuiTheme({
 	palette: {
-		type:'dark',
+		type: 'dark',
 		primary: {
 			main: '#0593EA',
 		},
-		background:{
-			default:'#0b0812',
-			paper: '#110b18',
+		background: {
+			default: '#0b0812',
+			paper: '#0f1923',
 		},
 		secondary: {
 			main: '#FF4655',
@@ -43,7 +43,7 @@ export const theme = createMuiTheme({
 			letterSpacing: 1.4,
 		},
 		h3: {
-			fontFamily:'"Tungsten", sans-serif',
+			fontFamily: '"Tungsten", sans-serif',
 			fontWeight: 400,
 			textTransform: 'uppercase',
 			letterSpacing: 2,
@@ -54,13 +54,13 @@ export const theme = createMuiTheme({
 		h5: {
 			fontWeight: 600,
 		},
-		body1:{
-			fontSize:14,
+		body1: {
+			fontSize: 14,
 			lineHeight: 2,
-		}
+		},
 	},
 	shape: {
-		borderRadius: 2,
+		borderRadius: 2.5,
 	},
 	spacing: 10,
 	// Override Styling (CSS Properties)
@@ -71,19 +71,24 @@ export const theme = createMuiTheme({
 				// borderWidth: '2px',
 				// borderRadius: '25px',
 				fontSize: 12,
-				fontWeight:500,
+				fontWeight: 500,
 				margin: '0 10px',
 			},
 			fullWidth: {
 				maxWidth: '400px',
 			},
-			text:{
+			text: {
 				fontSize: '12px',
 				// fontWeight: 500,
 			},
-			outlined:{
-				borderWidth: '100px',
-			}
+			outlined: {
+				borderWidth: '2px',
+			},
+		},
+		MuiDivider: {
+			root: {
+				backgroundColor: '#FF4655',
+			},
 		},
 	},
 	// Defaults Mui Props
@@ -101,10 +106,10 @@ export const theme = createMuiTheme({
 			size: 'small',
 			margin: 'dense',
 		},
-		MuiPaper:{
+		MuiPaper: {
 			component: 'div',
 			square: true,
-		}
+		},
 		// MuiPaper
 		// MuiCard
 	},

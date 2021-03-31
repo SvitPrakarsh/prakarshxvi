@@ -1,94 +1,68 @@
 import Axios from 'axios';
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
+import {getSession} from 'next-auth/client';
+import axios from "axios";
+
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function useAuth() {
-  const [user, setUser] = useState(null);
-  const [session, setSesion] = useState(null)
+	const [auth, setAuth] = useState(false);
+	const [session, setSession] = useState(null);
+	const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 
-  const [loading, setLoading] = useState(1);
-  const [reloading, setReloading] = useState(0);
-  const [error, setError] = useState();
-  const [cart, setCart] = useState([]);
+	const authenticate = () => {
+		getSession().then((s) => {
+			setSession(s);
+			if (s) {
+				// console.log(s.jwt);
+				axios({
+					method: 'post',
+					url: `${baseUrl}/participants`,
+					data: {
+						email: s.user.email,
+					},
+					headers: {
+						Authorization: 'Bearer ' + s.jwt,
+					},
+				})
+					.then((u) => {
+						if (u.data.length > 0) {
+							setUser(u.data[0]);
+						} else {
+							setAuth(true);
+						}
+					})
+					.catch((e) => {
+						console.log(e);
+						setError('Unable to reach server!');
+					})
+					.finally(() => {
+						setLoading(false);
+					});
+			} else {
+				setLoading(false);
+			}
+		})
+	}
 
-  const getCart = async () => {
-    try {
-      setCart(data);
-    } catch (e) {
-      console.log(e)
-    }
-  };
 
-  const cancelToken = Axios.CancelToken;
-  const source = cancelToken.source();
+	useEffect(() => {
+		authenticate()
+	}, [])
 
-  const getUser = async () => {
-    try {
-      const session = await getSession();
-      console.log(session);
-      let user;
-      console.log(session)
-      if (session) {
-        user = await Axios({
-          method: 'post',
-          url: '/participants',
-          data: {
-            'email': session.user.email
-          },
-          headers: {
-            'Authorization': "Bearer"  + session.jwt
-          }
-        });
-        setUser(user);
-      }
-      // return {
-      // 	props: {
-      // 		name: "Ayaan",
-      // 		session,
-      // 		user
-      // 	}
-      // }
-      // const r = await Axios.get('/user', { cancelToken: source.token });
-      // if (!Axios.isCancel()) {
-      //   if (r.status === 200) {
-      //     setUser(r.data.data);
-      //     await getCart();
-      //   }  else {
-      //     console.log(r.message);
-      //   }
-      // }
-    } catch (e) {
-      if (
-        !Axios.isCancel(e) &&
-        e.message !== 'Request failed with status code 401'
-      ) {
-        console.log(e.response);
-      }
-    } finally {
-      setLoading(0);
-    }
-  };
-
-  const reload = () => {
-    setReloading((localReload) => setReloading(!localReload));
-    getCart();
-  };
-
-  useEffect(() => {
-    getUser();
-    return () => {
-      source.cancel('Axios request cancelled!');
-    };
-  }, [reloading, setUser, setError, setLoading]);
-
-  return {
-    session,
-    user,
-    setUser
-
-    // reload,
-    // loading,
-    // setLoading,
-    // error,
-    // cart,
-  };
+	return {
+		auth,
+		setAuth,
+		session,
+		setSession,
+		user,
+		setUser,
+		loading,
+		setLoading,
+		error,
+		setError
+		// authenticate
+	}
 }

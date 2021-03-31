@@ -1,9 +1,43 @@
 [
-     {"name": "Cyber Intrusion.", "iconUrl":"" },
-     {"name": "Dexter's Lab.", "iconUrl":""  },
-     {"name": "Fun-tastic.", "iconUrl":""  },
-     {"name": "Structonics.", "iconUrl":""  },
-     {"name": "Wheels & Wings.", "iconUrl":""  },
-     {"name": "Workshops.", "iconUrl":""  },
-     {"name": "Ancillary.", "iconUrl":""  }
+  {
+    "name": "Cyber Intrusion",
+    "iconUrl": "/images/cyber-intrusion.png",
+    "textUrl": "/images/cyber-intrusion.svg",
+    "color": "#6847FE"
+  },
+  {
+    "name": "Dexter's Lab",
+    "iconUrl": "/images/dexter-lab.png",
+    "textUrl": "/images/dexter-lab.svg",
+    "color": "#478EFE"
+  },
+  {
+    "name": "Funtastic",
+    "iconUrl": "/images/funtastic.png",
+    "textUrl": "/images/funtastic.svg",
+    "color": "#FF7C47"
+  },
+  {
+    "name": "Structonics",
+    "iconUrl": "/images/structonics.png",
+    "textUrl": "/images/structonics.svg",
+    "color": "#478EFE"
+  },
+  {
+    "name": "Wheels & Wings",
+    "iconUrl": "/images/wheels-&-wings.png",
+    "textUrl": "/images/wheels-&-wings.svg",
+    "color": "4690FF"
+  },
+  {
+    "name": "Workshops",
+    "iconUrl": "/images/workshops.png",
+    "textUrl": "/images/workshops.svg"
+  },
+  {
+    "name": "Ancillary",
+    "iconUrl": "/images/ancillary.png",
+    "textUrl": "/images/ancillary.svg",
+    "color": "#FFC647"
+  }
 ]

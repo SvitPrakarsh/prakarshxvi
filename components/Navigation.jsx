@@ -1,32 +1,8 @@
-<<<<<<< Updated upstream
-import { Avatar, Container, makeStyles, CircularProgress } from '@material-ui/core';
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
-import Menu from '@material-ui/core/Menu';
-import { useContext, useEffect, useState, useRef } from 'react';
-import Context from '../Context';
-import { List } from '@material-ui/core';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import { ListItem } from '@material-ui/core';
-import { ListItemIcon } from '@material-ui/core';
-
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { ListItemText } from '@material-ui/core';
-import { Divider } from '@material-ui/core';
-import { MenuItem } from '@material-ui/core';
-import { Button } from '@material-ui/core';
-import { HomeOutlined } from '@material-ui/icons';
-import { getSession, signIn, signOut, providers } from 'next-auth/client';
-import axios from 'axios';
-=======
 import {
   Avatar,
   Container,
   makeStyles,
   CircularProgress,
-  CardMedia,
 } from "@material-ui/core";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
@@ -51,7 +27,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import EventIcon from "@material-ui/icons/Event";
 import GroupIcon from "@material-ui/icons/Group";
->>>>>>> Stashed changes
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -66,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Valorant',sans-serif",
     fontSize: 24,
     flexGrow: 1,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   list: {
     width: 300,

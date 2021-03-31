@@ -30,16 +30,18 @@
 //html, body {
 //	background: hsl(258, 37%, 25%) !important;
 //}
-
-.background{
+#snackbar-text {
+	color: #f1f1f1;
+}
+.background {
 	position: fixed;
 	z-index: -10;
-	opacity: .8;
+	opacity: 0.9;
 	overflow: hidden;
-	canvas{
+	canvas {
 		width: 100%;
 	}
-	&::before{
+	&::before {
 		z-index: -8;
 		background: #fafafa;
 		opacity: 0.6;
@@ -49,7 +51,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-}
+	}
 }
 small {
 	opacity: 0.6;
@@ -64,16 +66,7 @@ form i {
 	color: #e81123;
 	font-size: 10px;
 }
-//nav {
-//	position: sticky;
-//	top: 0;
-//	right: 0;
-//	margin: 10px;
-//	width: fit-content;
-//	border-radius: 15px;
-//	background: #fafafa;
-//	height: 60px;
-//}
+
 #hero {
 	height: calc(100vh - 54px);
 	display: flex;
@@ -82,14 +75,35 @@ form i {
 	align-items: flex-end;
 	width: fit-content;
 	margin: auto;
+	#xvi {
+		z-index: -20;
+		position: absolute;
+		top: calc(50% + 54px);
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font: 400 400px 'Valorant', sans-serif;
+	}
 	#hero-main {
 		font: 400 120px 'Valorant', sans-serif;
 		color: #ffffff;
 		text-align: center;
 		margin: 0;
+		display: flex;
+		align-items: flex-start;
+		sup {
+			font: 900 16px 'Valorant', san-serif;
+			letter-spacing: 2px;
+			color: $secondary;
+		}
+		i {
+			font: 400 120px 'Valorant', sans-serif;
+
+			font-style: normal;
+			color: $secondary;
+		}
 	}
-	#hero-desc{
-		font: 400 24px "Operator Mono",monospace;
+	#hero-desc {
+		font: 700 24px 'Rubik', monospace;
 		color: $secondary;
 		margin: 0;
 	}
@@ -110,6 +124,175 @@ form i {
 	display: none;
 }
 
+.splash-screen {
+	z-index: 1202;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	background: transparentize($color: #0f1923, $amount: 0.5);
+	backdrop-filter: blur(15px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: all ease-in-out;
+	img {
+		height: 450px;
+		width: 450px;
+	}
+}
+
+// Events
+#event-card {
+	display: flex;
+	background-blend-mode: soft-light;
+	background-repeat: no-repeat;
+	background-size: 98%;
+	margin: auto;
+	padding: 10px;
+	border-radius: 20px;
+	height: 250px;
+	width: 250px;
+	overflow: hidden;
+	vertical-align: middle;
+	text-align: center;
+	box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.25);
+
+	#card-icon {
+		display: block;
+		margin: auto;
+		height: 150px;
+		width: auto;
+		transition: all 0.3s ease-in-out;
+		&::after {
+			display: block;
+			position: relative;
+			background: radial-gradient(#000, transparent);
+			height: 10px;
+			width: 100%;
+		}
+	}
+	&:hover {
+		background-blend-mode: normal;
+		background-position: 100% center;
+		//position: fixed;
+		//top: 50%;
+		//left: 50%;
+		//transform: translate(50%, 50%) scale(2);
+		#card-icon {
+			transform: translateX(-5%) scale(0.995);
+		}
+	}
+	//#card-text {
+	//	// flex-basis: 0%;
+	//	flex-basis: 20%;
+	//
+	//	overflow: hidden;
+	//	height: 80%;
+	//	right: 0;
+	//	padding: 10px;
+	//	opacity: 0.7;
+	//	transition: all 0.3s ease-in-out;
+	//}
+}
+
+// Pagewise Styling
+
+#dashboard {
+	b {
+		color: $primary;
+	}
+}
+
+#category-icon {
+	padding: 10px;
+	background: #fafafa;
+	height: 160px;
+	width: 160px;
+	border-radius: 50%;
+}
+
+footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	#copyright {
+		color: #999;
+	}
+	.Mui-IconButton svg {
+		height: 20px;
+	}
+}
+
+@media only screen and (max-width: 860px) {
+	#xvi {
+		font-size: 200px !important;
+	}
+	#hero-main {
+		font-size: 80px !important;
+
+		sup {
+			font-size: 14px !important;
+		}
+
+		i {
+			font-size: 80px !important;
+		}
+	}
+	#hero-desc {
+		font-size: 20px !important;
+	}
+	#desktop-nav {
+		display: none;
+	}
+	#mobile-nav {
+		display: block;
+	}
+}
+@media only screen and (max-width: 540px) {
+	#xvi {
+		font-size: 200px !important;
+	}
+	#hero-main {
+		font-size: 50px !important;
+
+		sup {
+			font-size: 14px !important;
+		}
+
+		i {
+			font-size: 50px !important;
+		}
+	}
+	#hero-desc {
+		font-size: 14px !important;
+	}
+	#event-card {
+		background-size: 60%;
+		height: 240px;
+		width: 240px;
+		background-blend-mode: normal;
+
+		#card-icon {
+			height: 115px;
+		}
+
+		&:hover {
+			#card-icon {
+				transform: scale(1);
+			}
+		}
+	}
+	footer {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+// ScrollBar
 /* width */
 ::-webkit-scrollbar {
 	width: 10px;
@@ -130,19 +313,14 @@ form i {
 	background: #555;
 }
 
-@media only screen and (max-width: 860px) {
-	#hero-main {
-		font-size: 42px;
+@keyframes fade-out {
+	0% {
+		opacity: 1;
 	}
-	#desktop-nav {
-		display: none;
-	}
-	#mobile-nav {
-		display: block;
+	100% {
+		opacity: 0;
 	}
 }
-@media only screen and (max-width: 540px) {
-	#hero-main {
-		font-size: 32px;
-	}
+p{
+	white-space: pre-wrap;
 }

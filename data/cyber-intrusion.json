@@ -1,0 +1,202 @@
+[
+	{
+		"eventName": "Creative Hex",
+		"category_name": "Cyber Intrusion",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "This is Creative Design Event.You have to use Creativity, Designing and Branding Skills."
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "This is event is based on the basics of Graphic Design. Logo Designing is the Central Idea of this Technical Event."
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": ""
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "solo"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1: Spot that logo",
+						"sectionContent": "> In this round Logo of well-known brands will be shown and the participants have to identify that Logo and give answer.\20b9 > The Logo would be given in Image Format and participant would be given 20 min to find the names of all the Questions."
+					},
+					{
+						"sectionHeader": "Round 2: Dream Band",
+						"sectionContent": "> Make Your Brand. Name it. Create a logo of your own Brand.\20b9 > You can use any Designing Software like Adobe Illustrator or online logo creation tools. The selection would be on the basis of Creativity."
+					},
+					{
+						"sectionHeader": "Round 3: Interface-X",
+						"sectionContent": "> This is the Final Round. This is the last touch of your Designing. \20b9 > In this Round you have to Develop a UI (User Interface). \20b9 > You have to submit the Image of your UI. \20b9 > You can use any tool like Figma, Adode Photoshop or any other Photo editors."
+					}
+				]
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "Faisal Khan",
+				"number": "6355634325"
+			},
+			{
+				"name": "Vishva Dadhaniya",
+				"number": "6355548007"
+			}
+		]
+	},
+	{
+		"eventName": "Techie Trial",
+		"category_name": "Cyber Intrusion",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "This event is based on your technical knowledge and programming skills."
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "An understanding of problem solving and algorithm implementation will be developed inside the participant’s mind. "
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": ""
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "Solo"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1: Find The Key",
+						"sectionContent": "In this round, Google Drive will be given and the password would be there to open it and participant has to solve the questions."
+					},
+					{
+						"sectionHeader": "Round 2: CoderRank",
+						"sectionContent": "> There will be different and interesting tasks,  participants have to perform it using their intelligence and technical knowledge. \20b9 > The problem would be given and its code has to be formed to find output.\20b9 > Time based Round. "
+					}
+				]
+			},
+			{
+				"sectionHeader": "Time",
+				"sectionContent": ""
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "Priyanka Pandya",
+				"number": "6352668049"
+			},
+			{
+				"name": "Drashti Vyas",
+				"number": "7573007910"
+			}
+		]
+	},
+	{
+		"eventName": "Corporatech",
+		"category_name": "Cyber Intrusion",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "This event, presented by the IT department is a fusion of the corporate world that includes the share market and the technical field. Combined, these 2 components run almost all of the world. How much do you know about it?"
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "This event tests the knowledge by crossword, quiz and problem solving abilities. Careful, individuality and teamwork both are important to excel here."
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": ""
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "Solo"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1: Cross-Suits",
+						"sectionContent": "> Participants will have to solve a crossword puzzle related to mobile applications. \20b9 > Selection will be based on the scores. \20b9> In case of same scores, the faster one to submit will be chosen for next round."
+					},
+					{
+						"sectionHeader": "Round 2: Know The Stock",
+						"sectionContent": "> Participants will have to appear in a quiz related to stock market and industries. \20b9 > People for next round will be chosen through scores."
+					},
+					{
+						"sectionHeader": "Round 3: Virtual Relay",
+						"sectionContent": "> Pairs will be participating in this round. \20b9 > Both players will be given a set of password protected files that contain a question. \20b9 > Answer to the respective question would be the password for the other persons question and vice-versa."
+					},
+					{
+						"sectionHeader": "Round 4: (to finalise the winner)",
+						"sectionContent": "> Every finalist will be shown a set of logos. \20b9 > Players will have to guess the logo. \20b9 > The player who correctly answers most logos in one minute will be the winner."
+					}
+				]
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "Varun Tiwari",
+				"number": "6353039510"
+			},
+			{
+				"name": "Manali Gorajiya",
+				"number": "8160365741"
+			}
+		]
+	},
+	{
+		"eventName": "Tech-Roadies",
+		"category_name": "Cyber Intrusion",
+		"details": [
+			{
+				"sectionHeader": "Introduction",
+				"sectionContent": "An event to test your technical knowledge, present your opinions and showcase your skills!"
+			},
+			{
+				"sectionHeader": "Abstract",
+				"sectionContent": "The first round will be a quiz, where participants have to choose an appropriate question for the given answer. The second round is a debate round. And, in the third round the participants will be given some tasks and they have to complete it in certain time limit."
+			},
+			{
+				"sectionHeader": "Price",
+				"sectionContent": ""
+			},
+			{
+				"sectionHeader": "Participation",
+				"sectionContent": "Solo"
+			},
+			{
+				"sectionHeader": "Rounds",
+				"sectionContent": [
+					{
+						"sectionHeader": "Round 1: DOOBY SCOOBY DOO",
+						"sectionContent": "> Selecting appropriate question for the given answer from the multiple choices. \20b9 > The questions will be selected from subjects like Physics, Chemistry, Mathematics and Basic Programming. \20b9 > Top 40 participants according based on scores will be selected for next round."
+					},
+					{
+						"sectionHeader": "Round 2: WAR OF WORDS",
+						"sectionContent": "> A debate competition. \20b9 > Topics will be of modern and developing technologies. \20b9 > Points will be given by faculty of the college. \20b9 > Top 10 students based on   scores will be selected for next round."
+					},
+					{
+						"sectionHeader": "Round 3: MINOR MYSTRY",
+						"sectionContent": "> There will be different and interesting tasks and participants have to perform it using their intelligence and technical knowledge. \20b9 > Time based Round \20b9 > Top three participants to complete their respective task first will be chosen as winners."
+					}
+				]
+			}
+		],
+		"contactDetails": [
+			{
+				"name": "Yashaswi Makwana",
+				"number": "9686840317"
+			},
+			{
+				"name": "Sonal Gupta",
+				"number": "7434086144"
+			}
+		]
+	}
+]
