@@ -16,7 +16,6 @@
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
-    "framer-motion": "^4.0.3",
     "lodash": "^4.17.21",
     "next": "^10.0.9",
     "next-auth": "^3.13.3",
@@ -24,8 +23,6 @@
     "nprogress": "^0.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-spring": "^8.0.27",
-    "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.32.8",
     "swiper": "^6.5.0",
     "yup": "^0.32.9"

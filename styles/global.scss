@@ -149,7 +149,6 @@ form i {
 	background-blend-mode: soft-light;
 	background-repeat: no-repeat;
 	background-size: 98%;
-	margin: auto;
 	padding: 10px;
 	border-radius: 20px;
 	height: 250px;
@@ -205,6 +204,11 @@ form i {
 	}
 }
 
+#event-price {
+	float: right;
+	margin: 15px;
+}
+
 #category-icon {
 	padding: 10px;
 	background: #fafafa;
@@ -249,6 +253,13 @@ footer {
 	#mobile-nav {
 		display: block;
 	}
+
+	#category-title {
+		font-size: 30px;
+	}
+	#category-icon {
+		display: none;
+	}
 }
 @media only screen and (max-width: 540px) {
 	#xvi {
@@ -273,11 +284,9 @@ footer {
 		height: 240px;
 		width: 240px;
 		background-blend-mode: normal;
-
 		#card-icon {
 			height: 115px;
 		}
-
 		&:hover {
 			#card-icon {
 				transform: scale(1);
@@ -290,27 +299,32 @@ footer {
 		justify-content: space-between;
 		align-items: center;
 	}
+	::-webkit-scrollbar {
+		width: 5px;
+	}
 }
 
 // ScrollBar
 /* width */
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 7px;
+	border-radius: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #f1f1f1;
+	background: #0b0812;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: #888;
+	background: $secondary;
+	border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+	background: transparentize($secondary, .25);
 }
 
 @keyframes fade-out {

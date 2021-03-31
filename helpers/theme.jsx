@@ -56,7 +56,7 @@ export const theme = createMuiTheme({
 		},
 		body1: {
 			fontSize: 14,
-			lineHeight: 2,
+			lineHeight: 1.5,
 		},
 	},
 	shape: {

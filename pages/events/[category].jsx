@@ -2,24 +2,17 @@ import {
 	Card,
 	CardActionArea,
 	CardContent,
-	CardMedia,
+	CardMedia, Chip,
 	Container,
 	Grid,
-	GridList,
-	GridListTile,
-	GridListTileBar,
-	IconButton,
-	ListSubheader,
 	makeStyles,
 	Typography,
 } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
-import * as _ from 'lodash';
-import categories from '../../data/eventCategories.json';
 import { useContext, useEffect } from 'react';
 import Context from '../../Context';
 import EventDialog from '../../components/EventDialog';
 import allEvents from '../../data/events.json';
+import NProgress from "nprogress";
 
 const dashify = (str) => {
 	let dashedString = str.toLowerCase();
@@ -45,10 +38,6 @@ const useStyles = makeStyles((theme) => ({
 		background:
 			'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
 	},
-	media: {
-		maxWidth: 150,
-		minWidth: 150,
-	},
 	icon: {
 		color: 'rgba(255, 255, 255, 0.54)',
 	},
@@ -73,12 +62,13 @@ export default function Events({ category, events }) {
 					style={{ padding: 10 }}
 				>
 					<Typography
-						variant="h3"
+						id='category-title'
+						variant="h2"
 						style={{
 							fontFamily: "'Valorant',sans-serif",
 						}}
 					>
-						{category}
+						{events[0].category_name}
 					</Typography>
 					{/*<IconButton disabled>*/}
 					<img
@@ -91,16 +81,24 @@ export default function Events({ category, events }) {
 					{/*</IconButton>*/}
 				</Grid>
 				<div className={classes.content}>
-					<Grid container spacing={5}>
+					<Grid container spacing={3}>
 						{events.map((event, key) => (
-							<Grid item sm md={6} lg={3} key={key}>
-								<Card className={classes.root}>
+							<Grid item sm={6} md={4} lg={3} key={key}>
+								<Card style={{
+									minWidth: 200,
+									maxWidth: 250,
+									borderRadius: '15px'
+								}}>
 									<CardActionArea onClick={() => setEvent(event)}>
+										<div id='event-price'><Chip
+											color="primary"
+											label={`₹ ${event?.details[2].sectionContent}`}
+										/></div>
 										<CardMedia
 											className={classes.media}
-											image="/prakarsh-logo.svg"
+											image={`/images/${dashify(event.category_name)}/${dashify(event.eventName)}.png`}
 											title={event.eventName}
-											style={{ height: 200, paddingTop: 0 }}
+											style={{height: 250, paddingTop: 0}}
 										/>
 										<CardContent>
 											<Typography gutterBottom variant="h5" component="h2">
@@ -125,12 +123,27 @@ export default function Events({ category, events }) {
 	);
 }
 
-export const getServerSideProps = async ({ query }) => {
-	const category = dashify(query.category);
-	console.log('category:', category);
+export const getStaticProps = async (ctx) => {
+
+	const category = dashify(ctx.params.category);
+	// console.log('category:', category);
 	const events = allEvents[category];
-	console.log('events:', events);
+	// console.log('events:', events);
+
 	return {
-		props: { category, events },
+		props: {category: ctx.params.category, events},
 	};
 };
+
+export const getStaticPaths = async () => {
+	const categories = Object.keys(allEvents)
+
+	const path = categories.map((category) => {
+		return {params: {category: category}}
+	})
+	console.log(path)
+	return {
+		paths: path,
+		fallback: false // See the "fallback" section below
+	};
+}
