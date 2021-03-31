@@ -87,105 +87,114 @@ export default function Dashboard() {
       return;
     }
     console.log("Amount: " + totalAmount);
-    const result = await axios.post(
-      "http://localhost:1337/payment/orders",
-      {
-        amount: totalAmount * 100,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + session.jwt,
+    try {
+      const result = await axios.post(
+        "http://localhost:1337/payment/orders",
+        {
+          amount: totalAmount * 100,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: "Bearer " + session.jwt,
+          },
+        }
+      );
 
-    if (!result) {
-      alert("Server error. Are you online?");
+      if (!result) {
+        alert("Server error. Are you online?");
+        setLoading(false);
+        // return;
+      }
+
+      const { amount, id: order_id, currency } = result.data;
+
+      const options = {
+        key: "rzp_test_2dXDY8rEMwXGvD",
+        amount: amount.toString(),
+        currency: currency,
+        name: "Prakarsh XVI",
+        //Add custom description according to the events added to cart
+        description: "Test Transaction",
+        // image: { logo },
+        order_id: order_id,
+        notes: {
+          events: cart,
+        },
+        handler: async function (response) {
+          const data = {
+            events: cart,
+            user: {
+              name: user.full_name,
+              id: user._id,
+              email: user.email,
+              number: user.number,
+              college: user.college,
+            },
+            amount: amount,
+            orderCreationId: order_id,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature,
+          };
+          try {
+            const result = await axios.post(
+              "http://localhost:1337/payment/success",
+              data,
+              {
+                headers: {
+                  Authorization: "Bearer " + session.jwt,
+                },
+              }
+            );
+            console.log(result.data);
+            console.log(cart);
+            const myEventsNew = cart.map((obj) => {
+              return {
+                event_name: obj.eventName,
+                category_name: obj.category_name,
+              };
+            });
+            setCart(null, false, true);
+
+            if (myEvents) {
+              setmyEvents([...myEvents, ...myEventsNew]);
+            } else {
+              setmyEvents([...myEventsNew]);
+            }
+            setLoading(false);
+            setSuccess("Transaction completed!");
+          } catch (e) {
+            console.log(e);
+            setError("Error while processing request please contact support!!");
+          } finally {
+            setLoading(false);
+          }
+        },
+        prefill: {
+          name: user.full_name,
+          email: user.email,
+          contact: user.number,
+        },
+        theme: {
+          color: "#61dafb",
+        },
+        modal: {
+          ondismiss: function () {
+            console.log("Modal Closed!!");
+            setLoading(false);
+            setError("Payment Cancelled!!");
+          },
+          confirm_close: true,
+        },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (e) {
+      setError("Error while fetching data!!");
+      setLoading(false);
       return;
     }
-
-    const { amount, id: order_id, currency } = result.data;
-
-    const options = {
-      key: "rzp_test_2dXDY8rEMwXGvD",
-      amount: amount.toString(),
-      currency: currency,
-      name: "Prakarsh XVI",
-      //Add custom description according to the events added to cart
-      description: "Test Transaction",
-      // image: { logo },
-      order_id: order_id,
-      notes: {
-        events: cart,
-      },
-      handler: async function (response) {
-        const data = {
-          events: cart,
-          user: {
-            name: user.full_name,
-            id: user._id,
-            email: user.email,
-          },
-          amount: amount,
-          orderCreationId: order_id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpayOrderId: response.razorpay_order_id,
-          razorpaySignature: response.razorpay_signature,
-        };
-        try {
-          const result = await axios.post(
-            "http://localhost:1337/payment/success",
-            data,
-            {
-              headers: {
-                Authorization: "Bearer " + session.jwt,
-              },
-            }
-          );
-          console.log(result.data);
-          console.log(cart);
-          const myEventsNew = cart.map((obj) => {
-            return {
-              event_name: obj.eventName,
-              category_name: obj.category_name,
-            };
-          });
-          setCart(null, false, true);
-
-          if (myEvents) {
-            setmyEvents([...myEvents, ...myEventsNew]);
-          } else {
-            setmyEvents([...myEventsNew]);
-          }
-          setLoading(false);
-          setSuccess("Transaction completed!");
-        } catch (e) {
-          console.log(e);
-          setError("Error while processing request please contact support!!");
-        } finally {
-          setLoading(false);
-        }
-      },
-      prefill: {
-        name: user.full_name,
-        email: user.email,
-        contact: user.number,
-      },
-      theme: {
-        color: "#61dafb",
-      },
-      modal: {
-        ondismiss: function () {
-          console.log("Modal Closed!!");
-          setLoading(false);
-          setError("Payment Cancelled!!");
-        },
-        confirm_close: true,
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
   }
 
   // useEffect(() => {
@@ -306,9 +315,6 @@ export default function Dashboard() {
                     />
                     <ListItemSecondaryAction>
                       <span>₹ 50</span>
-                      {/* <IconButton edge="end" aria-label="delete">
-                        <Info />
-                      </IconButton> */}
                     </ListItemSecondaryAction>
                   </ListItem>
                 ))}

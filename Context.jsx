@@ -53,7 +53,12 @@ export const Provider = (props) => {
       return null;
     }
 
-    if (cart?.includes(event)) {
+    if (
+      cart?.some(
+        ({ eventName, category_name }) =>
+          eventName == event.eventName && category_name == event.category_name
+      )
+    ) {
       auth.setError("Event already in cart!");
       return null;
     }
