@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import useAuth from "./helpers/useAuth";
 
 // Context

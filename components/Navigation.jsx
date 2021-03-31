@@ -2,7 +2,7 @@ import {
   Avatar,
   Container,
   makeStyles,
-  CircularProgress,
+  CircularProgress, CardMedia,
 } from "@material-ui/core";
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
@@ -22,11 +22,9 @@ import { Divider } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Event, Group, HomeOutlined } from "@material-ui/icons";
-import { getSession, signIn, signOut, providers } from "next-auth/client";
+import { signIn, signOut } from "next-auth/client";
 import axios from "axios";
 import { useRouter } from "next/router";
-import EventIcon from "@material-ui/icons/Event";
-import GroupIcon from "@material-ui/icons/Group";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -56,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navigation = ({ props }) => {
+const Navigation = () => {
   const classes = useStyles();
   const router = useRouter();
   const [menu, setMenu] = useState(false);
@@ -70,7 +68,6 @@ const Navigation = ({ props }) => {
     setSession,
     user,
     setUser,
-    error,
     setError,
     setmyEvents,
   } = useContext(Context);
@@ -142,7 +139,7 @@ const Navigation = ({ props }) => {
 						className={classes.title}
 						style={{}}
 					>
-						
+
 					</Typography>*/}
 
           <div style={{ flexGrow: 1 }}>
@@ -168,7 +165,7 @@ const Navigation = ({ props }) => {
                   router.push("/").then(() =>
                     setTimeout(() => {
                       window.location.href = "/#events";
-                    }, [500])
+                    }, 500)
                   );
                 } else {
                   window.location.href = "/#events";
