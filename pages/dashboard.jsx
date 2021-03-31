@@ -89,7 +89,7 @@ export default function Dashboard() {
     console.log("Amount: " + totalAmount);
     try {
       const result = await axios.post(
-        "http://localhost:1337/payment/orders",
+        "http://prakarshxvi-api.herokuapp.com/payment/orders",
         {
           amount: totalAmount * 100,
         },
@@ -138,7 +138,7 @@ export default function Dashboard() {
           };
           try {
             const result = await axios.post(
-              "http://localhost:1337/payment/success",
+              "http://prakarshxvi-api.herokuapp.com/payment/success",
               data,
               {
                 headers: {

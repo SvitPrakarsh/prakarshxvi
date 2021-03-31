@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { getSession } from 'next-auth/client';
 import axios from "axios";
 
-// const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-const baseUrl = "http://localhost:1337"
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+// const baseUrl = "http://localhost:1337"
 
 export default function useAuth() {
 	const [auth, setAuth] = useState(false);
