@@ -1,9 +1,10 @@
 import Axios from 'axios';
-import {useState, useEffect} from 'react';
-import {getSession} from 'next-auth/client';
+import { useState, useEffect } from 'react';
+import { getSession } from 'next-auth/client';
 import axios from "axios";
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+// const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+const baseUrl = "http://localhost:1337"
 
 export default function useAuth() {
 	const [auth, setAuth] = useState(false);
@@ -11,6 +12,8 @@ export default function useAuth() {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [success, setSuccess] = useState(null);
+	const [myEvents, setmyEvents] = useState(null);
 
 	const authenticate = () => {
 		getSession().then((s) => {
@@ -46,11 +49,33 @@ export default function useAuth() {
 			}
 		})
 	}
+	const getMyEvents = () => {
+		axios({
+			method: 'get',
+			url: `${baseUrl}/participations?user_id=${user._id}`,
+			headers: {
+				Authorization: 'Bearer ' + session.jwt,
+			},
+		}).then((myEv) => {
+			const myEventData = myEv.data.map((ev) => {
+				return {
+					event_name: ev.event_name,
+					category_name: ev.category_name
+				};
+			})
+			// console.log(myEventData)
+			setmyEvents(myEventData);
+		})
+	}
 
 
 	useEffect(() => {
 		authenticate()
 	}, [])
+
+	useEffect(() => {
+		if (user) getMyEvents()
+	}, [user])
 
 	return {
 		auth,
@@ -62,7 +87,10 @@ export default function useAuth() {
 		loading,
 		setLoading,
 		error,
-		setError
-		// authenticate
+		setError,
+		success,
+		setSuccess,
+		myEvents,
+		setmyEvents
 	}
 }
