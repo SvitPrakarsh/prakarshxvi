@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { Avatar, Container, makeStyles, CircularProgress } from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
@@ -19,6 +20,38 @@ import { Button } from '@material-ui/core';
 import { HomeOutlined } from '@material-ui/icons';
 import { getSession, signIn, signOut, providers } from 'next-auth/client';
 import axios from 'axios';
+=======
+import {
+  Avatar,
+  Container,
+  makeStyles,
+  CircularProgress,
+  CardMedia,
+} from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import Menu from "@material-ui/core/Menu";
+import { useContext, useEffect, useState, useRef } from "react";
+import Context from "../Context";
+import { List } from "@material-ui/core";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import { ListItem } from "@material-ui/core";
+import { ListItemIcon } from "@material-ui/core";
+
+import MenuIcon from "@material-ui/icons/Menu";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+import { ListItemText } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Event, Group, HomeOutlined } from "@material-ui/icons";
+import { getSession, signIn, signOut, providers } from "next-auth/client";
+import axios from "axios";
+import { useRouter } from "next/router";
+import EventIcon from "@material-ui/icons/Event";
+import GroupIcon from "@material-ui/icons/Group";
+>>>>>>> Stashed changes
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -50,32 +83,83 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = ({ props }) => {
   const classes = useStyles();
+  const router = useRouter();
   const [menu, setMenu] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { setAuth, session, setSession, user, setUser, error, setError } = useContext(Context);
-  const anchorEl = useRef(null)
+  // const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const {
+    loading,
+    setLoading,
+    setAuth,
+    session,
+    setSession,
+    user,
+    setUser,
+    error,
+    setError,
+    setmyEvents,
+  } = useContext(Context);
+  const anchorEl = useRef(null);
 
   useEffect(() => {
-    getSession().then((s) => {
-      setSession(s);
-      if (s) {
+    window.addEventListener("scroll", () => {
+      let isTop = window.scrollY < 50;
+      if (isTop !== true) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
       }
     });
+    // getSession().then((s) => {
+    // 	setSession(s);
+    // 	if (s) {
+    // 		// console.log(s.jwt);
+    // 		axios({
+    // 			method: 'post',
+    // 			url: `${baseUrl}/participants`,
+    // 			data: {
+    // 				email: s.user.email,
+    // 			},
+    // 			headers: {
+    // 				Authorization: 'Bearer ' + s.jwt,
+    // 			},
+    // 		})
+    // 			.then((u) => {
+    // 				if (u.data.length > 0) {
+    // 					setUser(u.data[0]);
+    // 				} else {
+    // 					setAuth(true);
+    // 				}
+    // 			})
+    // 			.catch((e) => {
+    // 				console.log(e);
+    // 				setError('Unable to reach server!');
+    // 			})
+    // 			.finally(() => {
+    // 				setLoading(false);
+    // 			});
+    // 	} else {
+    // 		setLoading(false);
+    // 	}
+    //
+    // });
+    return () => {
+      window.removeEventListener("scroll", window);
+    };
   }, []);
-
 
   return (
     <AppBar
       position="sticky"
-      color='black'
-      style={{ boxShadow: 'none' }}
+      color={scrolled ? "black" : "transparent"}
+      style={{ boxShadow: "none" }}
       className={classes.appBar}
     >
       {/*<nav>*/}
-      <Container maxWidth={'xl'}>
+      <Container maxWidth={"xl"}>
         <Toolbar
           style={{
-            minHeight: '54px',
+            minHeight: "54px",
           }}
         >
           <Drawer />
@@ -86,8 +170,7 @@ const Navigation = ({ props }) => {
 						
 					</Typography>*/}
 
-          <div style={{ flexGrow: 1 }}
-          >
+          <div style={{ flexGrow: 1 }}>
             <IconButton
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -95,13 +178,31 @@ const Navigation = ({ props }) => {
               // onClick={() => setDrawer(!drawer)}
               color="inherit"
             >
-              <img src="/prakarsh2021-logo.png" alt="" style={{ height: 36, width: 36, }} />
+              <img
+                src="/prakarsh-logo.svg"
+                alt=""
+                style={{ height: 36, width: 36 }}
+              />
             </IconButton>
           </div>
           <div id="desktop-nav">
-            <Button>Home</Button>
-            <Button>Events</Button>
-            <Button>Team</Button>
+            <Button onClick={() => router.push("/")}>Home</Button>
+            <Button
+              onClick={() => {
+                if (router.pathname !== "/") {
+                  router.push("/").then(() =>
+                    setTimeout(() => {
+                      window.location.href = "/#events";
+                    }, [500])
+                  );
+                } else {
+                  window.location.href = "/#events";
+                }
+              }}
+            >
+              Events
+            </Button>
+            <Button onClick={() => router.push("/team")}>Team</Button>
           </div>
           {user ? (
             <>
@@ -109,76 +210,100 @@ const Navigation = ({ props }) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={() => setError("Error my ass")}
-                // onClick={()=>{setMenu(true)}}
+                onClick={() => {
+                  setMenu(true);
+                }}
                 color="inherit"
               >
-                <Avatar ref={anchorEl} alt="Remy Sharp" src={``} style={{ width: '15px', height: '15px' }} />
+                <Avatar
+                  ref={anchorEl}
+                  alt=""
+                  src={session.user.image}
+                  style={{ width: "24px", height: "24px" }}
+                />
               </IconButton>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl.current}
                 getContentAnchorEl={null}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={menu}
                 onClose={() => setMenu(false)}
               >
-                {/* <MenuItem>Profile</MenuItem> */}
-                <MenuItem onClick={() => {
-                  signOut()
-                  setUser(null)
-                  setSession(null)
-                }}>Sign Out</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push("/dashboard");
+                    setMenu(false);
+                  }}
+                >
+                  Dashboard
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    signOut({ redirect: false });
+                    setUser(null);
+                    setSession(null);
+                    setMenu(false);
+                    setmyEvents(null);
+                  }}
+                >
+                  Sign Out
+                </MenuItem>
               </Menu>
             </>
           ) : (
             <>
-              {loading ? (<CircularProgress />) : <Button
-                variant="contained"
-                size="large"
-                color="secondary"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (session) {
-                    setLoading(true)
-                    axios({
-                      method: 'post',
-                      url: `${baseUrl}/participants`,
-                      data: {
-                        'email': session.user.email
-                      },
-                      headers: {
-                        'Authorization': "Bearer " + session.jwt
-                      }
-                    }).then((u) => {
-                      if (u.data.length > 0) {
-                        setUser(u.data[0]);
-                      }
-                      else {
-                        setAuth(true);
-                      }
-                    }).catch((e) => {
-                      console.log(e);
-                      setError("Error!!!")
-                    }).finally(() => {
-                      setLoading(false)
-                    });
-                  }
-                  else {
-                    signIn('google');
-                  }
-                }}
-              >
-                Login
-							</Button>}
+              {loading ? (
+                <CircularProgress size={24} />
+              ) : (
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="secondary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (session) {
+                      setLoading(true);
+                      axios({
+                        method: "post",
+                        url: `${baseUrl}/participants`,
+                        data: {
+                          email: session.user.email,
+                        },
+                        headers: {
+                          Authorization: "Bearer " + session.jwt,
+                        },
+                      })
+                        .then((u) => {
+                          if (u.data.length > 0) {
+                            setUser(u.data[0]);
+                          } else {
+                            setAuth(true);
+                          }
+                        })
+                        .catch((e) => {
+                          console.log(e);
+                          setError("Error!!!");
+                        })
+                        .finally(() => {
+                          setLoading(false);
+                        });
+                    } else {
+                      signIn("google");
+                    }
+                  }}
+                >
+                  Login
+                </Button>
+              )}
             </>
           )}
         </Toolbar>
@@ -186,10 +311,11 @@ const Navigation = ({ props }) => {
       {/*</nav>*/}
     </AppBar>
   );
-}
+};
 
 const Drawer = () => {
   const classes = useStyles();
+  const router = useRouter();
   const { drawer, setDrawer } = useContext(Context);
   return (
     <div id="mobile-nav">
@@ -208,30 +334,50 @@ const Drawer = () => {
         onOpen={() => setDrawer(true)}
         className={classes.drawer}
       >
+        <CardMedia
+          // className={classes.media}
+          image="/prakarsh-logo.svg"
+          // title={event.name}
+          style={{ height: 200, paddingTop: 0 }}
+        />
         <List style={{ width: 200 }}>
-          <ListItem button>
+          <Divider />
+          <ListItem
+            button
+            onClick={() => {
+              router.push("/");
+              setDrawer(false);
+            }}
+          >
             <ListItemIcon>
               <HomeOutlined />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button>
+          <ListItem
+            button
+            onClick={() => {
+              if (router.pathname !== "/") {
+                router
+                  .push("/")
+                  .then(() => (window.location.href = "/#events"));
+              } else {
+                window.location.href = "/#events";
+              }
+              setDrawer(false);
+            }}
+          >
             <ListItemIcon>
-              <HomeOutlined />
+              <Event />
             </ListItemIcon>
             <ListItemText primary="Events" />
           </ListItem>
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button onClick={() => router.push("/team")}>
+            <ListItemIcon>
+              <Group />
+            </ListItemIcon>
+            <ListItemText primary="Team" />
+          </ListItem>
         </List>
       </SwipeableDrawer>
     </div>
