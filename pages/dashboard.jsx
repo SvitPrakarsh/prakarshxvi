@@ -87,99 +87,120 @@ export default function Dashboard() {
       return;
     }
     console.log("Amount: " + totalAmount);
-    const result = await axios.post(
-      "http://localhost:1337/payment/orders",
-      {
-        amount: totalAmount * 100,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + session.jwt,
+    try {
+      const result = await axios.post(
+        "http://prakarshxvi-api.herokuapp.com/payment/orders",
+        {
+          amount: totalAmount * 100,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: "Bearer " + session.jwt,
+          },
+        }
+      );
 
-    if (!result) {
-      alert("Server error. Are you online?");
+      if (!result) {
+        alert("Server error. Are you online?");
+        setLoading(false);
+        // return;
+      }
+
+      const { amount, id: order_id, currency } = result.data;
+
+      const options = {
+        key: "rzp_test_2dXDY8rEMwXGvD",
+        amount: amount.toString(),
+        currency: currency,
+        name: "Prakarsh XVI",
+        //Add custom description according to the events added to cart
+        description: "Test Transaction",
+        // image: { logo },
+        order_id: order_id,
+        notes: {
+          events: cart,
+        },
+        handler: async function (response) {
+          const data = {
+            events: cart,
+            user: {
+              name: user.full_name,
+              id: user._id,
+              email: user.email,
+              number: user.number,
+              college: user.college,
+            },
+            amount: amount,
+            orderCreationId: order_id,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature,
+          };
+          try {
+            const result = await axios.post(
+              "http://prakarshxvi-api.herokuapp.com/payment/success",
+              data,
+              {
+                headers: {
+                  Authorization: "Bearer " + session.jwt,
+                },
+              }
+            );
+            console.log(result.data);
+            console.log(cart);
+            const myEventsNew = cart.map((obj) => {
+              return {
+                event_name: obj.eventName,
+                category_name: obj.category_name,
+              };
+            });
+            setCart(null, false, true);
+
+            if (myEvents) {
+              setmyEvents([...myEvents, ...myEventsNew]);
+            } else {
+              setmyEvents([...myEventsNew]);
+            }
+            setLoading(false);
+            setSuccess("Transaction completed!");
+          } catch (e) {
+            console.log(e);
+            setError("Error while processing request please contact support!!");
+          } finally {
+            setLoading(false);
+          }
+        },
+        prefill: {
+          name: user.full_name,
+          email: user.email,
+          contact: user.number,
+        },
+        theme: {
+          color: "#61dafb",
+        },
+        modal: {
+          ondismiss: function () {
+            console.log("Modal Closed!!");
+            setLoading(false);
+            setError("Payment Cancelled!!");
+          },
+          confirm_close: true,
+        },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (e) {
+      setError("Error while fetching data!!");
+      setLoading(false);
       return;
     }
-
-    const { amount, id: order_id, currency } = result.data;
-
-    const options = {
-      key: "rzp_test_2dXDY8rEMwXGvD",
-      amount: amount.toString(),
-      currency: currency,
-      name: "Prakarsh XVI",
-      description: "Test Transaction",
-      // image: { logo },
-      order_id: order_id,
-      handler: async function (response) {
-        const data = {
-          events: cart,
-          user: {
-            name: user.full_name,
-            id: user._id,
-            email: user.email,
-          },
-          amount: amount,
-          orderCreationId: order_id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpayOrderId: response.razorpay_order_id,
-          razorpaySignature: response.razorpay_signature,
-        };
-        try {
-          const result = await axios.post(
-            "http://localhost:1337/payment/success",
-            data,
-            {
-              headers: {
-                Authorization: "Bearer " + session.jwt,
-              },
-            }
-          );
-          console.log(result.data);
-          setSuccess("Transaction completed!");
-          const myEventsNew = cart.map((obj) => {
-            return {
-              event_name: obj.eventName,
-              category_name: obj.category_name,
-            };
-          });
-
-          if (myEvents) {
-            setmyEvents([...myEventsNew]);
-            setCart(null, false, true);
-          } else {
-            setmyEvents([...myEvents, ...myEventsNew]);
-            setCart(null, false, true);
-          }
-          setLoading(false);
-        } catch (e) {
-          setError("Error while processing request please contact support!!");
-        }
-      },
-      prefill: {
-        name: user.full_name,
-        email: user.email,
-        contact: user.number,
-      },
-      notes: {
-        events: cart,
-      },
-      theme: {
-        color: "#61dafb",
-      },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
   }
 
-  useEffect(() => {
-    console.log("Cart is:");
-    if (cart) console.log(cart);
-  }, [cart]);
+  // useEffect(() => {
+  //   console.log("Cart is:");
+  //   if (cart) console.log(cart);
+  // }, [cart]);
 
   return (
     <Container maxWidth="lg" id="dashboard">
@@ -197,7 +218,15 @@ export default function Dashboard() {
       </Typography>
 
       {loading ? (
-        <CircularProgress size={28} color="secondary" />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CircularProgress size={28} color="secondary" />
+        </div>
       ) : (
         <Grid container justify="space-between" alignItems="center" spacing={4}>
           <Grid item xs={12} md={8}>
@@ -227,16 +256,14 @@ export default function Dashboard() {
             </Grid>
             <Divider />
             <List>
-              {cart
+              {cart?.length > 0
                 ? cart.map((event, index) => (
                     <ListItem key={index}>
                       <ListItemAvatar>
                         <Avatar
                           src="/images/workshops.png"
                           style={{ backgroundColor: "#0593ea" }}
-                        >
-                          {/*<FolderIcon/>*/}
-                        </Avatar>
+                        ></Avatar>
                       </ListItemAvatar>
                       <ListItemText
                         primary={event.eventName}
@@ -260,43 +287,42 @@ export default function Dashboard() {
                 : ""}
             </List>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Grid
-              container
-              justify="space-between"
-              alignItems="center"
-              style={{ padding: 10 }}
-            >
-              <Typography variant="h5" gutterBottom>
-                My Events
-              </Typography>
+          {myEvents?.length > 0 ? (
+            <Grid item xs={12} md={4}>
+              <Grid
+                container
+                justify="space-between"
+                alignItems="center"
+                style={{ padding: 10 }}
+              >
+                <Typography variant="h5" gutterBottom>
+                  My Events
+                </Typography>
+              </Grid>
+              <Divider />
+              <List>
+                {myEvents.map((event, index) => (
+                  <ListItem key={index}>
+                    <ListItemAvatar>
+                      <Avatar
+                        src="/images/workshops.png"
+                        style={{ backgroundColor: "#0593ea" }}
+                      ></Avatar>
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={event.event_name}
+                      secondary={event.category_name}
+                    />
+                    <ListItemSecondaryAction>
+                      <span>₹ 50</span>
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                ))}
+              </List>
             </Grid>
-            <Divider />
-            <List>
-              {myEvents
-                ? myEvents.map((event) => (
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar
-                          src="/images/workshops.png"
-                          style={{ backgroundColor: "#0593ea" }}
-                        ></Avatar>
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={event.event_name}
-                        secondary={event.category_name}
-                      />
-                      <ListItemSecondaryAction>
-                        <span>₹ 50</span>
-                        {/* <IconButton edge="end" aria-label="delete">
-                        <Info />
-                      </IconButton> */}
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                  ))
-                : ""}
-            </List>
-          </Grid>
+          ) : (
+            ""
+          )}
         </Grid>
       )}
     </Container>

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-
 import useAuth from "./helpers/useAuth";
 
 // Context
@@ -21,13 +20,10 @@ export const Provider = (props) => {
 
   const setCart = (event, remove = false, removeAll = false) => {
     const myEvents = auth.myEvents;
-    const currEvent = {
-      category_name: event.category_name,
-      event_name: event.eventName,
-    };
 
     if (removeAll) {
       setCartR(null);
+      return null;
     }
 
     if (!auth.user) {
@@ -49,8 +45,7 @@ export const Provider = (props) => {
     if (
       myEvents.some(({ event_name, category_name }) => {
         return (
-          event_name == currEvent.event_name &&
-          category_name == currEvent.category_name
+          event_name == event.eventName && category_name == event.category_name
         );
       })
     ) {
@@ -58,7 +53,12 @@ export const Provider = (props) => {
       return null;
     }
 
-    if (cart?.includes(event)) {
+    if (
+      cart?.some(
+        ({ eventName, category_name }) =>
+          eventName == event.eventName && category_name == event.category_name
+      )
+    ) {
       auth.setError("Event already in cart!");
       return null;
     }
