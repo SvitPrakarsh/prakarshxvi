@@ -313,7 +313,7 @@ footer {
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #0b0812;
+	background: #0f1923;
 }
 
 /* Handle */
@@ -324,7 +324,7 @@ footer {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: transparentize($secondary, .25);
+	background: transparentize($secondary, 0.25);
 }
 
 @keyframes fade-out {
@@ -335,6 +335,6 @@ footer {
 		opacity: 0;
 	}
 }
-p{
+p {
 	white-space: pre-wrap;
 }

@@ -2,7 +2,8 @@ import {
 	Card,
 	CardActionArea,
 	CardContent,
-	CardMedia, Chip,
+	CardMedia,
+	Chip,
 	Container,
 	Grid,
 	makeStyles,
@@ -12,7 +13,7 @@ import { useContext, useEffect } from 'react';
 import Context from '../../Context';
 import EventDialog from '../../components/EventDialog';
 import allEvents from '../../data/events.json';
-import NProgress from "nprogress";
+import NProgress from 'nprogress';
 
 const dashify = (str) => {
 	let dashedString = str.toLowerCase();
@@ -62,7 +63,7 @@ export default function Events({ category, events }) {
 					style={{ padding: 10 }}
 				>
 					<Typography
-						id='category-title'
+						id="category-title"
 						variant="h2"
 						style={{
 							fontFamily: "'Valorant',sans-serif",
@@ -84,21 +85,27 @@ export default function Events({ category, events }) {
 					<Grid container spacing={3}>
 						{events.map((event, key) => (
 							<Grid item sm={6} md={4} lg={3} key={key}>
-								<Card style={{
-									minWidth: 200,
-									maxWidth: 250,
-									borderRadius: '15px'
-								}}>
+								<Card
+									style={{
+										minWidth: 200,
+										maxWidth: 250,
+										borderRadius: '15px',
+									}}
+								>
 									<CardActionArea onClick={() => setEvent(event)}>
-										<div id='event-price'><Chip
-											color="primary"
-											label={`₹ ${event?.details[2].sectionContent}`}
-										/></div>
+										<div id="event-price">
+											<Chip
+												color="primary"
+												label={`₹ ${event?.details[2].sectionContent}`}
+											/>
+										</div>
 										<CardMedia
 											className={classes.media}
-											image={`/images/${dashify(event.category_name)}/${dashify(event.eventName)}.png`}
+											image={`/images/${dashify(event.category_name)}/${dashify(
+												event.eventName
+											)}.png`}
 											title={event.eventName}
-											style={{height: 250, paddingTop: 0}}
+											style={{ height: 250, paddingTop: 0 }}
 										/>
 										<CardContent>
 											<Typography gutterBottom variant="h5" component="h2">
@@ -123,27 +130,27 @@ export default function Events({ category, events }) {
 	);
 }
 
+// © Akshar Patel | BigBrain
 export const getStaticProps = async (ctx) => {
-
 	const category = dashify(ctx.params.category);
 	// console.log('category:', category);
 	const events = allEvents[category];
 	// console.log('events:', events);
 
 	return {
-		props: {category: ctx.params.category, events},
+		props: { category: ctx.params.category, events },
 	};
 };
 
 export const getStaticPaths = async () => {
-	const categories = Object.keys(allEvents)
+	const categories = Object.keys(allEvents);
 
 	const path = categories.map((category) => {
-		return {params: {category: category}}
-	})
-	console.log(path)
+		return { params: { category: category } };
+	});
+	console.log(path);
 	return {
 		paths: path,
-		fallback: false // See the "fallback" section below
+		fallback: false,
 	};
-}
+};

@@ -1,22 +1,32 @@
 import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
 	Container,
 	Divider,
+	Fade,
 	Grid,
+	IconButton,
 	makeStyles,
 	Paper,
+	TextField,
 	Typography,
-	Snackbar,
-	Fade,
-	IconButton, Accordion, AccordionSummary, AccordionDetails, TextField,
 } from '@material-ui/core';
-import EventCategories from '../components/Events';
-import {useContext, useEffect, useState, useRef} from 'react';
-import Context from '../Context';
-// import MuiAlert from '@material-ui/lab/Alert';
+import { Email, Facebook, Instagram, Phone, YouTube } from '@material-ui/icons';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useContext, useEffect, useState } from 'react';
+import Background from '../components/Background';
+import CategoryCard from '../components/CategoryCard';
+import SplashScreen from '../components/SplashScreen';
+import Sponsers from '../components/Sponsers';
+import Context from '../Context';
+import categories from '../data/eventCategories.json';
+import faqs from '../data/faqs.json';
 
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
+	actionArea: {
+		width: 'fit-content',
+	},
 	heroDesc: {
 		fontFamily: '"Operator Mono", monospace',
 		fontSize: 24,
@@ -25,18 +35,35 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: 'left',
 	},
 }));
-import Sponsers from '../components/Sponsers';
-import Background from '../components/Background';
-import { Head } from 'next/document';
-import { Email, Facebook, Instagram, Phone, YouTube } from '@material-ui/icons';
-import SplashScreen from '../components/SplashScreen';
-import {ErrorMessage, Form} from "formik";
 
 export default function Home() {
 	const classes = useStyles();
 	const { error, setError } = useContext(Context);
 	const [splash, setSplash] = useState(true);
 	const [splashGone, setSplashGone] = useState(false);
+	const [nums, setNums] = useState([]);
+
+	const shuffleArray = (array) => {
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+	};
+
+	const generator = () => {
+		let nums = [];
+		let starter = Math.random() * 7;
+		nums.push(Math.floor(starter));
+
+		while (nums.length !== 7) {
+			nums.push(Math.floor((nums[nums.length - 1] + 36) % 255));
+		}
+		shuffleArray(nums);
+		// console.log(nums)
+		setNums(nums);
+	};
+
+	useEffect(() => generator(), []);
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
@@ -47,15 +74,14 @@ export default function Home() {
 			setSplashGone(true);
 		}, [10]);
 	}, []);
-	if (splash) return (<SplashScreen show={splash}/>)
+
+	if (splash) return <SplashScreen show={splash} />;
 	return (
 		<>
-
-
 			<div id="hero">
-				<Background/>
+				<Background />
 				<div id="xvi">XVI</div>
-				<Fade in={splashGone} timeout={{enter: 3000}}>
+				<Fade in={splashGone} timeout={{ enter: 3000 }}>
 					<h1 id="hero-main">
 						PRA<i>K</i>ARSH
 					</h1>
@@ -63,7 +89,7 @@ export default function Home() {
 
 				<h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
 			</div>
-			<Paper style={{padding: '40px'}}>
+			<Paper style={{ padding: '40px' }}>
 				<Container maxWidth="lg">
 					<Grid container spacing={5} alignItems="center">
 						<Grid item sm>
@@ -103,101 +129,134 @@ export default function Home() {
 					</Grid>
 				</Container>
 			</Paper>
-			<div id="events">
-				<EventCategories/>
-			</div>
-			<Paper style={{padding: '30px 20px'}}>
+			<Container id="events" style={{ padding: '40px' }} maxWidth="lg">
+				<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
+					<Typography
+						variant="h3"
+						align="center"
+						gutterBottom
+						style={{ fontFamily: '"Valorant",sans-serif' }}
+					>
+						Events
+					</Typography>
+					<Divider style={{ backgroundColor: '#FF4655' }} />
+				</div>
+				<Grid container spacing={2} justify="center" alignItems="center">
+					{categories.map((category, key) => {
+						console.log(nums[key]);
+						return (
+							<Grid
+								item
+								sm
+								md={4}
+								lg={3}
+								key={key}
+								justify="center"
+								alignItems="center"
+							>
+								<CategoryCard category={category} color={nums[key]} key={key} />
+							</Grid>
+						);
+					})}
+				</Grid>
+			</Container>
+			<Paper style={{ padding: '30px 20px' }}>
 				<Container>
-					<div style={{maxWidth: '36vw', margin: '0 auto 50px'}}>
+					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
 						<Typography
 							variant="h4"
 							fontWeight={400}
 							align="center"
 							gutterBottom
-							style={{fontFamily: '"Valorant",sans-serif'}}
+							style={{ fontFamily: '"Valorant",sans-serif' }}
 						>
 							SPONSORS
 						</Typography>
-						<Divider/>
+						<Divider />
 					</div>
-					<Sponsers/>
-					<br/>
-					<br/>
+					<Sponsers />
+					<br />
+					<br />
 				</Container>
 			</Paper>
-			<Container>
-				<Grid container spacing={5} style={{padding: '40px 0'}}>
-					<Grid item sm>
-						<Typography variant="h3" align='center' gutterBottom>
-							FAQ
-						</Typography>
-						<Accordion>
-							<AccordionSummary
-								expandIcon={<ExpandMoreIcon/>}
-								aria-controls="panel1a-content"
-								id="panel1a-header"
-							>
-								<Typography className={classes.heading}>Accordion 1</Typography>
-							</AccordionSummary>
-							<AccordionDetails>
-								<Typography>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus
-									ex, sit amet blandit leo lobortis eget.
-								</Typography>
-							</AccordionDetails>
-						</Accordion>
-						<Accordion>
-							<AccordionSummary
-								expandIcon={<ExpandMoreIcon/>}
-								aria-controls="panel1a-content"
-								id="panel1a-header"
-							>
-								<Typography className={classes.heading}>Accordion 1</Typography>
-							</AccordionSummary>
-							<AccordionDetails>
-								<Typography>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus
-									ex, sit amet blandit leo lobortis eget.
-								</Typography>
-							</AccordionDetails>
-						</Accordion>
-					</Grid>
-					<Grid item sm>
-						<Typography variant="h3" align='center' gutterBottom>
-							Contact Us
-						</Typography>
-						<Paper style={{padding: '30px 20px', borderRadius: 10}}>
-							<TextField id="outlined-basic" label="Full Name" variant="outlined"/>
-							<TextField id="outlined-basic" label="Email" variant="outlined"/>
-							<TextField id="outlined-basic" multiline label="Message" variant="outlined"/>
-						</Paper>
-
-
-					</Grid>
-				</Grid>
+			<Container maxWidth="md" style={{ padding: '40px' }}>
+				<Typography variant="h3" align="center" gutterBottom>
+					FAQ
+				</Typography>
+				{faqs.map((q) => (
+					<Accordion>
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon />}
+							id="panel1a-header"
+						>
+							<Typography>{q.question}</Typography>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography>{q.answer}</Typography>
+						</AccordionDetails>
+					</Accordion>
+				))}
 			</Container>
-			<Paper>
-				<Container maxWidth='lg'>
-					<br/>
-					<Divider style={{backgroundColor: '#444'}}/>
+			<Paper style={{ padding: '40px 0' }}>
+				<Container maxWidth="lg">
+					<Typography variant="h3" align="center" gutterBottom>
+						SUPPORT
+					</Typography>
+					<Grid container spacing={5}>
+						<Grid item sm="12" md="8">
+							<Typography gutterBottom>*Discord Widget Here*</Typography>
+						</Grid>
+						<Grid item sm="12" md="4">
+							<Grid container spacing="1">
+								<Grid item sm md="6">
+									<TextField
+										id="outlined-basic"
+										label="Full Name"
+										variant="outlined"
+										fullWidth
+									/>
+								</Grid>
+								<Grid item sm md="6">
+									<TextField
+										id="outlined-basic"
+										label="Email"
+										variant="outlined"
+										fullWidth
+									/>
+								</Grid>
+								<Grid item sm="12">
+									<TextField
+										id="outlined-basic"
+										multiline
+										label="Message"
+										variant="outlined"
+										rows="5"
+										fullWidth
+									/>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Grid>
+					<br />
+					<Divider style={{ backgroundColor: '#444' }} />
 
 					<footer>
 						<div id="copyright">All Rights Reserved © Prakarsh XVI</div>
 						<div>
 							<IconButton href="https://www.facebook.com/PrakarshTechFest">
-								<Facebook/>
+								<Facebook />
 							</IconButton>
 							<IconButton href="https://www.instagram.com/prakarsh2019/">
-								<Instagram/>
+								<Instagram />
 							</IconButton>
 							<IconButton href="https://www.youtube.com/channel/UCKMMGkIUwMUokSbjgzb9OUw">
-								<YouTube/>
+								<YouTube />
 							</IconButton>
 							<IconButton href="mailto:support@prakarsh.org">
-								<Email/>
+								<Email />
 							</IconButton>
 							<IconButton href="telto:+917600998231">
-								<Phone/>
+								<Phone />
 							</IconButton>
 						</div>
 					</footer>
