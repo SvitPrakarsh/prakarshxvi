@@ -1,12 +1,12 @@
 import {
   Accordion,
   AccordionDetails,
-  AccordionSummary,
+  AccordionSummary, Button,
   Container,
   Divider,
   Fade,
   Grid,
-  IconButton,
+  IconButton, Link,
   makeStyles,
   Paper,
   TextField,
@@ -22,6 +22,7 @@ import Sponsers from "../components/Sponsers";
 import Context from "../Context";
 import categories from "../data/eventCategories.json";
 import faqs from "../data/faqs.json";
+import Footer from "../components/Footer";
 
 const useStyles = makeStyles(() => ({
   actionArea: {
@@ -75,7 +76,7 @@ export default function Home() {
     }, [10]);
   }, []);
 
-  if (splash) return <SplashScreen show={splash} />;
+  // if (splash) return <SplashScreen show={splash} />;
   return (
     <>
       <div id="hero">
@@ -189,85 +190,84 @@ export default function Home() {
               expandIcon={<ExpandMoreIcon />}
               id="panel1a-header"
             >
-              <Typography>{q.question}</Typography>
+              <Typography variant='h6' style={{fontSize: '18px'}}>{q.question}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{q.answer}</Typography>
+              <Typography variant='body1' color='textSecondary'>{q.answer}</Typography>
             </AccordionDetails>
           </Accordion>
         ))}
       </Container>
       <Paper style={{ padding: "40px 0" }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
           <Typography variant="h3" align="center" gutterBottom>
             SUPPORT
           </Typography>
-          <Grid container spacing={5}>
-            <Grid item sm="12" md="8">
-              <iframe
-                src="https://discord.com/widget?id=827025974603284490&theme=dark"
-                // width="350"
-                height="300"
-                allowtransparency="true"
-                frameborder="0"
-                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-              ></iframe>
-              {/* <Typography gutterBottom>*Discord Widget Here*</Typography> */}
-            </Grid>
-            <Grid item sm="12" md="4">
-              <Grid container spacing="1">
-                <Grid item sm md="6">
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            console.log(e)
+          }}>
+
+            <Grid container spacing={3} justify='center'>
+              <Grid item xs="12" sm="6" xl='4' style={{textAlign: 'center'}}>
+                <iframe
+                    src="https://discord.com/widget?id=827025974603284490&theme=dark"
+                    // width="350"
+                    height="280"
+                    allowTransparency="true"
+                    frameBorder="0"
+                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                    style={{margin: 'auto'}}
+                />
+                {/* <Typography gutterBottom>*Discord Widget Here*</Typography> */}
+              </Grid>
+              <Grid container item xs="12" sm="6" xl='4' spacing='1' justify='center'>
+
+                <Grid item sm="12">
                   <TextField
-                    id="outlined-basic"
-                    label="Full Name"
-                    variant="outlined"
-                    fullWidth
+                      label="Full Name"
+                      variant="outlined"
+                      fullWidth
                   />
                 </Grid>
-                <Grid item sm md="6">
+                <Grid item sm="6">
                   <TextField
-                    id="outlined-basic"
-                    label="Email"
-                    variant="outlined"
-                    fullWidth
+                      label="Phone"
+                      variant="outlined"
+                      fullWidth
+                  />
+                </Grid>
+                <Grid item sm="6">
+                  <TextField
+                      label="Email"
+                      variant="outlined"
+                      fullWidth
+                  />
+                </Grid>
+                <Grid item sm={12}>
+                  <TextField
+                      multiline
+                      label="Message"
+                      variant="outlined"
+                      rows="5"
+                      fullWidth
                   />
                 </Grid>
                 <Grid item sm="12">
-                  <TextField
-                    id="outlined-basic"
-                    multiline
-                    label="Message"
-                    variant="outlined"
-                    rows="5"
-                    fullWidth
-                  />
+                  <Button variant='contained' color='primary' size='large' style={{margin: '0 auto'}}
+                          type='submit' fullWidth>Submit</Button>
                 </Grid>
+
+
               </Grid>
             </Grid>
-          </Grid>
-          <br />
-          <Divider style={{ backgroundColor: "#444" }} />
+          </form>
+          <br/>
+          <br/>
+        </Container>
+        <Container maxWidth="xl">
+          <Footer/>
 
-          <footer>
-            <div id="copyright">All Rights Reserved © Prakarsh XVI</div>
-            <div>
-              <IconButton href="https://www.facebook.com/PrakarshTechFest">
-                <Facebook />
-              </IconButton>
-              <IconButton href="https://www.instagram.com/prakarsh2019/">
-                <Instagram />
-              </IconButton>
-              <IconButton href="https://www.youtube.com/channel/UCKMMGkIUwMUokSbjgzb9OUw">
-                <YouTube />
-              </IconButton>
-              <IconButton href="mailto:support@prakarsh.org">
-                <Email />
-              </IconButton>
-              <IconButton href="telto:+917600998231">
-                <Phone />
-              </IconButton>
-            </div>
-          </footer>
         </Container>
       </Paper>
     </>

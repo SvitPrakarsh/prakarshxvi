@@ -14,14 +14,8 @@ import Context from "../../Context";
 import EventDialog from "../../components/EventDialog";
 import allEvents from "../../data/events.json";
 import NProgress from "nprogress";
+import {dashify} from "../../helpers/utils";
 
-const dashify = (str) => {
-  let dashedString = str.toLowerCase();
-  dashedString = dashedString.replace(/ /g, "-");
-  dashedString = dashedString.replace(/'/g, "");
-  console.log(dashedString);
-  return dashedString;
-};
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -56,73 +50,58 @@ export default function Events({ category, events }) {
     <>
       <EventDialog />
       <Container>
-        <Grid
-          container
-          justify="space-between"
-          alignItems="center"
-          style={{ padding: 10 }}
-        >
-          <Typography
+        <Typography
             id="category-title"
             variant="h2"
             style={{
               fontFamily: "'Valorant',sans-serif",
             }}
-          >
-            {events[0].category_name}
-          </Typography>
-          {/*<IconButton disabled>*/}
-          <img
-            id="category-icon"
-            src={`/images/${category}.png`}
-            alt=""
-            height="150px"
-            width="auto"
-          />
-          {/*</IconButton>*/}
-        </Grid>
+            gutterBottom
+        >
+          {events[0].category_name}
+        </Typography>
         <div className={classes.content}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} justify='center'>
             {events.map((event, key) => (
-              <Grid item sm={6} md={4} lg={3} key={key}>
-                <Card
-                  style={{
-                    minWidth: 200,
-                    maxWidth: 250,
-                    margin: "0 auto",
-                    borderRadius: "15px",
-                  }}
-                >
-                  <CardActionArea onClick={() => setEvent(event)}>
-                    <div id="event-price">
-                      <Chip
-                        color="primary"
-                        label={`₹ ${event?.details[2].sectionContent}`}
+                <Grid item sm={6} md={4} lg={3} key={key}>
+                  <Card
+                      style={{
+                        minWidth: 200,
+                        maxWidth: 250,
+                        margin: "0 auto",
+                        borderRadius: "15px",
+                      }}
+                  >
+                    <CardActionArea onClick={() => setEvent(event)}>
+                      <div id="event-price">
+                        <Chip
+                            color="primary"
+                            label={`₹ ${event?.details[2].sectionContent}`}
+                        />
+                      </div>
+                      <CardMedia
+                          className={classes.media}
+                          image={`/images/${dashify(event.category_name)}/${dashify(
+                              event.eventName
+                          )}.png`}
+                          title={event.eventName}
+                          style={{height: 250, paddingTop: 0}}
                       />
-                    </div>
-                    <CardMedia
-                      className={classes.media}
-                      image={`/images/${dashify(event.category_name)}/${dashify(
-                        event.eventName
-                      )}.png`}
-                      title={event.eventName}
-                      style={{ height: 250, paddingTop: 0 }}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {event.eventName}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        {event.category_name}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {event.eventName}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
+                        >
+                          {event.category_name}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
             ))}
           </Grid>
         </div>
@@ -155,3 +134,4 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
+

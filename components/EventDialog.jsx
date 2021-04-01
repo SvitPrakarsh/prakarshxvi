@@ -14,16 +14,7 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-
-const dashify = (str) => {
-  if (str) {
-    let dashedString = str.toLowerCase();
-    dashedString = dashedString.replace(/ /g, '-');
-    dashedString = dashedString.replace(/'/g, '');
-    return dashedString;
-  }
-  // console.log(dashedString);
-};
+import {dashify} from "../helpers/utils";
 
 const useStyles = makeStyles((theme) => ({
   dialogPaper: {
@@ -55,7 +46,9 @@ export default function EventDialog() {
         }}
       >
         <DialogTitle style={{textAlign: "center", padding: '16px 24px 5px'}}>
-          {event?.eventName}
+          <Typography variant='h5'>
+            {event?.eventName}
+          </Typography>
         </DialogTitle>
         <DialogActions>
           <Grid

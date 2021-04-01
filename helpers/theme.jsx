@@ -74,9 +74,6 @@ export const theme = createMuiTheme({
 				fontWeight: 500,
 				margin: '0 10px',
 			},
-			fullWidth: {
-				maxWidth: '400px',
-			},
 			text: {
 				fontSize: '12px',
 				// fontWeight: 500,
@@ -95,6 +92,7 @@ export const theme = createMuiTheme({
 			root: {
 				marginBottom: 15,
 				border: '#ff465699 solid 2px',
+				padding: 7
 			},
 			rounded: {
 				borderRadius: 10,

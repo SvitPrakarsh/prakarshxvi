@@ -137,9 +137,27 @@ form i {
 	align-items: center;
 	flex-direction: column;
 	transition: all ease-in-out;
+
 	img {
 		height: 450px;
 		width: 450px;
+	}
+}
+
+#category-title {
+	width: fit-content;
+	margin: 20px auto;
+
+	&::after {
+		content: '';
+		z-index: -1;
+		top: -25px;
+		display: block;
+		position: relative;
+		height: 20px;
+		background: $secondary;
+		width: 100%;
+		opacity: 0.8;
 	}
 }
 
@@ -221,11 +239,21 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
 	#copyright {
 		color: #999;
 	}
-	.Mui-IconButton svg {
-		height: 20px;
+
+	#social {
+		.Mui-IconButton svg {
+			height: 20px;
+		}
+	}
+
+	#links {
+		a.MuiLink-root {
+			margin: 0 10px;
+		}
 	}
 }
 
@@ -260,6 +288,17 @@ footer {
 	#category-icon {
 		display: none;
 	}
+
+	footer {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		align-items: center;
+
+		#links {
+			margin-bottom: 10px;
+		}
+	}
 }
 @media only screen and (max-width: 540px) {
 	#xvi {
@@ -284,21 +323,18 @@ footer {
 		height: 240px;
 		width: 240px;
 		background-blend-mode: normal;
+
 		#card-icon {
 			height: 115px;
 		}
+
 		&:hover {
 			#card-icon {
 				transform: scale(1);
 			}
 		}
 	}
-	footer {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: space-between;
-		align-items: center;
-	}
+
 	::-webkit-scrollbar {
 		width: 5px;
 	}

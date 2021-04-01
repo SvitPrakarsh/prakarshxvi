@@ -2,29 +2,27 @@ import {
   Avatar,
   Container,
   makeStyles,
-  CircularProgress, CardMedia,
+  CircularProgress, CardMedia, Badge,
 } from "@material-ui/core";
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import {AppBar, IconButton, Toolbar, Typography} from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
-import { useContext, useEffect, useState, useRef } from "react";
+import {useContext, useEffect, useState, useRef} from "react";
 import Context from "../Context";
-import { List } from "@material-ui/core";
+import {List} from "@material-ui/core";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import { ListItem } from "@material-ui/core";
-import { ListItemIcon } from "@material-ui/core";
-
+import {ListItem} from "@material-ui/core";
+import {ListItemIcon} from "@material-ui/core";
+import Link from 'next/link'
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import { ListItemText } from "@material-ui/core";
-import { Divider } from "@material-ui/core";
-import { MenuItem } from "@material-ui/core";
-import { Button } from "@material-ui/core";
-import { Event, Group, HomeOutlined } from "@material-ui/icons";
-import { signIn, signOut } from "next-auth/client";
+import {ListItemText} from "@material-ui/core";
+import {Divider} from "@material-ui/core";
+import {MenuItem} from "@material-ui/core";
+import {Button} from "@material-ui/core";
+import {Event, Group, HomeOutlined} from "@material-ui/icons";
+import {signIn, signOut} from "next-auth/client";
 import axios from "axios";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -70,6 +68,7 @@ const Navigation = () => {
     setUser,
     setError,
     setmyEvents,
+    cart
   } = useContext(Context);
   const anchorEl = useRef(null);
 
@@ -177,60 +176,68 @@ const Navigation = () => {
             <Button onClick={() => router.push("/team")}>Team</Button>
           </div>
           {user ? (
-            <>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={() => {
-                  setMenu(true);
-                }}
-                color="inherit"
-              >
-                <Avatar
-                  ref={anchorEl}
-                  alt=""
-                  src={session.user.image}
-                  style={{ width: "24px", height: "24px" }}
-                />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl.current}
-                getContentAnchorEl={null}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={menu}
-                onClose={() => setMenu(false)}
-              >
-                <MenuItem
-                  onClick={() => {
-                    router.push("/dashboard");
-                    setMenu(false);
-                  }}
+              <>
+                <Link href='/dashboard'>
+                  <IconButton
+                      color="inherit"
+                  >
+                    <Badge badgeContent={cart?.length || 0} showZero color='primary'>
+
+                      <LocalMallIcon
+                          style={{width: "24px", height: "24px"}}
+
+                      />
+                    </Badge>
+
+                  </IconButton>
+
+                </Link>
+
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={() => {
+                      setMenu(true);
+                    }}
+                    color="inherit"
                 >
-                  Dashboard
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    signOut({ redirect: false });
-                    setUser(null);
-                    setSession(null);
-                    setMenu(false);
-                    setmyEvents(null);
-                  }}
+                  <Avatar
+                      ref={anchorEl}
+                      alt=""
+                      src={session.user.image}
+                      style={{width: "26px", height: "26px"}}
+                  />
+                </IconButton>
+                <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl.current}
+                    getContentAnchorEl={null}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={menu}
+                    onClose={() => setMenu(false)}
                 >
-                  Sign Out
-                </MenuItem>
-              </Menu>
-            </>
+                  <MenuItem
+                      onClick={() => {
+                        signOut({redirect: false});
+                        setUser(null);
+                        setSession(null);
+                        setMenu(false);
+                        setmyEvents(null);
+                      }}
+                  >
+                    Sign Out
+                  </MenuItem>
+                </Menu>
+              </>
           ) : (
             <>
               {loading ? (

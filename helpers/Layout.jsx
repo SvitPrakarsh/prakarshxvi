@@ -1,17 +1,30 @@
-// import AuthDialog from '../components/AuthDialog';
-// import OnBoardDialog from '../components/OnBoardDialog';
-// import Navigation from '../components/Navigation';
-// import { Notification } from '../components/Notification';
-// import { useContext } from 'react';
-// import Context from '../ContextProvider';
+import Navigation from "../components/Navigation";
+import Register from "../components/Register";
+import ErrorSnackbar from "../components/ErrorSnackbar";
+import {useRouter} from "next/router";
+import {useContext, useEffect, useLayoutEffect} from "react";
+import Context from "../Context";
 
-// const Layout = ({ children }) => {
-//   return (
-//     <>
-//       <Navigation />
-//       {children}
-//     </>
-//   );
-// };
+const Layout = ({children}) => {
+    const router = useRouter()
+    const {user, setError} = useContext(Context)
 
-// export default Layout;
+
+    useLayoutEffect(() => {
+        if (!user && router.pathname === '/dashboard') {
+            router.push('/')
+            setError('Please login to access the Dashboard.')
+        }
+    }, [user])
+
+    return (
+        <>
+            <Navigation/>
+            <Register/>
+            {children}
+            <ErrorSnackbar/>
+        </>
+    );
+};
+
+export default Layout;
