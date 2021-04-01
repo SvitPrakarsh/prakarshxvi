@@ -1,13 +1,7 @@
 import {ButtonBase, makeStyles} from '@material-ui/core';
 import Link from 'next/link';
+import {dashify} from "../helpers/utils";
 
-const dashify = (str) => {
-	let dashedString = str.toLowerCase();
-	dashedString = dashedString.replace(/ /g, '-');
-	dashedString = dashedString.replace(/'/g, '');
-	console.log(dashedString);
-	return dashedString;
-};
 
 export default function CategoryCard({category, color}) {
 

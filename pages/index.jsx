@@ -226,29 +226,28 @@ export default function Home() {
                 {/* <Typography gutterBottom>*Discord Widget Here*</Typography> */}
               </Grid>
               <Grid container item xs="12" sm="6" xl='4' spacing='1' justify='center'>
-
-                <Grid item sm="12">
+                <Grid item xs="12">
                   <TextField
                       label="Full Name"
                       variant="outlined"
                       fullWidth
                   />
                 </Grid>
-                <Grid item sm="6">
+                <Grid item xs="6">
                   <TextField
                       label="Phone"
                       variant="outlined"
                       fullWidth
                   />
                 </Grid>
-                <Grid item sm="6">
+                <Grid item xs="6">
                   <TextField
                       label="Email"
                       variant="outlined"
                       fullWidth
                   />
                 </Grid>
-                <Grid item sm={12}>
+                <Grid item xs="12">
                   <TextField
                       multiline
                       label="Message"
@@ -257,7 +256,7 @@ export default function Home() {
                       fullWidth
                   />
                 </Grid>
-                <Grid item sm="12">
+                <Grid item xs="12">
                   <Button variant='contained' color='primary' size='large' style={{margin: '0 auto'}}
                           type='submit' fullWidth>Submit</Button>
                 </Grid>
