@@ -26,15 +26,15 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. Spot that logo",
-                     "sectionContent": "> In this round Logo of well-known brands will be shown and the participants have to identify that Logo and give answer.\n > The Logo would be given in Image Format and participant would be given 20 min to find the names of all the Questions."
+                     "sectionContent": "In this round Logo of well-known brands will be shown and the participants have to identify that Logo and give answer.\n > The Logo would be given in Image Format and participant would be given 20 min to find the names of all the Questions."
                   },
                   {
                      "sectionHeader": "#2. Dream Band",
-                     "sectionContent": "> Make Your Brand. Name it. Create a logo of your own Brand.\n > You can use any Designing Software like Adobe Illustrator or online logo creation tools. The selection would be on the basis of Creativity."
+                     "sectionContent": "Make Your Brand. Name it. Create a logo of your own Brand.\n > You can use any Designing Software like Adobe Illustrator or online logo creation tools. The selection would be on the basis of Creativity."
                   },
                   {
                      "sectionHeader": "#3. Interface-X",
-                     "sectionContent": "> This is the Final Round. This is the last touch of your Designing. \n > In this Round you have to Develop a UI (User Interface). \n > You have to submit the Image of your UI. \n > You can use any tool like Figma, Adode Photoshop or any other Photo editors."
+                     "sectionContent": "This is the Final Round. This is the last touch of your Designing. \n > In this Round you have to Develop a UI (User Interface). \n > You have to submit the Image of your UI. \n > You can use any tool like Figma, Adode Photoshop or any other Photo editors."
                   }
                ]
             }
@@ -60,7 +60,7 @@
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": "An understanding of problem solving and algorithm implementation will be developed inside the participant’s mind. "
+               "sectionContent": "There are two rounds,\n1. Participants will be given a set of code and through their conceptual knowledge they need to solve basic technical questions and find the answer. That answer would be used to unlock the next pdf.\n2. A piece of problem  would be provided and you have to write the code and need to get the correct output that is directed by the problem."
             },
             {
                "sectionHeader": "Price",
@@ -79,7 +79,7 @@
                   },
                   {
                      "sectionHeader": "#2. CoderRank",
-                     "sectionContent": "> There will be different and interesting tasks,  participants have to perform it using their intelligence and technical knowledge. \n > The problem would be given and its code has to be formed to find output.\n > Time based Round. "
+                     "sectionContent": "There will be different and interesting tasks,  participants have to perform it using their intelligence and technical knowledge. \n > The problem would be given and its code has to be formed to find output.\n > Time based Round. "
                   }
                ]
             }
@@ -120,19 +120,19 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. Cross-Suits",
-                     "sectionContent": "> Participants will have to solve a crossword puzzle related to mobile applications. \n > Selection will be based on the scores. \n> In case of same scores, the faster one to submit will be chosen for next round."
+                     "sectionContent": "Participants will have to solve a crossword puzzle related to mobile applications. \n > Selection will be based on the scores. \n> In case of same scores, the faster one to submit will be chosen for next round."
                   },
                   {
                      "sectionHeader": "#2. Know The Stock",
-                     "sectionContent": "> Participants will have to appear in a quiz related to stock market and industries. \n > People for next round will be chosen through scores."
+                     "sectionContent": "Participants will have to appear in a quiz related to stock market and industries. \n > People for next round will be chosen through scores."
                   },
                   {
                      "sectionHeader": "#3. Virtual Relay",
-                     "sectionContent": "> Pairs will be participating in this round. \n > Both players will be given a set of password protected files that contain a question. \n > Answer to the respective question would be the password for the other persons question and vice-versa."
+                     "sectionContent": "Pairs will be participating in this round. \n > Both players will be given a set of password protected files that contain a question. \n > Answer to the respective question would be the password for the other persons question and vice-versa."
                   },
                   {
                      "sectionHeader": "#4. (to finalise the winner)",
-                     "sectionContent": "> Every finalist will be shown a set of logos. \n > Players will have to guess the logo. \n > The player who correctly answers most logos in one minute will be the winner."
+                     "sectionContent": "Every finalist will be shown a set of logos. \n > Players will have to guess the logo. \n > The player who correctly answers most logos in one minute will be the winner."
                   }
                ]
             }
@@ -173,15 +173,15 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. DOOBY SCOOBY DOO",
-                     "sectionContent": "> Selecting appropriate question for the given answer from the multiple choices. \n > The questions will be selected from subjects like Physics, Chemistry, Mathematics and Basic Programming. \n > Top 40 participants according based on scores will be selected for next round."
+                     "sectionContent": "Selecting appropriate question for the given answer from the multiple choices. \n > The questions will be selected from subjects like Physics, Chemistry, Mathematics and Basic Programming. \n > Top 40 participants according based on scores will be selected for next round."
                   },
                   {
                      "sectionHeader": "#2. WAR OF WORDS",
-                     "sectionContent": "> A debate competition. \n > Topics will be of modern and developing technologies. \n > Points will be given by faculty of the college. \n > Top 10 students based on   scores will be selected for next round."
+                     "sectionContent": "A debate competition. \n > Topics will be of modern and developing technologies. \n > Points will be given by faculty of the college. \n > Top 10 students based on   scores will be selected for next round."
                   },
                   {
                      "sectionHeader": "#3. MINOR MYSTRY",
-                     "sectionContent": "> There will be different and interesting tasks and participants have to perform it using their intelligence and technical knowledge. \n > Time based Round \n > Top three participants to complete their respective task first will be chosen as winners."
+                     "sectionContent": "There will be different and interesting tasks and participants have to perform it using their intelligence and technical knowledge. \n > Time based Round \n > Top three participants to complete their respective task first will be chosen as winners."
                   }
                ]
             }
@@ -273,11 +273,11 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. PICTORIA",
-                     "sectionContent": "Pictoria is a short-listing round. Provided the picture, participants will have to guess the name of the electrical component. The basic knowledge of various components will be tested and based on the participant’s performance, the doors to the next round will be opened. "
+                     "sectionContent": "Pictoria is a short-listing round. Provided the picture, participants will have to guess the name of the electrical component. The basic knowledge of various components will be tested and based on the participant’s performance, the doors to the next round will be opened."
                   },
                   {
                      "sectionHeader": "#2. BUSTED",
-                     "sectionContent": "After getting shortlisted, participants get the chance to watch popular internet myths in the field of electrical getting busted . It will be an engineer’s pleasure to expose the (fake) viral videos circulating on the internet and misguiding people with wrong concepts.This round ends with a mini quiz regarding previously busted myths. The quiz will help the wizard in deciding the participant’s merit."
+                     "sectionContent": "After getting shortlisted, participants get the chance to watch popular internet myths in the field of electrical getting busted. It will be an engineer’s pleasure to expose the (fake) viral videos circulating on the internet and misguiding people with wrong concepts.This round ends with a mini quiz regarding previously busted myths. The quiz will help the wizard in deciding the participant’s merit."
                   },
                   {
                      "sectionHeader": "#3. WIZARD'S CIRCUIT",
@@ -305,11 +305,11 @@
          "details": [
             {
                "sectionHeader": "Introduction",
-               "sectionContent": " Journey through the sea of Clues and hunt for the treasure. Savvy? "
+               "sectionContent": "Journey through the sea of Clues and hunt for the treasure. Savvy? "
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": " Be the next Captain Jack Sparrow "
+               "sectionContent": "Be the Pirate of your house."
             },
             {
                "sectionHeader": "Price",
@@ -324,11 +324,11 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. Cipher Word ",
-                     "sectionContent": " Participants will be given a google form with a crossword puzzle to solve based on objects used in day-to-day life and available in household. Selection for next round will be based on maximum correct answers."
+                     "sectionContent": "Participants will be given a google form with a crossword puzzle to solve based on objects used in day-to-day life and available in household. Selection for next round will be based on maximum correct answers."
                   },
                   {
                      "sectionHeader": "#2. Bon Voyage",
-                     "sectionContent": " Participants will be given a series of 5 PDFs, containing a riddle to solve, first PDF will be open and its answer will be password to second PDF, and so on. Last PDF will contain the Google Meet Link for the 3rd round."
+                     "sectionContent": "Participants will be given a series of 5 PDFs, containing a riddle to solve, first PDF will be open and its answer will be password to second PDF, and so on. Last PDF will contain the Google Meet Link for the 3rd round."
                   },
                   {
                      "sectionHeader": "#3. Be The Pirate",
@@ -354,11 +354,11 @@
          "details": [
             {
                "sectionHeader": "Introduction",
-               "sectionContent": " Are you in for a Bolly-Meme Pawri?"
+               "sectionContent": "Are you in for a Bolly-Meme Pawri?"
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": " Perfect place for exploring your Meme, Bollywood and Netflix knowledge. "
+               "sectionContent": "Perfect place for exploring your Meme, Bollywood and Netflix knowledge."
             },
             {
                "sectionHeader": "Price",
@@ -403,11 +403,11 @@
          "details": [
             {
                "sectionHeader": "Introduction",
-               "sectionContent": " Dive back into your childhood !"
+               "sectionContent": "Dive back into your childhood !"
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": " A game made to challenge oneself by solving riddles and quizes of those good old days... "
+               "sectionContent": "A game made to challenge oneself by solving riddles and quizes of those good old days... "
             },
             {
                "sectionHeader": "Price",
@@ -422,11 +422,11 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. CARTOON QUEST",
-                     "sectionContent": "In this event we will conduct quiz type questions. Questions will be based on pictures of cartoon places (also cartoon tunes or cartoon characters voice if possible). Based on it, participant will guess the cartoon name and (cartoon characters name). Selection is based on maximum correct Answers."
+                     "sectionContent": "In this event we will conduct quiz type questions. Questions will be based on pictures of cartoon places (also cartoon tunes or cartoon characters voice if possible). Based on it, participant will guess the cartoon name and (cartoon characters name). Selection is based on maximum correct answers."
                   },
                   {
                      "sectionHeader": "#2. BRAIN TWISTER",
-                     "sectionContent": "In this event we will give riddles based on Childhood objects like Pencil, Rubber,Book etc. Selection is based on maximum correct answer."
+                     "sectionContent": "In this event we will give riddles based on childhood objects like pencil, rubber,book etc. Selection is based on maximum correct answer."
                   },
                   {
                      "sectionHeader": "#3. ENDLESS WORDS",
@@ -447,16 +447,16 @@
          ]
       },
       {
-         "eventName": "Game Zone",
+         "eventName": "Game-Zone",
          "category_name": "Funtastic",
          "details": [
             {
                "sectionHeader": "Introduction",
-               "sectionContent": " GA:ME O'CLOCK "
+               "sectionContent": " GAME O'CLOCK "
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": " Showcase your skills of various games like Scribble, Among Us and Tik Tac Toe; but with a twist ;) "
+               "sectionContent": " Showcase your skills of various games like Scribble, Among Us and Tic Tac Toe; but with a twist ;) "
             },
             {
                "sectionHeader": "Price",
@@ -475,7 +475,7 @@
                   },
                   {
                      "sectionHeader": "#2. AMONG US",
-                     "sectionContent": "Among us is an \"Online multiplayer social deduction game.\" where in up to ten players run around inside a virtual spaceship completing classic spaceship maintenance tasks while trying to figure out who the \"Impostors\" are before they kill everyone. It’s basically that, except you’re blobby little astronauts."
+                     "sectionContent": "Among us is an 'Online multiplayer social deduction game.' where in up to ten players run around inside a virtual spaceship completing classic spaceship maintenance tasks while trying to figure out who the \"Impostors\" are before they kill everyone. It’s basically that, except you’re blobby little astronauts."
                   },
                   {
                      "sectionHeader": "#3. TIC - TAC - TOE",
@@ -507,7 +507,7 @@
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": "The event will trace your attitude towards planning and execution of a project. The competition will give you the experience of realworld problems and make you brainstorm ideas, learn and explore industry."
+               "sectionContent": "The event will trace your attitude towards planning and execution of a project. The competition will give you the experience of real world problems and make you brainstorm ideas, learn and explore industry."
             },
             {
                "sectionHeader": "Price",
@@ -521,16 +521,16 @@
                "sectionHeader": "Rounds",
                "sectionContent": [
                   {
-                     "sectionHeader": "#1. Quiz capital",
-                     "sectionContent": "Participants will have to give an online quiz. The quiz will be based on general topics connecting your day-to-day lives. General knowledge based quiz."
+                     "sectionHeader": "#1. Cognizant Capital",
+                     "sectionContent": "Welcome to the capital @prakarsh!\nParticipants will have to give an online quiz. This quiz is rapid quiz containing 40 question. The quiz will be based on general topics connecting your day-to-day lives. General knowledge based quiz."
                   },
                   {
                      "sectionHeader": "#2. A global call to sustainable development",
-                     "sectionContent": "This round will be conducted as group discussion on the random topics relatedto constructionindustry,engineering, technology, global warming, sustainability, startup industry... etc.Participants will be evaluated on the basis of interaction, knowledge, listening skill etc."
+                     "sectionContent": "This round will be conducted as group discussion on the random topics related to construction industry, engineering, technology, global warming, sustainability, startup industry... etc.\n(Individual participant’s score of round 1 & 2 will be added and ranked them accordingly. Only top ranks will go ahead.)"
                   },
                   {
                      "sectionHeader": "#3. Let us talk on solutions",
-                     "sectionContent": "It is a presentation round, in which participant will have to create a PPT as per the given problem statement on topic smart city. Illustrate your knowledge, ideas and solutions towards smart citytransformation. Maximum 15 slides are allowed for PPT. Each finalist will be given 10mins to present, followed by 2-3 mins Q/A by the jury."
+                     "sectionContent": "It is a presentation round, in which participant will have to prepare a PPT of 3-5 slides of an innovative solution as per a given problem statement related topic smart city. Illustrate your knowledge, ideas and solutions towards smart city transformation. Each finalist will be given 10 mins to present, followed by 2-3 mins Q/A by the jury."
                   }
                ]
             }
@@ -607,7 +607,7 @@
             },
             {
                "sectionHeader": "Abstract",
-               "sectionContent": "Discard the Telescope, Rejoice the Spaceship...!!The aim is to expand your knowledge regarding Space Science. Enlightenyour path through the rounds which would test your listening and discussion skills. In the end, you will be sharing your views and definitely gain some knowledge which will be helpful in your future."
+               "sectionContent": "Discard the Telescope, Rejoice the Spaceship...!!The aim is to expand your knowledge regarding Space Science. Enlighten your path through the rounds which would test your listening and discussion skills. In the end, you will be sharing your views and definitely gain some knowledge which will be helpful in your future."
             },
             {
                "sectionHeader": "Price",
@@ -671,11 +671,11 @@
                "sectionContent": [
                   {
                      "sectionHeader": "#1. Rapid Fire Round",
-                     "sectionContent": "> In this round, the participants will have to give a rapid fire round in a group of 4 or 5. Time slots will be given to the participants between which they have to appear in the meet. The contestant that gives the maximum correct answers will be promoted to 2nd round."
+                     "sectionContent": "In this round, the participants will have to give a rapid fire round in a group of 4 or 5. Time slots will be given to the participants between which they have to appear in the meet. The contestant that gives the maximum correct answers will be promoted to 2nd round."
                   },
                   {
                      "sectionHeader": "#2. Fly with the flow",
-                     "sectionContent": "> Those participants who cleared the 1st Round will be promoted to second round and will make a model rocket. \n > Detailed apparatus required for making the model will be shared to the participants a day before the event. Every participant will be taught step by step to build their own models as well as how to launch those rockets will also be taught. \n > The participant whose rocket will be built best and flies well will receive a prize."
+                     "sectionContent": "Those participants who cleared the 1st Round will be promoted to second round and will make a model rocket. \n > Detailed apparatus required for making the model will be shared to the participants a day before the event. Every participant will be taught step by step to build their own models as well as how to launch those rockets will also be taught. \n > The participant whose rocket will be built best and flies well will receive a prize."
                   }
                ]
             }
@@ -833,7 +833,7 @@
          ]
       },
       {
-         "eventName": "Excel Manager",
+         "eventName": "Elevated Excel",
          "category_name": "Workshop",
          "details": [
             {
@@ -910,7 +910,7 @@
          ]
       },
       {
-         "eventName": "",
+         "eventName": "Unpredictable Electricals",
          "category_name": "Workshop",
          "details": [
             {
@@ -997,7 +997,7 @@
          "details": [
             {
                "sectionHeader": "Introduction",
-               "sectionContent": "“Taming the Python” is all about getting full grip over the tricks and hacks of Python programming. The workshop is based on machine learning using an approachable and well known programming language, PYTHON."
+               "sectionContent": "Taming the Python is all about getting full grip over the tricks and hacks of Python programming. The workshop is based on machine learning using an approachable and well known programming language, PYTHON."
             },
             {
                "sectionHeader": "Abstract",
@@ -1016,7 +1016,7 @@
                "sectionContent": [
                   {
                      "sectionHeader": "Part 1",
-                     "sectionContent": "A basic overview on Python will be given in the first 45mins, so even if you're new to Python you need not worry!. Just hop in!"
+                     "sectionContent": "A basic overview on Python will be given in the first 45mins, so even if you're new to Python you need not worry! Just hop in!"
                   },
                   {
                      "sectionHeader": "Part 2",
