@@ -15,6 +15,7 @@ import EventDialog from "../../components/EventDialog";
 import allEvents from "../../data/events.json";
 import NProgress from "nprogress";
 import {dashify} from "../../helpers/utils";
+import Head from "next/head";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,47 +48,51 @@ export default function Events({ category, events }) {
   }, [event]);
 
   return (
-    <>
-      <EventDialog />
-      <Container>
-        <Typography
-            id="category-title"
-            variant="h2"
-            style={{
-              fontFamily: "'Valorant',sans-serif",
-            }}
-            gutterBottom
-        >
-          {events[0].category_name}
-        </Typography>
-        <div className={classes.content}>
-          <Grid container spacing={3} justify='center'>
-            {events.map((event, key) => (
-                <Grid item sm={6} md={4} lg={3} key={key}>
-                  <Card
-                      style={{
-                        minWidth: 200,
-                        maxWidth: 250,
-                        margin: "0 auto",
-                        borderRadius: "15px",
-                      }}
-                  >
-                    <CardActionArea onClick={() => setEvent(event)}>
-                      <div id="event-price">
-                        <Chip
-                            color="primary"
-                            label={`₹ ${event?.details[2].sectionContent}`}
+      <>
+        <Head>
+          <title>{events[0].category_name} | PrakarshXVI</title>
+        </Head>
+        <EventDialog/>
+        <Container>
+          <Typography
+              id="category-title"
+              variant="h2"
+              style={{
+                fontFamily: "'Valorant',sans-serif",
+              }}
+              gutterBottom
+          >
+            {events[0].category_name} {/*100IQ logic*/}
+          </Typography>
+          <div className={classes.content}>
+            <Grid container spacing={3} justify='center'>
+              {events.map((event, key) => (
+                  <Grid item sm={6} md={4} lg={3} key={key}>
+                    <Card
+                        style={{
+                          minWidth: 200,
+                          maxWidth: 250,
+                          margin: "0 auto",
+                          borderRadius: "15px",
+                        }}
+                    >
+                      <CardActionArea onClick={() => setEvent(event)}>
+                        <div id="event-price">
+                          <Chip
+
+                              color="primary"
+                              label={`₹ ${event?.details[2].sectionContent}`}
+                          />
+                        </div>
+                        <CardMedia
+                            className={classes.media}
+                            image={`/images/${dashify(event.category_name)}/${dashify(
+                                event.eventName
+                            )}.png`}
+                            title={event.eventName}
+                            style={{height: 250, paddingTop: 0}}
                         />
-                      </div>
-                      <CardMedia
-                          className={classes.media}
-                          image={`/images/${dashify(event.category_name)}/${dashify(
-                              event.eventName
-                          )}.png`}
-                          title={event.eventName}
-                          style={{height: 250, paddingTop: 0}}
-                      />
-                      <CardContent>
+                        <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           {event.eventName}
                         </Typography>
@@ -113,12 +118,13 @@ export default function Events({ category, events }) {
 // © Akshar Patel | BigBrain
 export const getStaticProps = async (ctx) => {
   const category = dashify(ctx.params.category);
-  // console.log('category:', category);
+  console.log('category:', ctx.params);
   const events = allEvents[category];
-  // console.log('events:', events);
+  console.log('events:', events);
+  // console.log(category)
 
   return {
-    props: { category: ctx.params.category, events },
+    props: {category: ctx.params.category, events},
   };
 };
 
@@ -128,7 +134,7 @@ export const getStaticPaths = async () => {
   const path = categories.map((category) => {
     return { params: { category: category } };
   });
-  console.log(path);
+  // console.log(path);
   return {
     paths: path,
     fallback: false,

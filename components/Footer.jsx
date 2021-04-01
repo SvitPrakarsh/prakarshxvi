@@ -17,10 +17,10 @@ export default function Footer() {
                 </Link>
                 </div>
                 <div id='social'>
-                    <IconButton href="https://www.facebook.com/PrakarshTechFest">
+                    {/*<IconButton href="https://www.facebook.com/PrakarshTechFest">
                         <Facebook/>
-                    </IconButton>
-                    <IconButton href="https://www.instagram.com/prakarsh2019/">
+                    </IconButton>*/}
+                    <IconButton href="https://www.instagram.com/prakarsh2021/">
                         <Instagram/>
                     </IconButton>
                     <IconButton href="https://www.youtube.com/channel/UCKMMGkIUwMUokSbjgzb9OUw">
@@ -29,7 +29,7 @@ export default function Footer() {
                     <IconButton href="mailto:support@prakarsh.org">
                         <Email/>
                     </IconButton>
-                    <IconButton href="telto:+917600998231">
+                    <IconButton href="telto:+918141153732">
                         <Phone/>
                     </IconButton>
                 </div>

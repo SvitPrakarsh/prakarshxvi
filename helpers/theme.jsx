@@ -65,6 +65,11 @@ export const theme = createMuiTheme({
 	spacing: 10,
 	// Override Styling (CSS Properties)
 	overrides: {
+		MuiChip: {
+			root: {
+				boxShadow: '0 5px 10px 0 rgba(0, 0, 0, 0.25)'
+			}
+		},
 		MuiButton: {
 			root: {
 				// textTransform: 'none',

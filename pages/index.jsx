@@ -12,9 +12,9 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import { Email, Facebook, Instagram, Phone, YouTube } from "@material-ui/icons";
+import {Email, Facebook, Instagram, Phone, YouTube} from "@material-ui/icons";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { useContext, useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import Background from "../components/Background";
 import CategoryCard from "../components/CategoryCard";
 import SplashScreen from "../components/SplashScreen";
@@ -23,6 +23,7 @@ import Context from "../Context";
 import categories from "../data/eventCategories.json";
 import faqs from "../data/faqs.json";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 const useStyles = makeStyles(() => ({
   actionArea: {
@@ -78,55 +79,58 @@ export default function Home() {
 
   // if (splash) return <SplashScreen show={splash} />;
   return (
-    <>
-      <div id="hero">
-        <Background />
-        <div id="xvi">XVI</div>
-        <Fade in={splashGone} timeout={{ enter: 3000 }}>
-          <h1 id="hero-main">
-            PRA<i>K</i>ARSH
-          </h1>
-        </Fade>
+      <>
+        <Head>
+          <title>World's Best Tech Fest | PrakarshXVI - SVIT, Vasad</title>
+        </Head>
+        <div id="hero">
+          <Background/>
+          <div id="xvi">XVI</div>
+          <Fade in={splashGone} timeout={{enter: 3000}}>
+            <h1 id="hero-main">
+              PRA<i>K</i>ARSH
+            </h1>
+          </Fade>
 
-        <h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
-      </div>
-      <Paper style={{ padding: "40px" }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={5} alignItems="center">
-            <Grid item sm>
-              <div
-                style={{
-                  borderRadius: "10px",
-                  width: "100%",
-                  height: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <img
-                  src="/images/college-image.png"
-                  alt=""
-                  height="auto"
-                  width="100%"
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-            </Grid>
-            <Grid item sm>
-              <div style={{ maxWidth: "36vw", margin: "0 0 25px" }}>
-                <Typography variant="h3" gutterBottom>
-                  What is Prakarsh?
+          <h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
+        </div>
+        <Paper style={{padding: "40px"}}>
+          <Container maxWidth="lg">
+            <Grid container spacing={5} alignItems="center">
+              <Grid item sm>
+                <div
+                    style={{
+                      borderRadius: "10px",
+                      width: "100%",
+                      height: "100%",
+                      overflow: "hidden",
+                    }}
+                >
+                  <img
+                      src="/images/college-image.png"
+                      alt=""
+                      height="auto"
+                      width="100%"
+                      style={{objectFit: "contain"}}
+                  />
+                </div>
+              </Grid>
+              <Grid item sm>
+                <div style={{maxWidth: "36vw", margin: "0 0 25px"}}>
+                  <Typography variant="h3" gutterBottom>
+                    What is Prakarsh?
+                  </Typography>
+                  <Divider style={{width: "50%", backgroundColor: "#FF4655"}}/>
+                </div>
+                <Typography variant="body1">
+                  PRAKARSH, a National Level Technical Symposium to bring together
+                  the best brains in the country and give them a chance to
+                  showcase their skills and talents. This will give a platform for
+                  the students to interact and compete with each other. There are
+                  non-technical events too to incorporate fun activities alongside
+                  the technical fervour.
                 </Typography>
-                <Divider style={{ width: "50%", backgroundColor: "#FF4655" }} />
-              </div>
-              <Typography variant="body1">
-                PRAKARSH, a National Level Technical Symposium to bring together
-                the best brains in the country and give them a chance to
-                showcase their skills and talents. This will give a platform for
-                the students to interact and compete with each other. There are
-                non-technical events too to incorporate fun activities alongside
-                the technical fervour.
-              </Typography>
-            </Grid>
+              </Grid>
           </Grid>
         </Container>
       </Paper>

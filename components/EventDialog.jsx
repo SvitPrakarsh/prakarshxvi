@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 import {dashify} from "../helpers/utils";
 import {Close} from "@material-ui/icons";
+import {brown} from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   dialogPaper: {
@@ -103,11 +104,13 @@ export default function EventDialog() {
               if (key !== 2 && key !== 3)
                 return (
                     <div key={key}>
-                      <Typography variant="h5" color='primary' gutterBottom>{detail.sectionHeader}</Typography>
-                      {key !== 4 ? (
-                          <Typography gutterBottom variant="body1" style={{textAlign: 'justify'}}>
-                            {detail.sectionContent}
-                          </Typography>
+                      <Typography variant="h5" color='primary'>{detail.sectionHeader}</Typography>
+                      {key !== 4 ? (<>
+                            <Typography gutterBottom variant="body1" style={{textAlign: 'justify'}}>
+                              {detail.sectionContent}
+                            </Typography>
+                            <br/>
+                          </>
                       ) : (
                           detail.sectionContent.map((round, subKey) => (
                               <>
@@ -117,6 +120,7 @@ export default function EventDialog() {
                                 <Typography variant="body1" style={{textAlign: 'justify'}}>
                                   {round.sectionContent}
                                 </Typography>
+                                <br/>
                               </>
                           ))
                       )}
