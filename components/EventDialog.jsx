@@ -10,11 +10,12 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Grid,
+  Grid, IconButton,
   makeStyles,
   Typography,
 } from "@material-ui/core";
 import {dashify} from "../helpers/utils";
+import {Close} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   dialogPaper: {
@@ -46,9 +47,15 @@ export default function EventDialog() {
         }}
       >
         <DialogTitle style={{textAlign: "center", padding: '16px 24px 5px'}}>
-          <Typography variant='h5'>
-            {event?.eventName}
-          </Typography>
+          <Grid container justify='space-between' alignItems='center'>
+            <Typography variant='h4'>
+              {event?.eventName}
+            </Typography>
+            <IconButton onClick={() => setEvent(null)}>
+              <Close/>
+            </IconButton>
+          </Grid>
+
         </DialogTitle>
         <DialogActions>
           <Grid
@@ -108,7 +115,7 @@ export default function EventDialog() {
                                   {round.sectionHeader}
                                 </Typography>
                                 <Typography variant="body1" style={{textAlign: 'justify'}}>
-                                  {round.sectionContent.toString()}
+                                  {round.sectionContent}
                                 </Typography>
                               </>
                           ))

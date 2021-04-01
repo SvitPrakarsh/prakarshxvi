@@ -214,7 +214,7 @@ form i {
 	//}
 }
 
-// Pagewise Styling
+// Page-wise Styling
 
 #dashboard {
 	b {
@@ -233,6 +233,68 @@ form i {
 	height: 160px;
 	width: 160px;
 	border-radius: 50%;
+}
+
+#team {
+	#title {
+		width: fit-content;
+		margin: 20px auto;
+
+		&::after {
+			content: '';
+			z-index: -1;
+			top: -25px;
+			display: block;
+			position: relative;
+			height: 20px;
+			background: $secondary;
+			width: 100%;
+			opacity: 0.8;
+		}
+	}
+
+	#team-card {
+		background: #0f1923;
+		padding: 0 20px 20px;
+		border-radius: 15px;
+		width: 250px;
+		text-align: center;
+		transition: all 0.2s ease-in-out;
+
+		#picture {
+			position: relative;
+			margin: auto;
+			height: 150px;
+			width: 150px;
+			bottom: 20px;
+			background: #999999;
+			border-radius: 50%;
+			transition: all 0.3s ease-in-out;
+		}
+
+		#name {
+			font: 600 18px 'Rubik', sans-serif;
+			//color: $secondary;
+		}
+
+		#post {
+			opacity: .6;
+		}
+
+		&:hover, &:active {
+			background: #41C3C3;
+
+			#picture {
+				transform: translateY(-20px);
+			}
+
+			#post {
+				opacity: .8;
+
+			}
+		}
+	}
+
 }
 
 footer {

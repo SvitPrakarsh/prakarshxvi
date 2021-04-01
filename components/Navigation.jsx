@@ -141,30 +141,33 @@ const Navigation = () => {
 
 					</Typography>*/}
 
-          <div style={{ flexGrow: 1 }}>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              // onClick={() => setDrawer(!drawer)}
-              color="inherit"
-            >
-              <img
-                src="/prakarsh-logo.svg"
-                alt=""
-                style={{ height: 36, width: 36 }}
-              />
-            </IconButton>
+          <div style={{flexGrow: 1}}>
+            <Link href='/'>
+              <IconButton
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  // onClick={() => setDrawer(!drawer)}
+                  color="inherit"
+              >
+                <img
+                    src="/prakarsh-logo.svg"
+                    alt=""
+                    style={{height: 36, width: 36}}
+                />
+              </IconButton>
+            </Link>
+
           </div>
           <div id="desktop-nav">
             <Button onClick={() => router.push("/")}>Home</Button>
             <Button
-              onClick={() => {
-                if (router.pathname !== "/") {
-                  router.push("/").then(() =>
-                    setTimeout(() => {
-                      window.location.href = "/#events";
-                    }, 500)
+                onClick={() => {
+                  if (router.pathname !== "/") {
+                    router.push("/").then(() =>
+                        setTimeout(() => {
+                          window.location.href = "/#events";
+                        }, 500)
                   );
                 } else {
                   window.location.href = "/#events";
