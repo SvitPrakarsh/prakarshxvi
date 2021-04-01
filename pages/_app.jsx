@@ -12,7 +12,6 @@ import NProgress from "nprogress"
 import Layout from "../helpers/Layout";
 
 Router.onRouteChangeStart = url => {
-  console.log('change start')
   NProgress.start()
 }
 

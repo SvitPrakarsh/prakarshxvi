@@ -13,6 +13,7 @@ export default function CategoryCard({category, color}) {
 					display: 'block',
 					margin: 'auto',
 					borderRadius: '20px',
+					minWidth: "250px"
 				}}
 			>
 				<div
