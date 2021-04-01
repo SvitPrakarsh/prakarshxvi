@@ -15,13 +15,13 @@ import {
 } from "@material-ui/core";
 
 import DeleteIcon from "@material-ui/icons/Delete";
-import {cloneElement} from "react";
-import {Info} from "@material-ui/icons";
+import { cloneElement } from "react";
+import { Info } from "@material-ui/icons";
 import Context from "../Context";
-import {useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import {CircularProgress} from "@material-ui/core";
-import {dashify} from "../helpers/utils";
+import { CircularProgress } from "@material-ui/core";
+import { dashify } from "../helpers/utils";
 import Head from "next/head";
 
 const useStyles = makeStyles((theme) => ({
@@ -77,6 +77,7 @@ export default function Dashboard() {
     setmyEvents,
   } = useContext(Context);
   const totalAmount = cart?.length * 50 || 0;
+  console.log(typeof cart);
 
   async function displayRazorpay() {
     setLoading(true);
@@ -208,149 +209,154 @@ export default function Dashboard() {
   //
   // }
   return (
-      <>
-        <Head>
-          <title>Dashboard | PrakarshXVI - SVIT, Vasad</title>
-        </Head>
-        <Container maxWidth="lg" id="dashboard">
-          <Typography
-              variant="h3"
-              align="center"
-              gutterBottom
-              style={{
-                marginTop: 20,
-                fontFamily: "'Valorant',sans-serif",
-                fontWeight: 400,
-              }}
+    <>
+      <Head>
+        <title>Dashboard | PrakarshXVI - SVIT, Vasad</title>
+      </Head>
+      <Container maxWidth="lg" id="dashboard">
+        <Typography
+          variant="h3"
+          align="center"
+          gutterBottom
+          style={{
+            marginTop: 20,
+            fontFamily: "'Valorant',sans-serif",
+            fontWeight: 400,
+          }}
+        >
+          Dashboard
+        </Typography>
+
+        {loading ? (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            Dashboard
-          </Typography>
-
-          {loading ? (
-              <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+            <CircularProgress size={28} color="secondary" />
+          </div>
+        ) : (
+          <Grid container justify="space-between" spacing={4}>
+            <Grid item xs={12} md={myEvents?.length > 0 ? 8 : 12}>
+              <Grid
+                container
+                justify="space-between"
+                alignItems="center"
+                style={{ padding: 10 }}
               >
-                <CircularProgress size={28} color="secondary"/>
-              </div>
-          ) : (
-              <Grid container justify="space-between" spacing={4}>
-                <Grid item xs={12} md={myEvents?.length > 0 ? 8 : 12}>
-                  <Grid
-                      container
-                      justify="space-between"
-                      alignItems="center"
-                      style={{padding: 10}}
-                  >
-                    <Typography variant="h5" gutterBottom>
-                      Cart
-                    </Typography>
-                    <Button
-                        variant="outlined"
-                        className={classes.checkout}
-                        size="large"
-                        onClick={() => {
-                          if (user && cart?.length > 0) displayRazorpay();
-                          else {
-                            if (!user) setError("Please login to continue!!");
-                            else setError("Cart is empty!");
-                          }
-                        }}
-                    >
-                      Checkout&nbsp;<b>₹ {totalAmount}</b>
-                    </Button>
-                  </Grid>
-                  <Divider/>
-                  <List>
-                    {cart?.length > 0
-                        ? cart.map((event, index) => (
-                            <ListItem key={index}>
-                              <ListItemAvatar>
-                                <Avatar
-                                    src={`/images/${dashify(event.category_name)}/${dashify(
-                                        event.eventName
-                                    )}.png`}
-                                    style={{backgroundColor: "#0593ea"}}
-                                />
-                              </ListItemAvatar>
-                              <ListItemText
-                                  primary={event.eventName}
-                                  secondary={event.category_name}
-                              />
-                              <ListItemSecondaryAction>
-                                <IconButton
-                                    edge="start"
-                                    aria-label="delete"
-                                    onClick={() => setCart(event, true)}
-                                >
-                                  <DeleteIcon/>
-                                </IconButton>
-                                <IconButton edge="start" aria-label="delete">
-                                  <Info/>
-                                </IconButton>
-                                <span>₹ 50</span>
-                              </ListItemSecondaryAction>
-                            </ListItem>
-                        ))
-                        :
-                        <div style={{textAlign: 'center'}}>
-                          <img src="/empty-cart.svg" height='250' width='auto' alt="" style={{margin: "20px auto"}}/>
-                          <h2>Cart is Empty</h2>
-                        < /div>
-
+                <Typography variant="h5" gutterBottom>
+                  Cart
+                </Typography>
+                <Button
+                  variant="outlined"
+                  className={classes.checkout}
+                  size="large"
+                  onClick={() => {
+                    if (user && cart?.length > 0) displayRazorpay();
+                    else {
+                      if (!user) setError("Please login to continue!!");
+                      else setError("Cart is empty!");
                     }
-                  </List>
-                </Grid>
-                {myEvents?.length > 0 ? (
-                    <Grid item xs={12} md={4}>
-                      <Grid
-                          container
-                          justify="space-between"
-                          alignItems="center"
-                          style={{padding: 10}}
-                      >
-                        <Typography variant="h5" gutterBottom>
-                          My Events
-                        </Typography>
-                      </Grid>
-                      <Divider/>
-                      <List>
-                        {myEvents.map((event, index) => {
-                          {
-                            console.log(event)
-                          }
-
-                          return (
-                              <ListItem key={index}>
-                                <ListItemAvatar>
-                                  <Avatar
-                                      src={`/images/${dashify(event.category_name)}/${dashify(
-                                          event.event_name
-                                      )}.png`}
-                                      style={{backgroundColor: "#FF4655"}}
-                                  />
-                                </ListItemAvatar>
-                                <ListItemText
-                                    primary={event.event_name}
-                                    secondary={event.category_name}
-                                />
-                                <ListItemSecondaryAction>
-                                  <span>₹ 50</span>
-                                </ListItemSecondaryAction>
-                              </ListItem>
-                          )
-                        })}
-                      </List>
-                    </Grid>
-                ) : (
-                    ""
-                )}
+                  }}
+                >
+                  Checkout&nbsp;<b>₹ {totalAmount}</b>
+                </Button>
               </Grid>
-          )}
-        </Container>
-      </>
+              <Divider />
+              <List>
+                {cart?.length > 0 ? (
+                  cart.map((event, index) => (
+                    <ListItem key={index}>
+                      <ListItemAvatar>
+                        <Avatar
+                          src={`/images/${dashify(
+                            event.category_name
+                          )}/${dashify(event.eventName)}.png`}
+                          style={{ backgroundColor: "#0593ea" }}
+                        />
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={event.eventName}
+                        secondary={event.category_name}
+                      />
+                      <ListItemSecondaryAction>
+                        <IconButton
+                          edge="start"
+                          aria-label="delete"
+                          onClick={() => setCart(event, true)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                        <IconButton edge="start" aria-label="delete">
+                          <Info />
+                        </IconButton>
+                        <span>₹ 50</span>
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                  ))
+                ) : (
+                  <div style={{ textAlign: "center" }}>
+                    <img
+                      src="/empty-cart.svg"
+                      height="250"
+                      width="auto"
+                      alt=""
+                      style={{ margin: "20px auto" }}
+                    />
+                    <h2>Cart is Empty</h2>
+                  </div>
+                )}
+              </List>
+            </Grid>
+            {myEvents?.length > 0 ? (
+              <Grid item xs={12} md={4}>
+                <Grid
+                  container
+                  justify="space-between"
+                  alignItems="center"
+                  style={{ padding: 10 }}
+                >
+                  <Typography variant="h5" gutterBottom>
+                    My Events
+                  </Typography>
+                </Grid>
+                <Divider />
+                <List>
+                  {myEvents.map((event, index) => {
+                    {
+                      console.log(event);
+                    }
+
+                    return (
+                      <ListItem key={index}>
+                        <ListItemAvatar>
+                          <Avatar
+                            src={`/images/${dashify(
+                              event.category_name
+                            )}/${dashify(event.event_name)}.png`}
+                            style={{ backgroundColor: "#FF4655" }}
+                          />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={event.event_name}
+                          secondary={event.category_name}
+                        />
+                        <ListItemSecondaryAction>
+                          <span>₹ 50</span>
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </Grid>
+            ) : (
+              ""
+            )}
+          </Grid>
+        )}
+      </Container>
+    </>
   );
 }

@@ -2,27 +2,29 @@ import {
   Avatar,
   Container,
   makeStyles,
-  CircularProgress, CardMedia, Badge,
+  CircularProgress,
+  CardMedia,
+  Badge,
 } from "@material-ui/core";
-import {AppBar, IconButton, Toolbar, Typography} from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
-import {useContext, useEffect, useState, useRef} from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import Context from "../Context";
-import {List} from "@material-ui/core";
+import { List } from "@material-ui/core";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import {ListItem} from "@material-ui/core";
-import {ListItemIcon} from "@material-ui/core";
-import Link from 'next/link'
+import { ListItem } from "@material-ui/core";
+import { ListItemIcon } from "@material-ui/core";
+import Link from "next/link";
 import MenuIcon from "@material-ui/icons/Menu";
-import {ListItemText} from "@material-ui/core";
-import {Divider} from "@material-ui/core";
-import {MenuItem} from "@material-ui/core";
-import {Button} from "@material-ui/core";
-import {Event, Group, HomeOutlined} from "@material-ui/icons";
-import {signIn, signOut} from "next-auth/client";
+import { ListItemText } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Event, Group, HomeOutlined } from "@material-ui/icons";
+import { signIn, signOut } from "next-auth/client";
 import axios from "axios";
-import {useRouter} from "next/router";
-import LocalMallIcon from '@material-ui/icons/LocalMall';
+import { useRouter } from "next/router";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -68,7 +70,7 @@ const Navigation = () => {
     setUser,
     setError,
     setmyEvents,
-    cart
+    cart,
   } = useContext(Context);
   const anchorEl = useRef(null);
 
@@ -141,33 +143,32 @@ const Navigation = () => {
 
 					</Typography>*/}
 
-          <div style={{flexGrow: 1}}>
-            <Link href='/'>
+          <div style={{ flexGrow: 1 }}>
+            <Link href="/">
               <IconButton
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  // onClick={() => setDrawer(!drawer)}
-                  color="inherit"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                // onClick={() => setDrawer(!drawer)}
+                color="inherit"
               >
                 <img
-                    src="/prakarsh-logo.svg"
-                    alt=""
-                    style={{height: 36, width: 36}}
+                  src="/prakarsh-logo.svg"
+                  alt=""
+                  style={{ height: 36, width: 36 }}
                 />
               </IconButton>
             </Link>
-
           </div>
           <div id="desktop-nav">
             <Button onClick={() => router.push("/")}>Home</Button>
             <Button
-                onClick={() => {
-                  if (router.pathname !== "/") {
-                    router.push("/").then(() =>
-                        setTimeout(() => {
-                          window.location.href = "/#events";
-                        }, 500)
+              onClick={() => {
+                if (router.pathname !== "/") {
+                  router.push("/").then(() =>
+                    setTimeout(() => {
+                      window.location.href = "/#events";
+                    }, 500)
                   );
                 } else {
                   window.location.href = "/#events";
@@ -179,68 +180,64 @@ const Navigation = () => {
             <Button onClick={() => router.push("/team")}>Team</Button>
           </div>
           {user ? (
-              <>
-                <Link href='/dashboard'>
-                  <IconButton
-                      color="inherit"
+            <>
+              <Link href="/dashboard">
+                <IconButton color="inherit">
+                  <Badge
+                    badgeContent={cart ? cart.length : 0}
+                    showZero
+                    color="primary"
                   >
-                    <Badge badgeContent={cart?.length || 0} showZero color='primary'>
-
-                      <LocalMallIcon
-                          style={{width: "24px", height: "24px"}}
-
-                      />
-                    </Badge>
-
-                  </IconButton>
-
-                </Link>
-
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={() => {
-                      setMenu(true);
-                    }}
-                    color="inherit"
-                >
-                  <Avatar
-                      ref={anchorEl}
-                      alt=""
-                      src={session.user.image}
-                      style={{width: "26px", height: "26px"}}
-                  />
+                    <LocalMallIcon style={{ width: "24px", height: "24px" }} />
+                  </Badge>
                 </IconButton>
-                <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl.current}
-                    getContentAnchorEl={null}
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "right",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    open={menu}
-                    onClose={() => setMenu(false)}
+              </Link>
+
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={() => {
+                  setMenu(true);
+                }}
+                color="inherit"
+              >
+                <Avatar
+                  ref={anchorEl}
+                  alt=""
+                  src={session.user.image}
+                  style={{ width: "26px", height: "26px" }}
+                />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl.current}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={menu}
+                onClose={() => setMenu(false)}
+              >
+                <MenuItem
+                  onClick={() => {
+                    signOut({ redirect: false });
+                    setUser(null);
+                    setSession(null);
+                    setMenu(false);
+                    setmyEvents(null);
+                  }}
                 >
-                  <MenuItem
-                      onClick={() => {
-                        signOut({redirect: false});
-                        setUser(null);
-                        setSession(null);
-                        setMenu(false);
-                        setmyEvents(null);
-                      }}
-                  >
-                    Sign Out
-                  </MenuItem>
-                </Menu>
-              </>
+                  Sign Out
+                </MenuItem>
+              </Menu>
+            </>
           ) : (
             <>
               {loading ? (

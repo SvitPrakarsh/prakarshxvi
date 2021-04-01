@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import useAuth from "./helpers/useAuth";
+import useLocalStorage from "./helpers/useLocalStorage";
 
 // Context
 const Context = createContext();
@@ -11,7 +12,7 @@ export const Provider = (props) => {
   const [event, setEvent] = useState(null);
   const auth = useAuth();
 
-  const [cart, setCartR] = useState(null);
+  const [cart, setCartR] = useLocalStorage("cart", null);
 
   useEffect(() => {
     console.log("Cart is:");
