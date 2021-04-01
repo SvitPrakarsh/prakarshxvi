@@ -89,7 +89,7 @@ export default function Dashboard() {
     console.log("Amount: " + totalAmount);
     try {
       const result = await axios.post(
-        "http://prakarshxvi-api.herokuapp.com/payment/orders",
+        "https://prakarshxvi-api.herokuapp.com/payment/orders",
         {
           amount: totalAmount * 100,
         },
@@ -138,7 +138,7 @@ export default function Dashboard() {
           };
           try {
             const result = await axios.post(
-              "http://prakarshxvi-api.herokuapp.com/payment/success",
+              "https://prakarshxvi-api.herokuapp.com/payment/success",
               data,
               {
                 headers: {
@@ -244,7 +244,7 @@ export default function Dashboard() {
                 className={classes.checkout}
                 size="large"
                 onClick={() => {
-                  if (user && cart) displayRazorpay();
+                  if (user && cart?.length > 0) displayRazorpay();
                   else {
                     if (!user) setError("Please login to continue!!");
                     else setError("Cart is empty!");
