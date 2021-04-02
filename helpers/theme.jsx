@@ -92,7 +92,11 @@ export const theme = createMuiTheme({
 				backgroundColor: '#FF4655',
 			},
 		},
-
+		MuiModal: {
+			root: {
+				maxWidth: '750px'
+			}
+		},
 		MuiAccordion: {
 			root: {
 				marginBottom: 15,

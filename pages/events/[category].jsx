@@ -70,8 +70,9 @@ export default function Events({ category, events }) {
                   <Grid item sm={6} md={4} lg={3} key={key}>
                     <Card
                         style={{
-                          minWidth: 200,
-                          maxWidth: 250,
+                          minWidth: 240,
+                          maxWidth: 240,
+                          minHeight: 351,
                           margin: "0 auto",
                           borderRadius: "15px",
                         }}

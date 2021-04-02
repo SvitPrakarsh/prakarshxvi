@@ -49,7 +49,7 @@ export default function EventDialog() {
       >
         <DialogTitle style={{textAlign: "center", padding: '16px 24px 5px'}}>
           <Grid container justify='space-between' alignItems='center'>
-            <Typography variant='h4'>
+            <Typography id='event-title' variant='h4'>
               {event?.eventName}
             </Typography>
             <IconButton onClick={() => setEvent(null)}>
@@ -64,6 +64,7 @@ export default function EventDialog() {
               justify="space-between"
               alignItems="center"
               style={{padding: 10}}
+              spacing={2}
           >
             {/*<Typography variant="h5">*/}
             {/*	*/}

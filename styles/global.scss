@@ -172,7 +172,6 @@ form i {
 	height: 250px;
 	width: 250px;
 	min-width: 250px;
-
 	overflow: hidden;
 	vertical-align: middle;
 	text-align: center;
@@ -398,7 +397,9 @@ footer {
 			}
 		}
 	}
-
+	#event-title {
+		font-size: 20px;
+	}
 	::-webkit-scrollbar {
 		width: 5px;
 	}
