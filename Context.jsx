@@ -12,7 +12,7 @@ export const Provider = (props) => {
   const [event, setEvent] = useState(null);
   const auth = useAuth();
 
-  const [cart, setCartR] = useLocalStorage("cart", null);
+  const [cart, setCartR] = useLocalStorage("cart");
 
   useEffect(() => {
     console.log("Cart is:");

@@ -1,6 +1,7 @@
 {
    "cyber-intrusion": [
       {
+         "event_id": 1,
          "eventName": "Creative Hex",
          "category_name": "Cyber Intrusion",
          "iconPath": "cyber-intrusion/corporatech.png",
@@ -51,6 +52,7 @@
          ]
       },
       {
+         "event_id": 2,
          "eventName": "Techie Guru",
          "category_name": "Cyber Intrusion",
          "details": [
@@ -96,6 +98,7 @@
          ]
       },
       {
+         "event_id": 3,
          "eventName": "Corporatech",
          "category_name": "Cyber Intrusion",
          "details": [
@@ -149,6 +152,7 @@
          ]
       },
       {
+         "event_id": 4,
          "eventName": "Tech-Roadies",
          "category_name": "Cyber Intrusion",
          "details": [
@@ -200,6 +204,7 @@
    ],
    "dexters-lab": [
       {
+         "event_id": 5,
          "eventName": "QuBits",
          "category_name": "Dexter's Lab",
          "details": [
@@ -249,6 +254,7 @@
          ]
       },
       {
+         "event_id": 6,
          "eventName": "MythWIZ",
          "category_name": "Dexter's Lab",
          "details": [
@@ -300,6 +306,7 @@
    ],
    "funtastic": [
       {
+         "event_id": 7,
          "eventName": "Clue-Minati",
          "category_name": "Funtastic",
          "details": [
@@ -349,6 +356,7 @@
          ]
       },
       {
+         "event_id": 8,
          "eventName": "Quizzical Mania",
          "category_name": "Funtastic",
          "details": [
@@ -398,6 +406,7 @@
          ]
       },
       {
+         "event_id": 9,
          "eventName": "Nostalgia",
          "category_name": "Funtastic",
          "details": [
@@ -447,6 +456,7 @@
          ]
       },
       {
+         "event_id": 10,
          "eventName": "Game-Zone",
          "category_name": "Funtastic",
          "details": [
@@ -498,6 +508,7 @@
    ],
    "structonics": [
       {
+         "event_id": 11,
          "eventName": "Envision Urban Infra",
          "category_name": "Structonics",
          "details": [
@@ -549,6 +560,7 @@
    ],
    "wheels-&-wings": [
       {
+         "event_id": 12,
          "eventName": "ENGINE EVOLUTION",
          "category_name": "Wheels & Wings",
          "details": [
@@ -598,6 +610,7 @@
          ]
       },
       {
+         "event_id": 13,
          "eventName": "RoboSpace",
          "category_name": "Wheels & Wings",
          "details": [
@@ -647,6 +660,7 @@
          ]
       },
       {
+         "event_id": 14,
          "eventName": "HYDRO-RUSH",
          "category_name": "Wheels & Wings",
          "details": [
@@ -692,6 +706,7 @@
          ]
       },
       {
+         "event_id": 15,
          "eventName": "Genesis",
          "category_name": "Wheels & Wings",
          "details": [
@@ -735,6 +750,7 @@
    ],
    "workshops": [
       {
+         "event_id": 16,
          "eventName": "Ethical Hacking & Bug Bounty hunting",
          "category_name": "Workshops",
          "details": [
@@ -788,6 +804,7 @@
          ]
       },
       {
+         "event_id": 17,
          "eventName": "DESIGN-ATHON",
          "category_name": "Workshops",
          "details": [
@@ -833,6 +850,7 @@
          ]
       },
       {
+         "event_id": 18,
          "eventName": "Elevated Excel",
          "category_name": "Workshops",
          "details": [
@@ -869,6 +887,7 @@
          ]
       },
       {
+         "event_id": 19,
          "eventName": "AEROPHILA 3.0",
          "category_name": "Workshops",
          "details": [
@@ -910,6 +929,7 @@
          ]
       },
       {
+         "event_id": 20,
          "eventName": "Unpredictable Electricals",
          "category_name": "Workshops",
          "details": [
@@ -951,6 +971,7 @@
          ]
       },
       {
+         "event_id": 21,
          "eventName": "IOTech",
          "category_name": "Workshops",
          "details": [
@@ -992,6 +1013,7 @@
          ]
       },
       {
+         "event_id": 22,
          "eventName": "Tame the Python",
          "category_name": "Workshops",
          "details": [
@@ -1039,6 +1061,7 @@
    ],
    "ancillary": [
       {
+         "event_id": 23,
          "eventName": "ISRO",
          "category_name": "Ancillary",
          "details": [
@@ -1071,6 +1094,7 @@
          ]
       },
       {
+         "event_id": 24,
          "eventName": "Cyber Security",
          "category_name": "Ancillary",
          "details": [

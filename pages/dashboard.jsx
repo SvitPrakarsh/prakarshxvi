@@ -13,16 +13,15 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-
 import DeleteIcon from "@material-ui/icons/Delete";
-import { cloneElement } from "react";
-import { Info } from "@material-ui/icons";
 import Context from "../Context";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
 import { dashify } from "../helpers/utils";
 import Head from "next/head";
+
+const baseUrl = "https://prakarshxvi-api.herokuapp.com";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,19 +34,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(4, 0, 2),
   },
-  // checkout: {
-  // 	backgroundColor: theme.palette.background.paper,
-  // 	color: '#fff',
-  // },
 }));
-
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    cloneElement(element, {
-      key: value,
-    })
-  );
-}
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -76,10 +63,14 @@ export default function Dashboard() {
     myEvents,
     setmyEvents,
   } = useContext(Context);
-  const totalAmount = cart?.length * 50 || 0;
-  console.log(typeof cart);
+
+  const totalAmount =
+    cart?.reduce((acc, curr) => {
+      return curr["details"][2].sectionContent + acc;
+    }, 0) || 0;
 
   async function displayRazorpay() {
+    const eventOrder = cart.map((e) => e.event_id);
     setLoading(true);
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -89,12 +80,11 @@ export default function Dashboard() {
       alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
-    console.log("Amount: " + totalAmount);
     try {
       const result = await axios.post(
-        "https://prakarshxvi-api.herokuapp.com/payment/orders",
+        `${baseUrl}/payment/orders`,
         {
-          amount: totalAmount * 100,
+          events: eventOrder,
         },
         {
           headers: {
@@ -112,36 +102,36 @@ export default function Dashboard() {
       const { amount, id: order_id, currency } = result.data;
 
       const options = {
-        key: "rzp_test_2dXDY8rEMwXGvD",
+        key: "rzp_live_kz5CWBWE92g5VF",
         amount: amount.toString(),
         currency: currency,
         name: "Prakarsh XVI",
-        //Add custom description according to the events added to cart
-        description: "Test Transaction",
+        description: "Prakarsh XVI",
         // image: { logo },
         order_id: order_id,
         notes: {
-          events: cart,
+          events: JSON.stringify(eventOrder),
         },
         handler: async function (response) {
+          console.log(response);
           const data = {
-            events: cart,
-            user: {
-              name: user.full_name,
-              id: user._id,
-              email: user.email,
-              number: user.number,
-              college: user.college,
-            },
             amount: amount,
+            user: user,
+            events: cart,
             orderCreationId: order_id,
             razorpayPaymentId: response.razorpay_payment_id,
             razorpayOrderId: response.razorpay_order_id,
             razorpaySignature: response.razorpay_signature,
           };
           try {
+            const myEventsNew = cart.map((obj) => {
+              return {
+                event_name: obj.eventName,
+                category_name: obj.category_name,
+              };
+            });
             const result = await axios.post(
-              "https://prakarshxvi-api.herokuapp.com/payment/success",
+              `${baseUrl}/payment/success`,
               data,
               {
                 headers: {
@@ -149,14 +139,6 @@ export default function Dashboard() {
                 },
               }
             );
-            console.log(result.data);
-            console.log(cart);
-            const myEventsNew = cart.map((obj) => {
-              return {
-                event_name: obj.eventName,
-                category_name: obj.category_name,
-              };
-            });
             setCart(null, false, true);
 
             if (myEvents) {
@@ -168,7 +150,9 @@ export default function Dashboard() {
             setSuccess("Transaction completed!");
           } catch (e) {
             console.log(e);
-            setError("Error while processing request please contact support!!");
+            setError(
+              "Error while processing request. Please contact support!!"
+            );
           } finally {
             setLoading(false);
           }
@@ -200,14 +184,6 @@ export default function Dashboard() {
     }
   }
 
-  // useEffect(() => {
-  //   console.log("Cart is:");
-  //   if (cart) console.log(cart);
-  // }, [cart]);
-  // if (!user) {
-  //   return <SplashScreen show/>
-  //
-  // }
   return (
     <>
       <Head>
@@ -250,17 +226,17 @@ export default function Dashboard() {
                   Cart
                 </Typography>
                 <Button
-                    variant="outlined"
-                    className={classes.checkout}
-                    size="large"
-                    disabled
-                    onClick={() => {
-                      if (user && cart?.length > 0) displayRazorpay();
-                      else {
-                        if (!user) setError("Please login to continue!!");
-                        else setError("Cart is empty!");
-                      }
-                    }}
+                  variant="outlined"
+                  className={classes.checkout}
+                  size="large"
+                  // disabled
+                  onClick={() => {
+                    if (user && cart?.length > 0) displayRazorpay();
+                    else {
+                      if (!user) setError("Please login to continue!!");
+                      else setError("Cart is empty!");
+                    }
+                  }}
                 >
                   Checkout&nbsp;<b>₹ {totalAmount}</b>
                 </Button>
@@ -290,10 +266,10 @@ export default function Dashboard() {
                         >
                           <DeleteIcon />
                         </IconButton>
-                        <IconButton edge="start" aria-label="delete">
+                        {/* <IconButton edge="start" aria-label="delete">
                           <Info />
-                        </IconButton>
-                        <span>₹ 50</span>
+                        </IconButton> */}
+                        <span>₹ {event["details"][2].sectionContent}</span>
                       </ListItemSecondaryAction>
                     </ListItem>
                   ))
@@ -344,9 +320,9 @@ export default function Dashboard() {
                           primary={event.event_name}
                           secondary={event.category_name}
                         />
-                        <ListItemSecondaryAction>
+                        {/* <ListItemSecondaryAction>
                           <span>₹ 50</span>
-                        </ListItemSecondaryAction>
+                        </ListItemSecondaryAction> */}
                       </ListItem>
                     );
                   })}
