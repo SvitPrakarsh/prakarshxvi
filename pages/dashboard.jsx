@@ -102,12 +102,11 @@ export default function Dashboard() {
       const { amount, id: order_id, currency } = result.data;
 
       const options = {
-        key: "rzp_test_2dXDY8rEMwXGvD",
+        key: "rzp_live_kz5CWBWE92g5VF",
         amount: amount.toString(),
         currency: currency,
         name: "Prakarsh XVI",
-        //Add custom description according to the events added to cart
-        description: "Test Transaction",
+        description: "Prakarsh XVI",
         // image: { logo },
         order_id: order_id,
         notes: {
@@ -321,9 +320,9 @@ export default function Dashboard() {
                           primary={event.event_name}
                           secondary={event.category_name}
                         />
-                        <ListItemSecondaryAction>
+                        {/* <ListItemSecondaryAction>
                           <span>₹ 50</span>
-                        </ListItemSecondaryAction>
+                        </ListItemSecondaryAction> */}
                       </ListItem>
                     );
                   })}
