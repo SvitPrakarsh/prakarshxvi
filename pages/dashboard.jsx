@@ -250,16 +250,17 @@ export default function Dashboard() {
                   Cart
                 </Typography>
                 <Button
-                  variant="outlined"
-                  className={classes.checkout}
-                  size="large"
-                  onClick={() => {
-                    if (user && cart?.length > 0) displayRazorpay();
-                    else {
-                      if (!user) setError("Please login to continue!!");
-                      else setError("Cart is empty!");
-                    }
-                  }}
+                    variant="outlined"
+                    className={classes.checkout}
+                    size="large"
+                    disabled
+                    onClick={() => {
+                      if (user && cart?.length > 0) displayRazorpay();
+                      else {
+                        if (!user) setError("Please login to continue!!");
+                        else setError("Cart is empty!");
+                      }
+                    }}
                 >
                   Checkout&nbsp;<b>₹ {totalAmount}</b>
                 </Button>

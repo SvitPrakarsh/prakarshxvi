@@ -40,11 +40,16 @@ const useStyles = makeStyles(() => ({
 
 export default function Home() {
   const classes = useStyles();
-  const { error, setError } = useContext(Context);
+  const {error, setError} = useContext(Context);
   const [splash, setSplash] = useState(true);
   const [splashGone, setSplashGone] = useState(false);
   const [nums, setNums] = useState([]);
-
+  const [support, setSupport] = useState({
+    name: '',
+    message: '',
+    email: '',
+    phone: ''
+  })
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -65,7 +70,9 @@ export default function Home() {
     setNums(nums);
   };
 
-  useEffect(() => generator(), []);
+  useEffect(() =>
+          generator()
+      , []);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -165,7 +172,7 @@ export default function Home() {
           })}
         </Grid>
       </Container>
-      <Paper style={{ padding: "30px 20px" }}>
+        {/*<Paper style={{ padding: "30px 20px" }}>
         <Container>
           <div style={{ maxWidth: "36vw", margin: "0 auto 50px" }}>
             <Typography
@@ -201,47 +208,49 @@ export default function Home() {
             </AccordionDetails>
           </Accordion>
         ))}
-      </Container>
+      </Container>*/}
       <Paper style={{ padding: "40px 0" }}>
         <Container maxWidth="md">
           <Typography variant="h3" align="center" gutterBottom>
             SUPPORT
           </Typography>
-          <form onSubmit={(e) => {
-            e.preventDefault()
-            console.log(e)
-          }}>
+          <Grid container spacing={3} justify='center'>
+            <Grid item xs="12" sm="6" xl='4' style={{textAlign: 'center'}}>
+              <iframe src="https://discord.com/widget?id=826456950443081769&theme=dark"
+                  // width="350"
+                      height="280"
+                      allowTransparency="true" frameBorder="0"
+                      style={{margin: 'auto'}}
 
-            <Grid container spacing={3} justify='center'>
-              <Grid item xs="12" sm="6" xl='4' style={{textAlign: 'center'}}>
-                <iframe
-                    src="https://discord.com/widget?id=827025974603284490&theme=dark"
-                    // width="350"
-                    height="280"
-                    allowTransparency="true"
-                    frameBorder="0"
-                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                    style={{margin: 'auto'}}
+                      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"/>
+              {/* <Typography gutterBottom>*Discord Widget Here*</Typography> */}
+            </Grid>
+            <Grid container item xs="12" sm="6" xl='4' spacing='1' justify='center'>
+              <Grid item xs="12">
+                <TextField
+                    required
+                    value={support.name}
+                    onChange={e => setSupport({...support, name: e.target.value})}
+                    label="Full Name"
+                    variant="outlined"
+                    fullWidth
                 />
-                {/* <Typography gutterBottom>*Discord Widget Here*</Typography> */}
               </Grid>
-              <Grid container item xs="12" sm="6" xl='4' spacing='1' justify='center'>
-                <Grid item xs="12">
-                  <TextField
-                      label="Full Name"
-                      variant="outlined"
-                      fullWidth
-                  />
+              <Grid item xs="6">
+                <TextField
+                    required
+                    value={support.phone}
+                    onChange={e => setSupport({...support, phone: e.target.value})}
+                    label="Phone"
+                    variant="outlined"
+                    fullWidth
+                />
                 </Grid>
                 <Grid item xs="6">
                   <TextField
-                      label="Phone"
-                      variant="outlined"
-                      fullWidth
-                  />
-                </Grid>
-                <Grid item xs="6">
-                  <TextField
+                      required
+                      value={support.email}
+                      onChange={e => setSupport({...support, email: e.target.value})}
                       label="Email"
                       variant="outlined"
                       fullWidth
@@ -249,22 +258,24 @@ export default function Home() {
                 </Grid>
                 <Grid item xs="12">
                   <TextField
+                      required
                       multiline
+                      value={support.message}
+                      onChange={e => setSupport({...support, message: e.target.value})}
                       label="Message"
                       variant="outlined"
                       rows="5"
                       fullWidth
                   />
                 </Grid>
-                <Grid item xs="12">
-                  <Button variant='contained' color='primary' size='large' style={{margin: '0 auto'}}
-                          type='submit' fullWidth>Submit</Button>
-                </Grid>
-
-
+              <Grid item xs="12">
+                <Button
+                    href={`mailto:support@prakarsh.org?&subject=${support.name} - Support Request&body=Email: ${support.email} | Phone: ${support.phone} \n ${support.message}`}
+                    variant='contained' color='primary' size='large' style={{margin: '0 auto'}}
+                    name='submit' type='submit' fullWidth>Submit</Button>
               </Grid>
             </Grid>
-          </form>
+            </Grid>
           <br/>
           <br/>
         </Container>

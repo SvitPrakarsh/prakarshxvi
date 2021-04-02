@@ -15,7 +15,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -64,7 +64,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -109,7 +109,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -162,7 +162,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -213,7 +213,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -262,7 +262,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -313,7 +313,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 20
             },
             {
                "sectionHeader": "Participation",
@@ -362,7 +362,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 20
             },
             {
                "sectionHeader": "Participation",
@@ -411,7 +411,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 20
             },
             {
                "sectionHeader": "Participation",
@@ -460,7 +460,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 20
             },
             {
                "sectionHeader": "Participation",
@@ -511,7 +511,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -562,7 +562,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -611,7 +611,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -660,7 +660,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -705,7 +705,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 25
             },
             {
                "sectionHeader": "Participation",
@@ -748,7 +748,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -801,7 +801,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -846,7 +846,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -882,7 +882,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -923,7 +923,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -964,7 +964,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -1005,7 +1005,7 @@
             },
             {
                "sectionHeader": "Price",
-               "sectionContent": 50
+               "sectionContent": 40
             },
             {
                "sectionHeader": "Participation",
@@ -1033,6 +1033,72 @@
             {
                "name": "Falgun Patel",
                "number": "7041033187"
+            }
+         ]
+      }
+   ],
+   "ancillary": [
+      {
+         "eventName": "ISRO",
+         "category_name": "Ancillary",
+         "details": [
+            {
+               "sectionHeader": "Introduction",
+               "sectionContent": "A reputed ISRO officer will conduct a webinar about recent ISRO projects"
+            },
+            {
+               "sectionHeader": "Abstract",
+               "sectionContent": "A brief idea will be provided about the ongoing projects of ISRO. Also participants will get to know about how they can enter ISRO, having different engineering background."
+            },
+            {
+               "sectionHeader": "Price",
+               "sectionContent": 45
+            },
+            {
+               "sectionHeader": "Participation",
+               "sectionContent": "Solo"
+            }
+         ],
+         "contactDetails": [
+            {
+               "name": "",
+               "number": ""
+            },
+            {
+               "name": "",
+               "number": ""
+            }
+         ]
+      },
+      {
+         "eventName": "Cyber Security",
+         "category_name": "Ancillary",
+         "details": [
+            {
+               "sectionHeader": "Introduction",
+               "sectionContent": "A cyber security expert and adviser will conduct a webinar about the current trend of cyber security."
+            },
+            {
+               "sectionHeader": "Abstract",
+               "sectionContent": "A cyber crime cell advisor will conduct a webinar briefing about the safety of the devices and how you can prevent yourself being a victim."
+            },
+            {
+               "sectionHeader": "Price",
+               "sectionContent": 45
+            },
+            {
+               "sectionHeader": "Participation",
+               "sectionContent": "Solo"
+            }
+         ],
+         "contactDetails": [
+            {
+               "name": "",
+               "number": ""
+            },
+            {
+               "name": "",
+               "number": ""
             }
          ]
       }
