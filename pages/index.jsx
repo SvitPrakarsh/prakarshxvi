@@ -88,7 +88,7 @@ export default function Home() {
   return (
       <>
         <Head>
-          <title>World's Best Tech Fest | PrakarshXVI - SVIT, Vasad</title>
+          <title> PrakarshXVI | World's Largest Tech Fest</title>
         </Head>
         <div id="hero">
           <Background/>
@@ -219,11 +219,11 @@ export default function Home() {
               <iframe src="https://discord.com/widget?id=826456950443081769&theme=dark"
                   // width="350"
                       height="280"
-                      allowTransparency="true" frameBorder="0"
+                      allowTransparency
+                      frameBorder="0"
                       style={{margin: 'auto'}}
 
                       sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"/>
-              {/* <Typography gutterBottom>*Discord Widget Here*</Typography> */}
             </Grid>
             <Grid container item xs="12" sm="6" xl='4' spacing='1' justify='center'>
               <Grid item xs="12">
