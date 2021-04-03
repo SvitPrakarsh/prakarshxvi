@@ -57,10 +57,7 @@ export default function Register() {
     year: Yup.string().required("Year is Required"),
     // enroll: Yup.string().required("Enrollment No. is Required"),
     number: Yup.string()
-      .matches(
-        /^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$/,
-        "Phone number is not valid"
-      )
+      .matches(/^([[0-9]{10})$/, "Phone number is not valid")
       .required("Phone Number is Required"),
   });
 
