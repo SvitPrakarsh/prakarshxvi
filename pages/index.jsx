@@ -75,30 +75,27 @@ export default function Home() {
 
   useEffect(() => {
         generator()
-        setTimeout(() => {
-          setLoaded(true)
-          setSplashGone(loaded => (!loaded))
-        }, [1500])
+        // setTimeout(() => {
+        //   setLoaded(true)
+        //   // setSplashGone(loaded => (!loaded))
+        // }, [1500])
       }
       , []);
 
-  useEffect(() => {
 
-
-  }, []);
-
+  // if (!loaded) {
+  //   return <SplashScreen show={!loaded}/>
+  // }
   return (
       <>
-        {!loaded ?
-            <SplashScreen show={!loaded}/>
-            : null}
+        {/*idhar SplashScreen rekhna mana he*/}
         <Head>
-          <title> PrakarshXVI | Gujarat's Largest Tech Fest</title>
+          <title> PrakarshXVI | SVIT's Largest Tech Fest</title>
         </Head>
         <div id="hero">
           <Background/>
           <div id="xvi">XVI</div>
-          <Fade in={splashGone} timeout={{enter: 3000}}>
+          <Fade in timeout={{enter: 3000, appear: 5000}}>
             <h1 id="hero-main">
               PRA<i>K</i>ARSH
             </h1>
