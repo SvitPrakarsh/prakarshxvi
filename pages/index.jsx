@@ -44,7 +44,6 @@ const useStyles = makeStyles(() => ({
 export default function Home() {
   const classes = useStyles();
   const {error, setError} = useContext(Context);
-  const [loaded, setLoaded] = useLocalStorage('loaded', false);
   const [splashGone, setSplashGone] = useState(false);
   const [nums, setNums] = useState([]);
   const [support, setSupport] = useState({
@@ -74,18 +73,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-        generator()
-        // setTimeout(() => {
-        //   setLoaded(true)
-        //   // setSplashGone(loaded => (!loaded))
-        // }, [1500])
-      }
-      , []);
-
-
-  // if (!loaded) {
-  //   return <SplashScreen show={!loaded}/>
-  // }
+    generator()
+  }, []);
+  
   return (
       <>
         {/*idhar SplashScreen rekhna mana he*/}
@@ -95,7 +85,7 @@ export default function Home() {
         <div id="hero">
           <Background/>
           <div id="xvi">XVI</div>
-          <Fade in timeout={{enter: 3000, appear: 5000}}>
+          <Fade in timeout={{enter: 3000}}>
             <h1 id="hero-main">
               PRA<i>K</i>ARSH
             </h1>
