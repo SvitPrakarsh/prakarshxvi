@@ -8,11 +8,11 @@ export default function Footer() {
             <footer>
                 <div id="copyright">All Rights Reserved © Prakarsh XVI</div>
                 <div id='links'>
-                    <Link href="/Terms.pdf" color='inherit'>
+                    <Link href="/Terms.pdf" color='inherit' target='_blank' noreferrer noopener>
                         Terms
-                    </Link> <Link href="/Privacy.pdf" color='inherit'>
+                    </Link> <Link href="/Privacy.pdf" color='inherit' target='_blank' noreferrer noopener>
                     Privacy
-                </Link> <Link href="/Refunds.pdf" color='inherit'>
+                </Link> <Link href="/Refunds.pdf" color='inherit' target='_blank' noreferrer noopener>
                     Refunds
                 </Link>
                 </div>
