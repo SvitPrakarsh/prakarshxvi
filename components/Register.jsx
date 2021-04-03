@@ -55,10 +55,10 @@ export default function Register() {
     college: Yup.string().required("College is Required"),
     city: Yup.string().required("City is Required"),
     year: Yup.string().required("Year is Required"),
-    // enroll: Yup.string().required("Enrollment No. is Required"),
+    enroll: Yup.string().required("Please enter your Id/Enrollment No."),
     number: Yup.string()
-      .matches(/^([[0-9]{10})$/, "Phone number is not valid")
-      .required("Phone Number is Required"),
+        .matches(/^([[0-9]{10})$/, "Please enter a 10 digit Phone no.")
+        .required("Phone Number is Required"),
   });
 
   const register = (values, { setSubmitting }) => {
@@ -146,19 +146,19 @@ export default function Register() {
                 onBlur={formik.handleBlur}
                 error={formik.touched.lastName && !!formik.errors.lastName}
               />
-              <ErrorMessage name="lastName" component="i" />
+              <ErrorMessage name="lastName" component="i"/>
               <TextField
-                name="enroll"
-                label="Enrollment No."
-                variant="outlined"
-                fullWidth
-                // required
-                value={formik.values.enroll}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.enroll && !!formik.errors.enroll}
+                  name="enroll"
+                  label="Enroll No./College Id."
+                  variant="outlined"
+                  fullWidth
+                  // required
+                  value={formik.values.enroll}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.enroll && !!formik.errors.enroll}
               />
-              <ErrorMessage name="enroll" component="i" />
+              <ErrorMessage name="enroll" component="i"/>
               <TextField
                 name="college"
                 label="College Name"

@@ -26,6 +26,7 @@ import categories from "../data/eventCategories.json";
 import faqs from "../data/faqs.json";
 import Footer from "../components/Footer";
 import Head from "next/head";
+import useLocalStorage from "../helpers/useLocalStorage";
 
 const useStyles = makeStyles(() => ({
   actionArea: {
@@ -42,8 +43,8 @@ const useStyles = makeStyles(() => ({
 
 export default function Home() {
   const classes = useStyles();
-  const { error, setError } = useContext(Context);
-  const [splash, setSplash] = useState(true);
+  const {error, setError} = useContext(Context);
+  const [loaded, setLoaded] = useLocalStorage('loaded', false);
   const [splashGone, setSplashGone] = useState(false);
   const [nums, setNums] = useState([]);
   const [support, setSupport] = useState({
@@ -72,106 +73,110 @@ export default function Home() {
     setNums(nums);
   };
 
-  useEffect(() => generator(), []);
+  useEffect(() => {
+        generator()
+        setTimeout(() => {
+          setLoaded(true)
+          setSplashGone(loaded => (!loaded))
+        }, [1500])
+      }
+      , []);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    setSplash(true);
-    setTimeout(() => {
-      document.body.style.overflow = "auto";
-      setSplash(false);
-      setSplashGone(true);
-    }, [10]);
+
+
   }, []);
 
-  // if (splash) return <SplashScreen show={splash} />;
   return (
-    <>
-      <Head>
-        <title> PrakarshXVI | World's Largest Tech Fest</title>
-      </Head>
-      <div id="hero">
-        <Background />
-        <div id="xvi">XVI</div>
-        <Fade in={splashGone} timeout={{ enter: 3000 }}>
-          <h1 id="hero-main">
-            PRA<i>K</i>ARSH
-          </h1>
-        </Fade>
-        <h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
-      </div>
-      <Paper style={{ padding: "40px" }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={5} alignItems="center">
-            <Grid item sm>
-              <div
-                style={{
-                  borderRadius: "10px",
-                  width: "100%",
-                  height: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <img
-                  src="/images/college-image.png"
-                  alt=""
-                  height="auto"
-                  width="100%"
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-            </Grid>
-            <Grid item sm>
-              <div style={{ maxWidth: "36vw", margin: "0 0 25px" }}>
-                <Typography variant="h3" gutterBottom>
-                  What is Prakarsh?
+      <>
+        {!loaded ?
+            <SplashScreen show={!loaded}/>
+            : null}
+        <Head>
+          <title> PrakarshXVI | Gujarat's Largest Tech Fest</title>
+        </Head>
+        <div id="hero">
+          <Background/>
+          <div id="xvi">XVI</div>
+          <Fade in={splashGone} timeout={{enter: 3000}}>
+            <h1 id="hero-main">
+              PRA<i>K</i>ARSH
+            </h1>
+          </Fade>
+          <h5 id="hero-desc">AN IMPULSE TO SOAR.</h5>
+        </div>
+        <Paper style={{padding: "40px"}}>
+          <Container maxWidth="lg">
+            <Grid container spacing={5} alignItems="center">
+              <Grid item sm>
+                <div
+                    style={{
+                      borderRadius: "10px",
+                      width: "100%",
+                      height: "100%",
+                      overflow: "hidden",
+                    }}
+                >
+                  <img
+                      src="/images/college-image.png"
+                      alt=""
+                      height="auto"
+                      width="100%"
+                      style={{objectFit: "contain"}}
+                  />
+                </div>
+              </Grid>
+              <Grid item sm>
+                <div style={{maxWidth: "36vw", margin: "0 0 25px"}}>
+                  <Typography variant="h3" gutterBottom>
+                    What is Prakarsh?
+                  </Typography>
+                  <Divider style={{width: "50%", backgroundColor: "#FF4655"}}/>
+                </div>
+                <Typography variant="body1">
+                  PRAKARSH, a National Level Technical Symposium to bring together
+                  the best brains in the country and give them a chance to
+                  showcase their skills and talents. This will give a platform for
+                  the students to interact and compete with each other. There are
+                  non-technical events too to incorporate fun activities alongside
+                  the technical fervour.
                 </Typography>
-                <Divider style={{ width: "50%", backgroundColor: "#FF4655" }} />
-              </div>
-              <Typography variant="body1">
-                PRAKARSH, a National Level Technical Symposium to bring together
-                the best brains in the country and give them a chance to
-                showcase their skills and talents. This will give a platform for
-                the students to interact and compete with each other. There are
-                non-technical events too to incorporate fun activities alongside
-                the technical fervour.
-              </Typography>
+              </Grid>
             </Grid>
+          </Container>
+        </Paper>
+        <Container id="events" style={{padding: "40px"}} maxWidth="lg">
+          <div style={{maxWidth: "36vw", margin: "0 auto 50px"}}>
+            <Typography
+                variant="h3"
+                align="center"
+                gutterBottom
+                style={{fontFamily: '"Valorant",sans-serif'}}
+            >
+              Events
+            </Typography>
+            <Divider style={{backgroundColor: "#FF4655"}}/>
+          </div>
+          <Grid container spacing={2} justify="center" alignItems="center">
+            {categories.map((category, key) => {
+              console.log(nums[key]);
+              return (
+                  <Grid
+                      item
+                      sm
+                      md={4}
+                      lg={3}
+                      key={key}
+                      justify="center"
+                      alignItems="center"
+                  >
+                    <CategoryCard category={category} color={nums[key]} key={key}/>
+                  </Grid>
+              );
+            })}
           </Grid>
         </Container>
-      </Paper>
-      <Container id="events" style={{ padding: "40px" }} maxWidth="lg">
-        <div style={{ maxWidth: "36vw", margin: "0 auto 50px" }}>
-          <Typography
-            variant="h3"
-            align="center"
-            gutterBottom
-            style={{ fontFamily: '"Valorant",sans-serif' }}
-          >
-            Events
-          </Typography>
-          <Divider style={{ backgroundColor: "#FF4655" }} />
-        </div>
-        <Grid container spacing={2} justify="center" alignItems="center">
-          {categories.map((category, key) => {
-            console.log(nums[key]);
-            return (
-              <Grid
-                item
-                sm
-                md={4}
-                lg={3}
-                key={key}
-                justify="center"
-                alignItems="center"
-              >
-                <CategoryCard category={category} color={nums[key]} key={key} />
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Container>
-      {/*<Paper style={{ padding: "30px 20px" }}>
+        {/*<Paper style={{ padding: "30px 20px" }}>
         <Container>
           <div style={{ maxWidth: "36vw", margin: "0 auto 50px" }}>
             <Typography
