@@ -29,7 +29,7 @@ export default function Footer() {
                     <IconButton href="mailto:support@prakarsh.org">
                         <Email/>
                     </IconButton>
-                    <IconButton href="telto:+918141153732">
+                    <IconButton href="tel:+918141153732">
                         <Phone/>
                     </IconButton>
                 </div>
