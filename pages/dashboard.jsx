@@ -20,6 +20,10 @@ import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
 import { dashify } from "../helpers/utils";
 import Head from "next/head";
+import Bugsnag from "../lib/bugsnag";
+import React from "react";
+
+const ErrorBoundary = Bugsnag.getPlugin("react").createErrorBoundary(React);
 
 const baseUrl = "https://prakarshxvi-api.herokuapp.com";
 // const baseUrl = "http://localhost:1337";
@@ -71,17 +75,17 @@ export default function Dashboard() {
     }, 0) || 0;
 
   async function displayRazorpay() {
-    const eventOrder = cart.map((e) => e.event_id);
-    setLoading(true);
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-
-    if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
     try {
+      const eventOrder = cart.map((e) => e.event_id);
+      setLoading(true);
+      const res = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+      );
+
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
+        return;
+      }
       const result = await axios.post(
         `${baseUrl}/payment/orders`,
         {
@@ -150,9 +154,10 @@ export default function Dashboard() {
               setmyEvents([...myEventsNew]);
             }
             setLoading(false);
-            setSuccess("Transaction completed!");
+            setSuccess("Transaction completed! Check your email for reciept!");
           } catch (e) {
             console.log(e);
+            Bugsnag.notify(e);
             setError(
               "Error while processing request. Please contact support!!"
             );
@@ -181,6 +186,7 @@ export default function Dashboard() {
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
     } catch (e) {
+      Bugsnag.notify(e);
       setError("Error while fetching data!!");
       setLoading(false);
       return;
@@ -192,106 +198,34 @@ export default function Dashboard() {
       <Head>
         <title>Dashboard | PrakarshXVI - SVIT, Vasad</title>
       </Head>
-      <Container maxWidth="lg" id="dashboard">
-        <Typography
-          variant="h3"
-          align="center"
-          gutterBottom
-          style={{
-            marginTop: 20,
-            fontFamily: "'Valorant',sans-serif",
-            fontWeight: 400,
-          }}
-        >
-          Dashboard
-        </Typography>
-
-        {loading ? (
-          <div
+      <ErrorBoundary>
+        <Container maxWidth="lg" id="dashboard">
+          <Typography
+            variant="h3"
+            align="center"
+            gutterBottom
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              marginTop: 20,
+              fontFamily: "'Valorant',sans-serif",
+              fontWeight: 400,
             }}
           >
-            <CircularProgress size={28} color="secondary" />
-          </div>
-        ) : (
-          <Grid container justify="space-between" spacing={4}>
-            <Grid item xs={12} md={myEvents?.length > 0 ? 8 : 12}>
-              <Grid
-                container
-                justify="space-between"
-                alignItems="center"
-                style={{ padding: 10 }}
-              >
-                <Typography variant="h5" gutterBottom>
-                  Cart
-                </Typography>
-                <Button
-                  variant="outlined"
-                  className={classes.checkout}
-                  size="large"
-                  // disabled
-                  onClick={() => {
-                    if (user && cart?.length > 0) displayRazorpay();
-                    else {
-                      if (!user) setError("Please login to continue!!");
-                      else setError("Cart is empty!");
-                    }
-                  }}
-                >
-                  Checkout&nbsp;<b>₹ {totalAmount}</b>
-                </Button>
-              </Grid>
-              <Divider />
-              <List>
-                {cart?.length > 0 ? (
-                  cart.map((event, index) => (
-                    <ListItem key={index}>
-                      <ListItemAvatar>
-                        <Avatar
-                          src={`/images/${dashify(
-                            event.category_name
-                          )}/${dashify(event.eventName)}.png`}
-                          style={{ backgroundColor: "#0593ea" }}
-                        />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={event.eventName}
-                        secondary={event.category_name}
-                      />
-                      <ListItemSecondaryAction>
-                        <IconButton
-                          edge="start"
-                          aria-label="delete"
-                          onClick={() => setCart(event, true)}
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                        {/* <IconButton edge="start" aria-label="delete">
-                          <Info />
-                        </IconButton> */}
-                        <span>₹ {event["details"][2].sectionContent}</span>
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                  ))
-                ) : (
-                  <div style={{ textAlign: "center" }}>
-                    <img
-                      src="/empty-cart.svg"
-                      height="250"
-                      width="auto"
-                      alt=""
-                      style={{ margin: "20px auto" }}
-                    />
-                    <h2>Cart is Empty</h2>
-                  </div>
-                )}
-              </List>
-            </Grid>
-            {myEvents?.length > 0 ? (
-              <Grid item xs={12} md={4}>
+            Dashboard
+          </Typography>
+
+          {loading ? (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <CircularProgress size={28} color="secondary" />
+            </div>
+          ) : (
+            <Grid container justify="space-between" spacing={4}>
+              <Grid item xs={12} md={myEvents?.length > 0 ? 8 : 12}>
                 <Grid
                   container
                   justify="space-between"
@@ -299,44 +233,118 @@ export default function Dashboard() {
                   style={{ padding: 10 }}
                 >
                   <Typography variant="h5" gutterBottom>
-                    My Events
+                    Cart
                   </Typography>
+                  <Button
+                    variant="outlined"
+                    className={classes.checkout}
+                    size="large"
+                    // disabled
+                    onClick={() => {
+                      if (user && cart?.length > 0) displayRazorpay();
+                      else {
+                        if (!user) setError("Please login to continue!!");
+                        else setError("Cart is empty!");
+                      }
+                    }}
+                  >
+                    Checkout&nbsp;<b>₹ {totalAmount}</b>
+                  </Button>
                 </Grid>
                 <Divider />
                 <List>
-                  {myEvents.map((event, index) => {
-                    {
-                      console.log(event);
-                    }
-
-                    return (
+                  {cart?.length > 0 ? (
+                    cart.map((event, index) => (
                       <ListItem key={index}>
                         <ListItemAvatar>
                           <Avatar
                             src={`/images/${dashify(
                               event.category_name
-                            )}/${dashify(event.event_name)}.png`}
-                            style={{ backgroundColor: "#FF4655" }}
+                            )}/${dashify(event.eventName)}.png`}
+                            style={{ backgroundColor: "#0593ea" }}
                           />
                         </ListItemAvatar>
                         <ListItemText
-                          primary={event.event_name}
+                          primary={event.eventName}
                           secondary={event.category_name}
                         />
-                        {/* <ListItemSecondaryAction>
-                          <span>₹ 50</span>
-                        </ListItemSecondaryAction> */}
+                        <ListItemSecondaryAction>
+                          <IconButton
+                            edge="start"
+                            aria-label="delete"
+                            onClick={() => setCart(event, true)}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                          {/* <IconButton edge="start" aria-label="delete">
+                          <Info />
+                        </IconButton> */}
+                          <span>₹ {event["details"][2].sectionContent}</span>
+                        </ListItemSecondaryAction>
                       </ListItem>
-                    );
-                  })}
+                    ))
+                  ) : (
+                    <div style={{ textAlign: "center" }}>
+                      <img
+                        src="/empty-cart.svg"
+                        height="250"
+                        width="auto"
+                        alt=""
+                        style={{ margin: "20px auto" }}
+                      />
+                      <h2>Cart is Empty</h2>
+                    </div>
+                  )}
                 </List>
               </Grid>
-            ) : (
-              ""
-            )}
-          </Grid>
-        )}
-      </Container>
+              {myEvents?.length > 0 ? (
+                <Grid item xs={12} md={4}>
+                  <Grid
+                    container
+                    justify="space-between"
+                    alignItems="center"
+                    style={{ padding: 10 }}
+                  >
+                    <Typography variant="h5" gutterBottom>
+                      My Events
+                    </Typography>
+                  </Grid>
+                  <Divider />
+                  <List>
+                    {myEvents.map((event, index) => {
+                      {
+                        console.log(event);
+                      }
+
+                      return (
+                        <ListItem key={index}>
+                          <ListItemAvatar>
+                            <Avatar
+                              src={`/images/${dashify(
+                                event.category_name
+                              )}/${dashify(event.event_name)}.png`}
+                              style={{ backgroundColor: "#FF4655" }}
+                            />
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={event.event_name}
+                            secondary={event.category_name}
+                          />
+                          {/* <ListItemSecondaryAction>
+                          <span>₹ 50</span>
+                        </ListItemSecondaryAction> */}
+                        </ListItem>
+                      );
+                    })}
+                  </List>
+                </Grid>
+              ) : (
+                ""
+              )}
+            </Grid>
+          )}
+        </Container>
+      </ErrorBoundary>
     </>
   );
 }
