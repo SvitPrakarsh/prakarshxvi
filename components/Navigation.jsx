@@ -146,16 +146,17 @@ const Navigation = () => {
           <div style={{ flexGrow: 1 }}>
             <Link href="/">
               <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                // onClick={() => setDrawer(!drawer)}
-                color="inherit"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  // onClick={() => setDrawer(!drawer)}
+                  color="inherit"
+                  style={{padding: '5px'}}
               >
                 <img
                     src="/prakarsh-logo.svg"
                     alt=""
-                    style={{height: 38, width: 38}}
+                    style={{height: 60, width: 60}}
                 />
               </IconButton>
             </Link>
