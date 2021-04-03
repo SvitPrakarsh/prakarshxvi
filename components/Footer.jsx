@@ -8,11 +8,11 @@ export default function Footer() {
             <footer>
                 <div id="copyright">All Rights Reserved © Prakarsh XVI</div>
                 <div id='links'>
-                    <Link href="#" color='inherit'>
+                    <Link href="/Terms.pdf" color='inherit'>
                         Terms
-                    </Link> <Link href="#" color='inherit'>
+                    </Link> <Link href="/Privacy.pdf" color='inherit'>
                     Privacy
-                </Link> <Link href="#" color='inherit'>
+                </Link> <Link href="/Refunds.pdf" color='inherit'>
                     Refunds
                 </Link>
                 </div>
@@ -29,7 +29,7 @@ export default function Footer() {
                     <IconButton href="mailto:support@prakarsh.org">
                         <Email/>
                     </IconButton>
-                    <IconButton href="telto:+918141153732">
+                    <IconButton href="tel:+918141153732">
                         <Phone/>
                     </IconButton>
                 </div>

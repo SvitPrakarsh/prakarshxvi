@@ -153,9 +153,9 @@ const Navigation = () => {
                 color="inherit"
               >
                 <img
-                  src="/prakarsh-logo.svg"
-                  alt=""
-                  style={{ height: 36, width: 36 }}
+                    src="/prakarsh-logo.svg"
+                    alt=""
+                    style={{height: 38, width: 38}}
                 />
               </IconButton>
             </Link>
