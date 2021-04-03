@@ -22,6 +22,7 @@ import { dashify } from "../helpers/utils";
 import Head from "next/head";
 
 const baseUrl = "https://prakarshxvi-api.herokuapp.com";
+// const baseUrl = "http://localhost:1337";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,6 +86,7 @@ export default function Dashboard() {
         `${baseUrl}/payment/orders`,
         {
           events: eventOrder,
+          user: user,
         },
         {
           headers: {
@@ -103,6 +105,7 @@ export default function Dashboard() {
 
       const options = {
         key: "rzp_live_kz5CWBWE92g5VF",
+        // key: "rzp_test_hbUP2rwFqZBLYA",
         amount: amount.toString(),
         currency: currency,
         name: "Prakarsh XVI",
