@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { useState, useEffect } from 'react';
 import { getSession } from 'next-auth/client';
-import axios from "axios";
+import axios from 'axios';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 // const baseUrl = "http://localhost:1337"
@@ -47,35 +47,48 @@ export default function useAuth() {
 			} else {
 				setLoading(false);
 			}
-		})
-	}
+		});
+	};
 	const getMyEvents = () => {
 		axios({
 			method: 'get',
-			url: `${baseUrl}/participations?user_id=${user._id}`,
+			baseURL: 'http://localhost:1337',
+			url: `/participations?user_id=${user._id}`,
 			headers: {
 				Authorization: 'Bearer ' + session.jwt,
 			},
 		}).then((myEv) => {
-			const myEventData = myEv.data.map((ev) => {
-				return {
-					event_name: ev.event_name,
-					category_name: ev.category_name
-				};
-			})
-			// console.log(myEventData)
-			setmyEvents(myEventData);
-		})
-	}
-
+			if (myEv.length > 0) {
+				axios({
+					method: 'post',
+					baseURL: 'http://localhost:1337',
+					url: `/receipt`,
+					headers: {
+						Authorization: 'Bearer ' + session.jwt,
+					},
+					data: { user, my_events: myEv },
+				}).then((pdfData) => {
+					const myEventData = myEv.data.map((ev) => {
+						return {
+							event_name: ev.event_name,
+							category_name: ev.category_name,
+							pdfData,
+						};
+					});
+					setmyEvents(myEventData);
+				});
+				// console.log(myEventData)
+			}
+		});
+	};
 
 	useEffect(() => {
-		authenticate()
-	}, [])
+		authenticate();
+	}, []);
 
 	useEffect(() => {
-		if (user) getMyEvents()
-	}, [user])
+		if (user) getMyEvents();
+	}, [user]);
 
 	return {
 		auth,
@@ -91,6 +104,6 @@ export default function useAuth() {
 		success,
 		setSuccess,
 		myEvents,
-		setmyEvents
-	}
+		setmyEvents,
+	};
 }
