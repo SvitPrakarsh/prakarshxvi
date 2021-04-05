@@ -8,7 +8,7 @@ export default function Team() {
                 <title>Team | PrakarshXVI</title>
             </Head>
             <Container id='team' maxWidth='xl'>
-                {/* <Typography
+                <Typography
                     id="title"
                     variant="h2"
                     style={{
@@ -17,8 +17,8 @@ export default function Team() {
                     gutterBottom
                 >
                     Coming Soon
-                </Typography>*/}
-                <Typography
+                </Typography>
+                {/* <Typography
                     id="title"
                     variant="h2"
                     style={{
@@ -47,7 +47,7 @@ export default function Team() {
                         </>
                     )
                 )}
-
+*/}
             </Container></>
     )
 }
