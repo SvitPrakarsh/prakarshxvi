@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import GetAppIcon from "@material-ui/icons/GetApp";
 import Context from "../Context";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
@@ -308,6 +309,34 @@ export default function Dashboard() {
                     <Typography variant="h5" gutterBottom>
                       My Events
                     </Typography>
+                    <Button
+                      size="medium"
+                      variant="outlined"
+                      download="Reciept.pdf"
+                      onClick={() => {
+                        setLoading(true);
+                        axios({
+                          method: "post",
+                          url: `${baseUrl}/reciept`,
+                          headers: {
+                            Authorization: "Bearer " + session.jwt,
+                          },
+                          data: { user, events: myEvents },
+                        }).then((pdfData) => {
+                          setLoading(false);
+                          console.log(pdfData.data);
+                          const linkSource = `data:application/pdf;base64,${pdfData.data}`;
+                          const downloadLink = document.createElement("a");
+                          const fileName = "Reciept.pdf";
+                          downloadLink.href = linkSource;
+                          downloadLink.download = fileName;
+                          downloadLink.click();
+                        });
+                      }}
+                    >
+                      Reciept &nbsp;
+                      <GetAppIcon style={{ color: "#0593ea" }} />
+                    </Button>
                   </Grid>
                   <Divider />
                   <List>

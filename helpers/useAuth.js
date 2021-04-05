@@ -52,33 +52,19 @@ export default function useAuth() {
 	const getMyEvents = () => {
 		axios({
 			method: 'get',
-			baseURL: 'http://localhost:1337',
-			url: `/participations?user_id=${user._id}`,
+			url: `${baseUrl}/participations?user_id=${user._id}`,
 			headers: {
 				Authorization: 'Bearer ' + session.jwt,
 			},
 		}).then((myEv) => {
-			if (myEv.length > 0) {
-				axios({
-					method: 'post',
-					baseURL: 'http://localhost:1337',
-					url: `/receipt`,
-					headers: {
-						Authorization: 'Bearer ' + session.jwt,
-					},
-					data: { user, my_events: myEv },
-				}).then((pdfData) => {
-					const myEventData = myEv.data.map((ev) => {
-						return {
-							event_name: ev.event_name,
-							category_name: ev.category_name,
-							pdfData,
-						};
-					});
-					setmyEvents(myEventData);
-				});
-				// console.log(myEventData)
-			}
+			const myEventData = myEv.data.map((ev) => {
+				return {
+					event_name: ev.event_name,
+					category_name: ev.category_name,
+					transaction_id: ev.transaction_id
+				};
+			});
+			setmyEvents(myEventData);
 		});
 	};
 
