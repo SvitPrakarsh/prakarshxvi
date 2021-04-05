@@ -1,5 +1,6 @@
 import {Container, Typography} from "@material-ui/core";
 import Head from "next/head";
+import teamsData from "../data/teams.json"
 
 export default function Team() {
     return (<>
@@ -7,7 +8,7 @@ export default function Team() {
                 <title>Team | PrakarshXVI</title>
             </Head>
             <Container id='team' maxWidth='xl'>
-                <Typography
+                {/* <Typography
                     id="title"
                     variant="h2"
                     style={{
@@ -16,24 +17,37 @@ export default function Team() {
                     gutterBottom
                 >
                     Coming Soon
+                </Typography>*/}
+                <Typography
+                    id="title"
+                    variant="h2"
+                    style={{
+                        fontFamily: "'Valorant',sans-serif",
+                    }}
+                    gutterBottom
+                >
+                    Team
                 </Typography>
-                {/* <Typography
-                id="title"
-                variant="h2"
-                style={{
-                    fontFamily: "'Valorant',sans-serif",
-                }}
-                gutterBottom
-            >
-                Team
-            </Typography>
 
-            <div id='team-card'>
-                <div id='picture'></div>
-                <h1 id='name'>Akshar Patel</h1>
-                <p id='post'>Co-Head</p>
-            </div>*/
-                }
+                {Object.entries(teamsData).map((team, teamId) =>
+
+                    (<>
+                            <Typography id='team-name' variant='h4' align='center'>{team[0]}</Typography>
+                            <div key={teamId} id='team-container'>
+                                {team[1].members.map((member, memberId) => (
+                                    <div id='team-card' key={memberId}>
+                                        <div id='picture'>
+                                            <img src={member.imageUrl} alt=""/>
+                                        </div>
+                                        <h1 id='name'>{member.name}</h1>
+                                        <p id='post'>{member.post}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    )
+                )}
+
             </Container></>
     )
 }

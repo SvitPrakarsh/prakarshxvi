@@ -1,0 +1,277 @@
+{
+  "Core Team": {
+    "color": "",
+    "members": [
+      {
+        "name": "Yash Patel",
+        "imageUrl": "/team/yashT.jpg",
+        "post": "Technical Coordinator",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Akshar Patel",
+        "imageUrl": "/team/akshar.jpg",
+        "post": "Co-Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Suraj Shah",
+        "imageUrl": "/team/suraj.jpg",
+        "post": "App Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Vraj Shah",
+        "imageUrl": "/team/suraj.jpg",
+        "post": "Web Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Jay Patel",
+        "imageUrl": "/team/suraj.jpg",
+        "post": "Web Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      }
+    ]
+  },
+  "Web & App": {
+    "color": "",
+    "members": [
+      {
+        "name": "Mustanseer Sakerwala",
+        "imageUrl": "/team/mustanseer.webp",
+        "post": "Mentors",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Devarsh Panchal",
+        "imageUrl": "/team/devarsh.webp",
+        "post": "Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Ayaan Retiwala",
+        "imageUrl": "/team/ayaan.webp",
+        "post": "Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Akshar Patel",
+        "imageUrl": "/team/akshar.webp",
+        "post": "Co-Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Suraj Shah",
+        "imageUrl": "/team/suraj.webp",
+        "post": "App Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Vraj Shah",
+        "imageUrl": "/team/suraj.webp",
+        "post": "Web Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Jay Patel",
+        "imageUrl": "/team/suraj.webp",
+        "post": "Web Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      }
+    ]
+  },
+  "Graphics": {
+    "color": "",
+    "members": [
+      {
+        "name": "Gaurav Tilokwani",
+        "imageUrl": "/team/gaurav.jpg",
+        "post": "Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Akshat Ranadive",
+        "imageUrl": "/team/akshat.jpg",
+        "post": "Co-Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Kalash Rami",
+        "imageUrl": "/team/kalash.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Dhrumil Kherde",
+        "imageUrl": "/team/dhrumil.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Nimit Trevadiya",
+        "imageUrl": "/team/nimit.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Hetav Patel",
+        "imageUrl": "/team/hetav.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Darshil Rathod",
+        "imageUrl": "/team/darshil.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Manish Jagid",
+        "imageUrl": "/team/manish.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      }
+    ]
+  }
+}
