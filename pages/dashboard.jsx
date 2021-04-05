@@ -132,28 +132,28 @@ export default function Dashboard() {
             razorpaySignature: response.razorpay_signature,
           };
           try {
-            const myEventsNew = cart.map((obj) => {
-              return {
-                event_name: obj.eventName,
-                category_name: obj.category_name,
-              };
+            await axios.post(`${baseUrl}/payment/success`, data, {
+              headers: {
+                Authorization: "Bearer " + session.jwt,
+              },
             });
-            const result = await axios.post(
-              `${baseUrl}/payment/success`,
-              data,
-              {
-                headers: {
-                  Authorization: "Bearer " + session.jwt,
-                },
-              }
-            );
             setCart(null, false, true);
 
-            if (myEvents) {
-              setmyEvents([...myEvents, ...myEventsNew]);
-            } else {
-              setmyEvents([...myEventsNew]);
-            }
+            const myEv = await axios({
+              method: "get",
+              url: `${baseUrl}/participations?user_id=${user._id}`,
+              headers: {
+                Authorization: "Bearer " + session.jwt,
+              },
+            });
+            const myEventData = myEv.data.map((ev) => {
+              return {
+                event_name: ev.event_name,
+                category_name: ev.category_name,
+                transaction_id: ev.transaction_id,
+              };
+            });
+            setmyEvents(myEventData);
             setLoading(false);
             setSuccess("Transaction completed! Check your email for reciept!");
           } catch (e) {
