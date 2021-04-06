@@ -1,0 +1,207 @@
+{
+  "Web & App": {
+    "color": "",
+    "members": [
+      {
+        "name": "Mustanseer Sakerwala",
+        "imageUrl": "/team/mustanseer.webp",
+        "post": "Mentors",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": "DaScientist"
+          }
+        ]
+      },
+      {
+        "name": "Devarsh Panchal",
+        "imageUrl": "/team/devarsh.webp",
+        "post": "Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": "letscodedev"
+          }
+        ]
+      },
+      {
+        "name": "Ayaan Retiwala",
+        "imageUrl": "/team/ayaan.webp",
+        "post": "Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": "LOLwierd"
+          }
+        ]
+      },
+      {
+        "name": "Akshar Patel",
+        "imageUrl": "/team/akshar.webp",
+        "post": "Co-Head",
+        "links": [
+          {
+            "linkedin": "aksharpatel17"
+          },
+          {
+            "github": "aksharpatel17"
+          }
+        ]
+      },
+      {
+        "name": "Suraj Shah",
+        "imageUrl": "/team/suraj.webp",
+        "post": "App Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": "suraj2001"
+          }
+        ]
+      },
+      {
+        "name": "Vraj Shah",
+        "imageUrl": "/team/vraj.jpg",
+        "post": "Web Volunteer",
+        "links": [
+          {
+            "linkedin": "thevrajshah"
+          },
+          {
+            "github": "thevrajshah"
+          }
+        ]
+      },
+      {
+        "name": "Jay Patel",
+        "imageUrl": "/team/jay.jpg",
+        "post": "Web Volunteer",
+        "links": [
+          {
+            "linkedin": "imjp19"
+          },
+          {
+            "github": "imjp19"
+          }
+        ]
+      }
+    ]
+  },
+  "Graphics": {
+    "color": "",
+    "members": [
+      {
+        "name": "Gaurav Tilokwani",
+        "imageUrl": "/team/gaurav.jpg",
+        "post": "Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Akshat Ranadive",
+        "imageUrl": "/team/akshat.webp",
+        "post": "Co-Head",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Kalash Rami",
+        "imageUrl": "/team/kalash.webp",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Dhrumil Kherde",
+        "imageUrl": "/team/dhrumil.webp",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Nimit Trevadiya",
+        "imageUrl": "/team/nimit.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Hetav Patel",
+        "imageUrl": "/team/hetav.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Darshil Rathod",
+        "imageUrl": "/team/darshil.jpg",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      },
+      {
+        "name": "Manish Jagid",
+        "imageUrl": "/team/manish.png",
+        "post": "Volunteer",
+        "links": [
+          {
+            "linkedin": ""
+          },
+          {
+            "github": ""
+          }
+        ]
+      }
+    ]
+  }
+}

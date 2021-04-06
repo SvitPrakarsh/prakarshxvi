@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { useState, useEffect } from 'react';
 import { getSession } from 'next-auth/client';
-import axios from "axios";
+import axios from 'axios';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 // const baseUrl = "http://localhost:1337"
@@ -47,8 +47,8 @@ export default function useAuth() {
 			} else {
 				setLoading(false);
 			}
-		})
-	}
+		});
+	};
 	const getMyEvents = () => {
 		axios({
 			method: 'get',
@@ -60,22 +60,21 @@ export default function useAuth() {
 			const myEventData = myEv.data.map((ev) => {
 				return {
 					event_name: ev.event_name,
-					category_name: ev.category_name
+					category_name: ev.category_name,
+					transaction_id: ev.transaction_id
 				};
-			})
-			// console.log(myEventData)
+			});
 			setmyEvents(myEventData);
-		})
-	}
-
-
-	useEffect(() => {
-		authenticate()
-	}, [])
+		});
+	};
 
 	useEffect(() => {
-		if (user) getMyEvents()
-	}, [user])
+		authenticate();
+	}, []);
+
+	useEffect(() => {
+		if (user) getMyEvents();
+	}, [user]);
 
 	return {
 		auth,
@@ -91,6 +90,6 @@ export default function useAuth() {
 		success,
 		setSuccess,
 		myEvents,
-		setmyEvents
-	}
+		setmyEvents,
+	};
 }

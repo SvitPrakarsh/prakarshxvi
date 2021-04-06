@@ -14,6 +14,7 @@ import {
 	Typography,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import Context from '../Context';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -131,28 +132,28 @@ export default function Dashboard() {
 						razorpaySignature: response.razorpay_signature,
 					};
 					try {
-						const myEventsNew = cart.map((obj) => {
-							return {
-								event_name: obj.eventName,
-								category_name: obj.category_name,
-							};
+						await axios.post(`${baseUrl}/payment/success`, data, {
+							headers: {
+								Authorization: 'Bearer ' + session.jwt,
+							},
 						});
-						const result = await axios.post(
-							`${baseUrl}/payment/success`,
-							data,
-							{
-								headers: {
-									Authorization: 'Bearer ' + session.jwt,
-								},
-							}
-						);
 						setCart(null, false, true);
 
-						if (myEvents) {
-							setmyEvents([...myEvents, ...myEventsNew]);
-						} else {
-							setmyEvents([...myEventsNew]);
-						}
+						const myEv = await axios({
+							method: 'get',
+							url: `${baseUrl}/participations?user_id=${user._id}`,
+							headers: {
+								Authorization: 'Bearer ' + session.jwt,
+							},
+						});
+						const myEventData = myEv.data.map((ev) => {
+							return {
+								event_name: ev.event_name,
+								category_name: ev.category_name,
+								transaction_id: ev.transaction_id,
+							};
+						});
+						setmyEvents(myEventData);
 						setLoading(false);
 						setSuccess('Transaction completed! Check your email for reciept!');
 					} catch (e) {
@@ -308,6 +309,34 @@ export default function Dashboard() {
 										<Typography variant="h5" gutterBottom>
 											My Events
 										</Typography>
+										<Button
+											size="medium"
+											variant="outlined"
+											download="Reciept.pdf"
+											onClick={() => {
+												setLoading(true);
+												axios({
+													method: 'post',
+													url: `${baseUrl}/reciept`,
+													headers: {
+														Authorization: 'Bearer ' + session.jwt,
+													},
+													data: { user, events: myEvents },
+												}).then((pdfData) => {
+													setLoading(false);
+													console.log(pdfData.data);
+													const linkSource = `data:application/pdf;base64,${pdfData.data}`;
+													const downloadLink = document.createElement('a');
+													const fileName = 'Reciept.pdf';
+													downloadLink.href = linkSource;
+													downloadLink.download = fileName;
+													downloadLink.click();
+												});
+											}}
+										>
+											Reciept &nbsp;
+											<GetAppIcon style={{ color: '#0593ea' }} />
+										</Button>
 									</Grid>
 									<Divider />
 									<List>
