@@ -1,74 +1,4 @@
 {
-  "Core Team": {
-    "color": "",
-    "members": [
-      {
-        "name": "Yash Patel",
-        "imageUrl": "/team/yashT.jpg",
-        "post": "Technical Coordinator",
-        "links": [
-          {
-            "linkedin": ""
-          },
-          {
-            "github": ""
-          }
-        ]
-      },
-      {
-        "name": "Akshar Patel",
-        "imageUrl": "/team/akshar.jpg",
-        "post": "Co-Head",
-        "links": [
-          {
-            "linkedin": ""
-          },
-          {
-            "github": ""
-          }
-        ]
-      },
-      {
-        "name": "Suraj Shah",
-        "imageUrl": "/team/suraj.jpg",
-        "post": "App Volunteer",
-        "links": [
-          {
-            "linkedin": ""
-          },
-          {
-            "github": ""
-          }
-        ]
-      },
-      {
-        "name": "Vraj Shah",
-        "imageUrl": "/team/suraj.jpg",
-        "post": "Web Volunteer",
-        "links": [
-          {
-            "linkedin": ""
-          },
-          {
-            "github": ""
-          }
-        ]
-      },
-      {
-        "name": "Jay Patel",
-        "imageUrl": "/team/suraj.jpg",
-        "post": "Web Volunteer",
-        "links": [
-          {
-            "linkedin": ""
-          },
-          {
-            "github": ""
-          }
-        ]
-      }
-    ]
-  },
   "Web & App": {
     "color": "",
     "members": [
@@ -81,7 +11,7 @@
             "linkedin": ""
           },
           {
-            "github": ""
+            "github": "DaScientist"
           }
         ]
       },
@@ -94,7 +24,7 @@
             "linkedin": ""
           },
           {
-            "github": ""
+            "github": "letscodedev"
           }
         ]
       },
@@ -107,7 +37,7 @@
             "linkedin": ""
           },
           {
-            "github": ""
+            "github": "LOLwierd"
           }
         ]
       },
@@ -117,10 +47,10 @@
         "post": "Co-Head",
         "links": [
           {
-            "linkedin": ""
+            "linkedin": "aksharpatel17"
           },
           {
-            "github": ""
+            "github": "aksharpatel17"
           }
         ]
       },
@@ -133,33 +63,33 @@
             "linkedin": ""
           },
           {
-            "github": ""
+            "github": "suraj2001"
           }
         ]
       },
       {
         "name": "Vraj Shah",
-        "imageUrl": "/team/suraj.webp",
+        "imageUrl": "/team/vraj.jpg",
         "post": "Web Volunteer",
         "links": [
           {
-            "linkedin": ""
+            "linkedin": "thevrajshah"
           },
           {
-            "github": ""
+            "github": "thevrajshah"
           }
         ]
       },
       {
         "name": "Jay Patel",
-        "imageUrl": "/team/suraj.webp",
+        "imageUrl": "/team/jay.jpg",
         "post": "Web Volunteer",
         "links": [
           {
-            "linkedin": ""
+            "linkedin": "imjp19"
           },
           {
-            "github": ""
+            "github": "imjp19"
           }
         ]
       }
@@ -183,7 +113,7 @@
       },
       {
         "name": "Akshat Ranadive",
-        "imageUrl": "/team/akshat.jpg",
+        "imageUrl": "/team/akshat.webp",
         "post": "Co-Head",
         "links": [
           {
@@ -196,7 +126,7 @@
       },
       {
         "name": "Kalash Rami",
-        "imageUrl": "/team/kalash.jpg",
+        "imageUrl": "/team/kalash.webp",
         "post": "Volunteer",
         "links": [
           {
@@ -209,7 +139,7 @@
       },
       {
         "name": "Dhrumil Kherde",
-        "imageUrl": "/team/dhrumil.jpg",
+        "imageUrl": "/team/dhrumil.webp",
         "post": "Volunteer",
         "links": [
           {
@@ -261,7 +191,7 @@
       },
       {
         "name": "Manish Jagid",
-        "imageUrl": "/team/manish.jpg",
+        "imageUrl": "/team/manish.png",
         "post": "Volunteer",
         "links": [
           {

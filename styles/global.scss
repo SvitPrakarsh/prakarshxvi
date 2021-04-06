@@ -312,23 +312,41 @@ form i {
 		}
 
 		#post {
-			opacity: .6;
+			opacity: 0.6;
 		}
 
-		&:hover, &:active {
-			background: #41C3C3;
+		#links {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			a {
+				color: #fff;
+			}
+			svg.MuiSvgIcon-root {
+				height: 30px;
+				margin: 0 5px;
+				transition: 0.3s ease-in-out;
+				&:hover {
+					color: #0f1923;
+				}
+			}
+		}
+
+		&:hover,
+		&:active {
+			background: #41c3c3;
 
 			#picture {
 				transform: translateY(-20px);
 			}
-
+			#name {
+				color: #0f1923;
+			}
 			#post {
-				opacity: .8;
-
+				opacity: 0.8;
 			}
 		}
 	}
-
 }
 
 footer {
