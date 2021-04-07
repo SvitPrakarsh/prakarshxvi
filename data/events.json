@@ -3,6 +3,7 @@
       {
          "event_id": 1,
          "eventName": "Creative Hex",
+         "is_disabled": false,
          "category_name": "Cyber Intrusion",
          "iconPath": "cyber-intrusion/corporatech.png",
          "details": [
@@ -54,6 +55,7 @@
       {
          "event_id": 2,
          "eventName": "Techie Guru",
+         "is_disabled": false,
          "category_name": "Cyber Intrusion",
          "details": [
             {
@@ -100,6 +102,7 @@
       {
          "event_id": 3,
          "eventName": "Corporatech",
+         "is_disabled": false,
          "category_name": "Cyber Intrusion",
          "details": [
             {
@@ -154,6 +157,7 @@
       {
          "event_id": 4,
          "eventName": "Tech-Roadies",
+         "is_disabled": false,
          "category_name": "Cyber Intrusion",
          "details": [
             {
@@ -206,6 +210,7 @@
       {
          "event_id": 5,
          "eventName": "QuBits",
+         "is_disabled": false,
          "category_name": "Dexter's Lab",
          "details": [
             {
@@ -256,6 +261,7 @@
       {
          "event_id": 6,
          "eventName": "MythWIZ",
+         "is_disabled": false,
          "category_name": "Dexter's Lab",
          "details": [
             {
@@ -308,6 +314,7 @@
       {
          "event_id": 7,
          "eventName": "Clue-Minati",
+         "is_disabled": false,
          "category_name": "Funtastic",
          "details": [
             {
@@ -358,6 +365,7 @@
       {
          "event_id": 8,
          "eventName": "Quizzical Mania",
+         "is_disabled": false,
          "category_name": "Funtastic",
          "details": [
             {
@@ -408,6 +416,7 @@
       {
          "event_id": 9,
          "eventName": "Nostalgia",
+         "is_disabled": false,
          "category_name": "Funtastic",
          "details": [
             {
@@ -458,6 +467,7 @@
       {
          "event_id": 10,
          "eventName": "Game-Zone",
+         "is_disabled": false,
          "category_name": "Funtastic",
          "details": [
             {
@@ -510,6 +520,7 @@
       {
          "event_id": 11,
          "eventName": "Envision Urban Infra",
+         "is_disabled": false,
          "category_name": "Structonics",
          "details": [
             {
@@ -562,6 +573,7 @@
       {
          "event_id": 12,
          "eventName": "ENGINE EVOLUTION",
+         "is_disabled": false,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -612,6 +624,7 @@
       {
          "event_id": 13,
          "eventName": "RoboSpace",
+         "is_disabled": false,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -662,6 +675,7 @@
       {
          "event_id": 14,
          "eventName": "HYDRO-RUSH",
+         "is_disabled": false,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -708,6 +722,7 @@
       {
          "event_id": 15,
          "eventName": "Genesis",
+         "is_disabled": false,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -752,6 +767,7 @@
       {
          "event_id": 16,
          "eventName": "Ethical Hacking & Bug Bounty hunting",
+         "is_disabled": true,
          "category_name": "Workshops",
          "details": [
             {
@@ -806,6 +822,7 @@
       {
          "event_id": 17,
          "eventName": "DESIGN-ATHON",
+         "is_disabled": false,
          "category_name": "Workshops",
          "details": [
             {
@@ -852,6 +869,7 @@
       {
          "event_id": 18,
          "eventName": "Elevated Excel",
+         "is_disabled": false,
          "category_name": "Workshops",
          "details": [
             {
@@ -889,6 +907,7 @@
       {
          "event_id": 19,
          "eventName": "AEROPHILA 3.0",
+         "is_disabled": false,
          "category_name": "Workshops",
          "details": [
             {
@@ -931,6 +950,7 @@
       {
          "event_id": 20,
          "eventName": "Unpredictable Electricals",
+         "is_disabled": false,
          "category_name": "Workshops",
          "details": [
             {
@@ -973,6 +993,7 @@
       {
          "event_id": 21,
          "eventName": "IOTech",
+         "is_disabled": false,
          "category_name": "Workshops",
          "details": [
             {
@@ -1015,6 +1036,7 @@
       {
          "event_id": 22,
          "eventName": "Tame the Python",
+         "is_disabled": true,
          "category_name": "Workshops",
          "details": [
             {
@@ -1063,6 +1085,7 @@
       {
          "event_id": 23,
          "eventName": "ISRO",
+         "is_disabled": false,
          "category_name": "Ancillary",
          "details": [
             {
@@ -1096,6 +1119,7 @@
       {
          "event_id": 24,
          "eventName": "Cyber Security",
+         "is_disabled": false,
          "category_name": "Ancillary",
          "details": [
             {
