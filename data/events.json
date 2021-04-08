@@ -467,7 +467,7 @@
       {
          "event_id": 10,
          "eventName": "Game-Zone",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Funtastic",
          "details": [
             {
@@ -822,7 +822,7 @@
       {
          "event_id": 17,
          "eventName": "DESIGN-ATHON",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Workshops",
          "details": [
             {
@@ -869,7 +869,7 @@
       {
          "event_id": 18,
          "eventName": "Elevated Excel",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Workshops",
          "details": [
             {
