@@ -907,7 +907,7 @@
       {
          "event_id": 19,
          "eventName": "AEROPHILA 3.0",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Workshops",
          "details": [
             {
