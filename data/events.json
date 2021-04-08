@@ -365,7 +365,7 @@
       {
          "event_id": 8,
          "eventName": "Quizzical Mania",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Funtastic",
          "details": [
             {
