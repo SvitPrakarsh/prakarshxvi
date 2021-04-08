@@ -314,7 +314,7 @@
       {
          "event_id": 7,
          "eventName": "Clue-Minati",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Funtastic",
          "details": [
             {
@@ -416,7 +416,7 @@
       {
          "event_id": 9,
          "eventName": "Nostalgia",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Funtastic",
          "details": [
             {
