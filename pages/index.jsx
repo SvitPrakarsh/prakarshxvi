@@ -29,6 +29,7 @@ import Head from 'next/head';
 import useLocalStorage from '../helpers/useLocalStorage';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import talks from '../data/talks.json';
+import InfoSnackbar from '../components/InfoSnackbar';
 
 const useStyles = makeStyles(() => ({
 	actionArea: {
@@ -84,6 +85,7 @@ export default function Home() {
 			<Head>
 				<title> PrakarshXVI | SVIT's Largest Tech Fest</title>
 			</Head>
+			<InfoSnackbar />
 			<div id="hero">
 				<Background />
 				<div id="xvi">XVI</div>
