@@ -234,43 +234,47 @@ export default function Home() {
 					})}
 				</Grid>
 			</Container>
-			{/*<Paper style={{ padding: "30px 20px" }}>
-        <Container>
-          <div style={{ maxWidth: "36vw", margin: "0 auto 50px" }}>
-            <Typography
-              variant="h4"
-              fontWeight={400}
-              align="center"
-              gutterBottom
-              style={{ fontFamily: '"Valorant",sans-serif' }}
-            >
-              SPONSORS
-            </Typography>
-            <Divider />
-          </div>
-          <Sponsers />
-          <br />
-          <br />
-        </Container>
-      </Paper>
-      <Container maxWidth="md" style={{ padding: "40px" }}>
-        <Typography variant="h3" align="center" gutterBottom>
-          FAQ
-        </Typography>
-        {faqs.map((q) => (
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              id="panel1a-header"
-            >
-              <Typography variant='h6' style={{fontSize: '18px'}}>{q.question}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography variant='body1' color='textSecondary'>{q.answer}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </Container>*/}
+			<Paper style={{ padding: '30px 20px' }}>
+				<Container maxWidth="md">
+					<div style={{ maxWidth: '36vw', margin: '0 auto 50px' }}>
+						<Typography
+							variant="h4"
+							fontWeight={400}
+							align="center"
+							gutterBottom
+							style={{ fontFamily: '"Valorant",sans-serif' }}
+						>
+							SPONSORS
+						</Typography>
+						<Divider />
+					</div>
+					<Sponsers />
+					<br />
+					<br />
+				</Container>
+			</Paper>
+			<Container maxWidth="md" style={{ padding: '40px' }}>
+				<Typography variant="h3" align="center" gutterBottom>
+					FAQ
+				</Typography>
+				{faqs.map((q) => (
+					<Accordion>
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon />}
+							id="panel1a-header"
+						>
+							<Typography variant="h6" style={{ fontSize: '18px' }}>
+								{q.question}
+							</Typography>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography variant="body1" color="textSecondary">
+								{q.answer}
+							</Typography>
+						</AccordionDetails>
+					</Accordion>
+				))}
+			</Container>
 			<Paper style={{ padding: '40px 0' }}>
 				<Container maxWidth="md">
 					<Typography variant="h3" align="center" gutterBottom>
