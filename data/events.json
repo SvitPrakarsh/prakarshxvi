@@ -1085,7 +1085,7 @@
       {
          "event_id": 23,
          "eventName": "ISRO",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Ancillary",
          "details": [
             {
@@ -1119,7 +1119,7 @@
       {
          "event_id": 24,
          "eventName": "Cyber Security",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Ancillary",
          "details": [
             {
