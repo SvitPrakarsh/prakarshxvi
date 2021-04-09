@@ -10,6 +10,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="google-site-verification"
+            content="yGc4-Zy5VJ5wtbj1fLHRLQE79IaRXcIqa2KYsCdhtgo"
+          />
           <script src="/noise.min.js" />
           <link
             rel="stylesheet"
