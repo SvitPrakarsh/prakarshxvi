@@ -136,11 +136,6 @@ export default function Home() {
           </Grid>
         </Container>
       </Paper>
-      <Container id="events" style={{ padding: "40px 0" }} maxWidth="xl">
-        <div style={{ maxWidth: "36vw", margin: "0 auto 50px" }}>
-          <Divider style={{ backgroundColor: "#FF4655" }} />
-        </div>
-      </Container>
       <Container id="events" style={{ padding: "40px" }} maxWidth="lg">
         <div style={{ maxWidth: "36vw", margin: "0 auto 50px" }}>
           <Typography

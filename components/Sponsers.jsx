@@ -33,13 +33,15 @@ export default function Sponsers() {
           src="/codingblocks.png"
           alt=""
           height="100px"
-          onclick="window.open('https://codingblocks.com/', '_blank')"
+          onClick={() => window.open("https://codingblocks.com/", "_blank")}
         />
         <img
           src="/counsellab.png"
           alt=""
           height="120px"
-          onclick="window.open('https://www.counsellab.in/profile-builder/', '_blank')"
+          onClick={() =>
+            window.open("https://www.counsellab.in/profile-builder/", "_blank")
+          }
         />
       </div>
     </>
