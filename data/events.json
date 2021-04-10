@@ -3,7 +3,7 @@
       {
          "event_id": 1,
          "eventName": "Creative Hex",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Cyber Intrusion",
          "iconPath": "cyber-intrusion/corporatech.png",
          "details": [
@@ -55,7 +55,7 @@
       {
          "event_id": 2,
          "eventName": "Techie Guru",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Cyber Intrusion",
          "details": [
             {
@@ -102,7 +102,7 @@
       {
          "event_id": 3,
          "eventName": "Corporatech",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Cyber Intrusion",
          "details": [
             {
@@ -157,7 +157,7 @@
       {
          "event_id": 4,
          "eventName": "Tech-Roadies",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Cyber Intrusion",
          "details": [
             {
@@ -210,7 +210,7 @@
       {
          "event_id": 5,
          "eventName": "QuBits",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Dexter's Lab",
          "details": [
             {
@@ -261,7 +261,7 @@
       {
          "event_id": 6,
          "eventName": "MythWIZ",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Dexter's Lab",
          "details": [
             {
@@ -520,7 +520,7 @@
       {
          "event_id": 11,
          "eventName": "Envision Urban Infra",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Structonics",
          "details": [
             {
@@ -573,7 +573,7 @@
       {
          "event_id": 12,
          "eventName": "ENGINE EVOLUTION",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -624,7 +624,7 @@
       {
          "event_id": 13,
          "eventName": "RoboSpace",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -675,7 +675,7 @@
       {
          "event_id": 14,
          "eventName": "HYDRO-RUSH",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Wheels & Wings",
          "details": [
             {
@@ -722,7 +722,7 @@
       {
          "event_id": 15,
          "eventName": "Genesis",
-         "is_disabled": false,
+         "is_disabled": true,
          "category_name": "Wheels & Wings",
          "details": [
             {

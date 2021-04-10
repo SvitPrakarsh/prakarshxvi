@@ -240,13 +240,14 @@ export default function Dashboard() {
                     variant="outlined"
                     className={classes.checkout}
                     size="large"
-                    // disabled
+                    disabled
                     onClick={() => {
-                      if (user && cart?.length > 0) displayRazorpay();
-                      else {
-                        if (!user) setError("Please login to continue!!");
-                        else setError("Cart is empty!");
-                      }
+                      // if (user && cart?.length > 0) displayRazorpay();
+                      // else {
+                      //   if (!user) setError("Please login to continue!!");
+                      //   else setError("Cart is empty!");
+                      // }
+                      setError("Participation is closed!! See you next year!");
                     }}
                   >
                     Checkout&nbsp;<b>₹ {totalAmount}</b>
