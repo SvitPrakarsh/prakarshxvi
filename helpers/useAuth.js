@@ -39,7 +39,7 @@ export default function useAuth() {
 					})
 					.catch((e) => {
 						console.log(e);
-						setError('Unable to reach server!');
+						// setError('Unable to reach server!');
 					})
 					.finally(() => {
 						setLoading(false);

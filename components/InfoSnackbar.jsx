@@ -33,7 +33,7 @@ export default function InfoSnackbar() {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        message="Keep checking website for periodic updates!"
+        message="Certificates will be sent to you by email in 5-6 business days."
         action={
           <IconButton
             size="small"
