@@ -7,7 +7,7 @@
     "dev": "next dev",
     "dev-lan": "next dev -H 0.0.0.0 -p 5000",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "license": "MIT",
   "dependencies": {
